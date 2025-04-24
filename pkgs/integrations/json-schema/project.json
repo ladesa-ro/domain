@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "@ladesa-ro/domain.integrations.json-schema",
+  "namedInputs": {
+    "src": ["{workspaceRoot}/pkgs/definitions/.generated/json-schema/**/*"]
+  },
+  "targets": {
+    "generate": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "rm -rf {projectRoot}/lib",
+          "mkdir -p {projectRoot}/lib",
+          "find pkgs/definitions/.generated/json-schema -type f -exec cp {} {projectRoot}/lib \\;"
+        ],
+        "parallel": false,
+        "cwd": "{workspaceRoot}"
+      },
+      "inputs": [
+        {
+          "projects": ["@ladesa-ro/domain.definitions"],
+          "input": "src"
+        }
+      ],
+      "outputs": ["{projectRoot}/lib/**/*"],
+      "dependsOn": ["@ladesa-ro/domain.definitions:generate-json-schema"]
+    }
+  }
+}

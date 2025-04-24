@@ -1,0 +1,26 @@
+{
+  "name": "@ladesa-ro/domain.root",
+  "private": true,
+  "workspaces": [
+    "./pkgs/definitions",
+    "./pkgs/integrations/json-schema"
+  ],
+  "scripts": {
+    "changeset:add": "changeset add",
+    "changeset:tag": "changeset tag",
+    "changeset:version": "changeset version && nx run-many -t patch-version",
+    "all:lint:check": "nx run-many -t lint:check && biome lint .",
+    "all:generate": "nx run-many -t generate",
+    "all:lint:fix": "nx run-many -t lint:fix && biome lint --write .",
+    "all:format:check": "nx run-many -t format:check && biome format .",
+    "all:format:fix": "nx run-many -t format:fix && biome format --write .",
+    "all:code-static:check": "bun run lint:check && bun run format:check",
+    "all:code-static:fix": "bun run lint:fix && bun run format:fix",
+    "all:chore:upgrade": "bun upgrade && bun update --latest && nx exec -- bun update --latest"
+  },
+  "dependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@changesets/cli": "^2.29.2",
+    "nx": "^20.8.0"
+  }
+}
