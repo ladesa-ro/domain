@@ -1,9 +1,10 @@
-using Unispec.JsonSchema;
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 
-namespace Ladesa.Schemas;
+namespace Ladesa.v3.Schemas;
 
 /** Dados de entrada para autenticação. */
-@entity(Tokens.Auth_LoginInput_View)
+@Metadata.EntityId(Tokens.Auth_LoginInput_View)
 model AuthLoginInputView {
   /** Matrícula SIAPE. */
   matriculaSiape: string;
@@ -12,45 +13,15 @@ model AuthLoginInputView {
   senha: string;
 }
 
-/** Operação de login. */
-model AuthLoginOperation
-  is GenericOperation<
-    Tokens.Auth_Operations_Login,
-    #{ meta: #{ gql: #{ kind: "mutation" } } },
-    {
-      input: {
-        body: AuthLoginInputView;
-      };
-      output: {
-        success: AuthSessionCredentialsView;
-      };
-    }
-  >;
-
 /** Dados de entrada para refresh de autenticação. */
-@entity(Tokens.Auth_RefreshInput_View)
+@Metadata.EntityId(Tokens.Auth_RefreshInput_View)
 model AuthRefreshInputView {
   /** Token de refresh. */
   refreshToken: string;
 }
 
-/** Obtêm as credenciais de sessão por meio do envio do token de refresh. */
-model AuthRefreshOperation
-  is GenericOperation<
-    Tokens.Auth_Operations_Refresh,
-    #{ meta: #{ gql: #{ kind: "mutation" } } },
-    {
-      input: {
-        body: AuthRefreshInputView;
-      };
-      output: {
-        success: AuthSessionCredentialsView;
-      };
-    }
-  >;
-
 /** Informações sobre o ator.. */
-@entity(Tokens.Auth_WhoAmIResult_View)
+@Metadata.EntityId(Tokens.Auth_WhoAmIResult_View)
 model AuthWhoAmIResultView {
   /** Usuário autenticado. */
   usuario: UsuarioFindOneResultView | null;
@@ -59,20 +30,8 @@ model AuthWhoAmIResultView {
   perfisAtivos: PerfilFindOneResultView[];
 }
 
-/** Obtêm informações sobre o estado de autenticação do ator. */
-model AuthWhoAmIOperation
-  is GenericOperation<
-    Tokens.Auth_Operations_WhoAmI,
-    #{ meta: #{ gql: #{ kind: "query" } } },
-    {
-      output: {
-        success: AuthWhoAmIResultView;
-      };
-    }
-  >;
-
 /** Credenciais de sessão. */
-@entity(Tokens.Auth_SessionCredentials_View)
+@Metadata.EntityId(Tokens.Auth_SessionCredentials_View)
 model AuthSessionCredentialsView {
   /** Token de acesso. */
   access_token: string | null;
@@ -100,7 +59,7 @@ model AuthSessionCredentialsView {
 }
 
 /** Dados de entrada para definir a senha inicial. */
-@entity(Tokens.Auth_SetInitialPasswordInput_View)
+@Metadata.EntityId(Tokens.Auth_SetInitialPasswordInput_View)
 model AuthCredentialsSetInitialPasswordInputView {
   /** Matrícula SIAPE. */
   matriculaSiape: string;
@@ -109,39 +68,9 @@ model AuthCredentialsSetInitialPasswordInputView {
   senha: string;
 }
 
-/** Operação para definir a senha inicial. */
-model AuthCredentialsSetInitialPasswordOperation
-  is GenericOperation<
-    Tokens.Auth_Operations_SetInitialPassword,
-    #{ meta: #{ gql: #{ kind: "mutation" } } },
-    {
-      input: {
-        body: AuthCredentialsSetInitialPasswordInputView;
-      };
-      output: {
-        success: boolean;
-      };
-    }
-  >;
-
 /** Dados de entrada para autenticação. */
-@entity(Tokens.Auth_RecoverPasswordInput_View)
+@Metadata.EntityId(Tokens.Auth_RecoverPasswordInput_View)
 model AuthRecoverPasswordInputView {
   /** E-mail. */
   email: string;
 }
-
-/** Operação de login. */
-model AuthRecoverPasswordOperation
-  is GenericOperation<
-    Tokens.Auth_Operations_RecoverPassword,
-    #{ meta: #{ gql: #{ kind: "mutation" } } },
-    {
-      input: {
-        body: AuthRecoverPasswordInputView;
-      };
-      output: {
-        success: boolean;
-      };
-    }
-  >;

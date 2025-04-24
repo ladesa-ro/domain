@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** Campus. */
-@entity(Tokens.Campus)
+@Metadata.EntityId(Tokens.Campus)
 model Campus {
   ...EntityIdUuid;
 
@@ -33,7 +34,7 @@ model Campus {
 }
 
 /** Visão completa de um campus. */
-@entity(Tokens.Campus_View)
+@Metadata.EntityId(Tokens.Campus_View)
 model CampusView {
   ...OmitProperties<Campus, "endereco">;
   endereco: EnderecoFindOneResultView;
@@ -42,7 +43,7 @@ model CampusView {
 /**
  * Dados de entrada para encontrar um campus por id.
  */
-@entity(Tokens.Campus_FindOneInput_View)
+@Metadata.EntityId(Tokens.Campus_FindOneInput_View)
 model CampusFindOneInputView {
   @extension("x-unispec-constraint-entity-exists", Json<Tokens.Campus>)
   id: Campus.id;
@@ -51,8 +52,8 @@ model CampusFindOneInputView {
 /**
  * Visão FindOne de um campus.
  */
-@entity(Tokens.Campus_FindOneResult_View)
-@entityPartialOf(Tokens.Campus_View)
+@Metadata.EntityId(Tokens.Campus_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Campus_View)
 model CampusFindOneResultView {
   //
   ...PickProperties<CampusView, "id">;
@@ -70,13 +71,13 @@ model CampusFindOneResultView {
 }
 
 /** Resultados da busca a campi. */
-@entity(Tokens.Campus_ListResult_View)
+@Metadata.EntityId(Tokens.Campus_ListResult_View)
 model CampusListResultView is PaginationResultView<CampusFindOneResultView>;
 
 /**
  * Dados de entrada para a criação de um campus.
  */
-@entity(Tokens.Campus_InputCreate_View)
+@Metadata.EntityId(Tokens.Campus_InputCreate_View)
 model CampusInputCreateView {
   ...PickProperties<CampusView, "nomeFantasia">;
   ...PickProperties<CampusView, "razaoSocial">;
@@ -86,56 +87,5 @@ model CampusInputCreateView {
 }
 
 /** Dados de entrada para a atualização de um campus. */
-@entity(Tokens.Campus_InputUpdate_View)
+@Metadata.EntityId(Tokens.Campus_InputUpdate_View)
 model CampusInputUpdateView is OptionalProperties<CampusInputCreateView>;
-
-// =====================================
-// operações
-// =====================================
-
-model CampusFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.Campus_Operations_FindOneById,
-    CampusFindOneInputView.id,
-    CampusFindOneResultView
-  >;
-
-model CampusDeleteOneByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.Campus_Operations_DeleteOneById,
-    CampusFindOneInputView.id
-  >;
-
-model CampusListOperation
-  is GenericOperationList<
-    Tokens.Campus_Operations_List,
-    CampusListResultView,
-    {
-      // filters
-      @extension("x-unispec-gql-key", "filterEnderecoCidadeId")
-      @extension("x-unispec-http-key", "filter.endereco.cidade.id")
-      `filter.endereco.cidade.id`?: Pagination.GenericFilter.eq[];
-
-      // filters
-      @extension("x-unispec-gql-key", "filterEnderecoCidadeEstadoId")
-      @extension("x-unispec-http-key", "filter.endereco.cidade.estado.id")
-      `filter.endereco.cidade.estado.id`?: Pagination.GenericFilter.eq[];
-    }
-  >;
-
-/** Operação de criação de um campus. */
-model CampusCreateOperation
-  is GenericOperationCreate<
-    Tokens.Campus_Operations_Create,
-    CampusInputCreateView,
-    CampusFindOneResultView
-  >;
-
-/** Operação de atualização de um campus. */
-model CampusUpdateOperation
-  is GenericOperationUpdate<
-    Tokens.Campus_Operations_UpdateOneById,
-    CampusFindOneInputView.id,
-    CampusInputUpdateView,
-    CampusFindOneResultView
-  >;

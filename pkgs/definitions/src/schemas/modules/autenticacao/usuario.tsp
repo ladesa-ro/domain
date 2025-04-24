@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** Usuário. */
-@entity(Tokens.Usuario)
+@Metadata.EntityId(Tokens.Usuario)
 model Usuario {
   ...EntityIdUuid;
 
@@ -35,7 +36,7 @@ model Usuario {
 }
 
 /** Visão completa de um Usuário. */
-@entity(Tokens.Usuario_View)
+@Metadata.EntityId(Tokens.Usuario_View)
 model UsuarioView {
   ...OmitProperties<Usuario, "imagemCapa" | "imagemPerfil">;
   imagemCapa: ImagemFindOneResultView | null;
@@ -43,15 +44,15 @@ model UsuarioView {
 }
 
 /** Dados de entrada para encontrar um Usuário por ID. */
-@entity(Tokens.Usuario_FindOneInput_View)
+@Metadata.EntityId(Tokens.Usuario_FindOneInput_View)
 model UsuarioFindOneInputView {
   @extension("x-unispec-constraint-entity-exists", Json<Tokens.Usuario>)
   id: Usuario.id;
 }
 
 /** Visão FindOne de um Usuário. */
-@entity(Tokens.Usuario_FindOneResult_View)
-@entityPartialOf(Tokens.Usuario_View)
+@Metadata.EntityId(Tokens.Usuario_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Usuario_View)
 model UsuarioFindOneResultView {
   //
   ...PickProperties<UsuarioView, "id">;
@@ -72,11 +73,11 @@ model UsuarioFindOneResultView {
 }
 
 /** Resultados da busca a usuários. */
-@entity(Tokens.Usuario_ListResult_View)
+@Metadata.EntityId(Tokens.Usuario_ListResult_View)
 model UsuarioListResultView is PaginationResultView<UsuarioFindOneResultView>;
 
 /** Dados de entrada para a criação de um usuário. */
-@entity(Tokens.Usuario_InputCreate_View)
+@Metadata.EntityId(Tokens.Usuario_InputCreate_View)
 model UsuarioInputCreateView {
   ...PickProperties<UsuarioView, "nome">;
   ...PickProperties<UsuarioView, "matriculaSiape">;
@@ -84,70 +85,5 @@ model UsuarioInputCreateView {
 }
 
 /** Dados de entrada para a atualização de um Usuário. */
-@entity(Tokens.Usuario_InputUpdate_View)
+@Metadata.EntityId(Tokens.Usuario_InputUpdate_View)
 model UsuarioInputUpdateView is OptionalProperties<UsuarioInputCreateView>;
-
-// =====================================
-// operações
-// =====================================
-
-model UsuarioFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.Usuario_Operations_FindOneById,
-    UsuarioFindOneInputView.id,
-    UsuarioFindOneResultView
-  >;
-
-model UsuarioDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.Usuario_Operations_DeleteOneById,
-    UsuarioFindOneInputView.id
-  >;
-
-model UsuarioCreateOperation
-  is GenericOperationCreate<
-    Tokens.Usuario_Operations_Create,
-    UsuarioInputCreateView,
-    UsuarioFindOneResultView
-  >;
-
-model UsuarioUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.Usuario_Operations_UpdateOneById,
-    UsuarioFindOneInputView.id,
-    UsuarioInputUpdateView,
-    UsuarioFindOneResultView
-  >;
-
-model UsuarioListOperation
-  is GenericOperationList<
-    Tokens.Usuario_Operations_List,
-    UsuarioListResultView,
-    {}
-  >;
-
-model UsuarioGetImagemCapa
-  is ImagemGenericGetImagemCapaOperation<
-    Tokens.Usuario_Operations_GetImagemCapa,
-    UsuarioFindOneInputView.id
-  >;
-
-model UsuarioSetImagemCapa
-  is ImagemGenericSetImagemCapaOperation<
-    Tokens.Usuario_Operations_SetImagemCapa,
-    UsuarioFindOneInputView.id
-  >;
-
-/** Obtêm a imagem de perfil. */
-model UsuarioGetImagemPerfil
-  is ImagemGenericGetImagemOperation<
-    Tokens.Usuario_Operations_GetImagemPerfil,
-    UsuarioFindOneInputView.id
-  >;
-
-/** Define a imagem de perfil. */
-model UsuarioSetImagemPerfil
-  is ImagemGenericSetImagemOperation<
-    Tokens.Usuario_Operations_SetImagemPerfil,
-    UsuarioFindOneInputView.id
-  >;

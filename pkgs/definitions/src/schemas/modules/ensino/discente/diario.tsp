@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** Diario. */
-@entity(Tokens.Diario)
+@Metadata.EntityId(Tokens.Diario)
 model Diario {
   ...EntityIdUuid;
 
@@ -32,7 +33,7 @@ model Diario {
 }
 
 /** Visão completa de um diário. */
-@entity(Tokens.Diario_View)
+@Metadata.EntityId(Tokens.Diario_View)
 model DiarioView {
   ...OmitProperties<
     Diario,
@@ -51,15 +52,15 @@ model DiarioView {
 }
 
 /** Dados de entrada para encontrar um diário por ID. */
-@entity(Tokens.Diario_FindOneInput_View)
+@Metadata.EntityId(Tokens.Diario_FindOneInput_View)
 model DiarioFindOneInputView {
   @extension("x-unispec-constraint-entity-exists", Json<Tokens.Diario>)
   id: Diario.id;
 }
 
 /** Visão FindOne de um diário. */
-@entity(Tokens.Diario_FindOneResult_View)
-@entityPartialOf(Tokens.Diario_View)
+@Metadata.EntityId(Tokens.Diario_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Diario_View)
 model DiarioFindOneResultView {
   ...PickProperties<DiarioView, "id" | "ativo">;
   ...PickProperties<
@@ -75,7 +76,7 @@ model DiarioFindOneResultView {
 }
 
 /** Dados de entrada para a criação de um diário. */
-@entity(Tokens.Diario_InputCreate_View)
+@Metadata.EntityId(Tokens.Diario_InputCreate_View)
 model DiarioInputCreateView {
   ativo: boolean;
   calendarioLetivo: CalendarioLetivoFindOneInputView;
@@ -85,77 +86,9 @@ model DiarioInputCreateView {
 }
 
 /** Dados de entrada para a atualização de um diário. */
-@entity(Tokens.Diario_InputUpdate_View)
+@Metadata.EntityId(Tokens.Diario_InputUpdate_View)
 model DiarioInputUpdateView is OptionalProperties<DiarioInputCreateView>;
 
 /** Resultados da busca a Diarios. */
-@entity(Tokens.Diario_ListResult_View)
+@Metadata.EntityId(Tokens.Diario_ListResult_View)
 model DiarioListResultView is PaginationResultView<DiarioFindOneResultView>;
-
-// =====================================
-// Operações
-// =====================================
-
-model DiarioFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.Diario_Operations_FindOneById,
-    DiarioFindOneInputView.id,
-    DiarioFindOneResultView
-  >;
-
-model DiarioDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.Diario_Operations_DeleteOneById,
-    DiarioFindOneInputView.id
-  >;
-
-model DiarioCreateOperation
-  is GenericOperationCreate<
-    Tokens.Diario_Operations_Create,
-    DiarioInputCreateView,
-    DiarioFindOneResultView
-  >;
-
-model DiarioUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.Diario_Operations_UpdateOneById,
-    DiarioFindOneInputView.id,
-    DiarioInputUpdateView,
-    DiarioFindOneResultView
-  >;
-
-model DiarioListOperation
-  is GenericOperationList<
-    Tokens.Diario_Operations_List,
-    DiarioListResultView,
-    {
-      @extension("x-unispec-gql-key", "filterTurmaId")
-      @extension("x-unispec-http-key", "filter.turma.id")
-      `filter.turma.id`?: Pagination.GenericFilter.eq[];
-
-      @extension("x-unispec-gql-key", "filterDisciplinaId")
-      @extension("x-unispec-http-key", "filter.disciplina.id")
-      `filter.disciplina.id`?: Pagination.GenericFilter.eq[];
-
-      @extension("x-unispec-gql-key", "filterAmbientePadraoId")
-      @extension("x-unispec-http-key", "filter.ambientePadrao.id")
-      `filter.ambientePadrao.id`?: Pagination.GenericFilter.eq[];
-
-      @extension("x-unispec-gql-key", "filterCalendarioLetivoId")
-      @extension("x-unispec-http-key", "filter.calendarioLetivo.id")
-      `filter.calendarioLetivo.id`?: Pagination.GenericFilter.eq[];
-    }
-  >;
-
-/** Operações extras para a imagem de capa do diário. */
-model DiarioGetCoverImageOperation
-  is ImagemGenericGetImagemCapaOperation<
-    Tokens.Diario_Operations_GetImagemCapa,
-    DiarioFindOneInputView.id
-  >;
-
-model DiarioSetCoverImageOperation
-  is ImagemGenericSetImagemCapaOperation<
-    Tokens.Diario_Operations_SetImagemCapa,
-    DiarioFindOneInputView.id
-  >;

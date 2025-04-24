@@ -1,13 +1,12 @@
-import "../../../extensions/index.tsp";
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 
-using Unispec.JsonSchema;
-
-namespace Ladesa.Schemas;
+namespace Ladesa.v3.Schemas;
 
 /**
  * ImagemArquivo.
  */
-@entity(Tokens.ImagemArquivo)
+@Metadata.EntityId(Tokens.ImagemArquivo)
 model ImagemArquivo {
   ...EntityIdUuid;
 
@@ -44,7 +43,7 @@ model ImagemArquivoView {
 /**
  * Dados de entrada para encontrar uma versão de uma imagem por ID.
  */
-@entity(Tokens.ImagemArquivo_FindOneInput_View)
+@Metadata.EntityId(Tokens.ImagemArquivo_FindOneInput_View)
 model ImagemArquivoFindOneInputView {
   ...PickProperties<Imagem, "id">;
 }
@@ -52,8 +51,8 @@ model ImagemArquivoFindOneInputView {
 /**
  * Visão FindOne de uma versão de uma versão de imagem.
  */
-@entity(Tokens.ImagemArquivo_FindOneResult_View)
-@entityPartialOf(Tokens.ImagemArquivo_View)
+@Metadata.EntityId(Tokens.ImagemArquivo_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.ImagemArquivo_View)
 model ImagemArquivoFindOneResultView {
   ...PickProperties<ImagemArquivoView, "id">;
 
@@ -78,8 +77,8 @@ model ImagemArquivoFindOneResultView {
 /**
  * Visão FindOneFromImagem de uma versão de imagem.
  */
-@entity(Tokens.ImagemArquivo_FindOneFromImagemResult_View)
-@entityPartialOf(Tokens.ImagemArquivo_View)
+@Metadata.EntityId(Tokens.ImagemArquivo_FindOneFromImagemResult_View)
+@Metadata.EntityPartialOfId(Tokens.ImagemArquivo_View)
 model ImagemArquivoFindOneFromImagemResultView {
   ...PickProperties<ImagemArquivoView, "id">;
 

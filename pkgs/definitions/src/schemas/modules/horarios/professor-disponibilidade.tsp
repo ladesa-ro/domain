@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** ProfessorDisponibilidade. */
-@entity(Tokens.ProfessorDisponibilidade)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade)
 model ProfessorDisponibilidade {
   ...EntityIdUuid;
 
@@ -20,7 +21,7 @@ model ProfessorDisponibilidade {
 }
 
 /** Visão completa de uma ProfessorDisponibilidade. */
-@entity(Tokens.ProfessorDisponibilidade_View)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade_View)
 model ProfessorDisponibilidadeView {
   ...OmitProperties<ProfessorDisponibilidade, "disponibilidade" | "perfil">;
   disponibilidade: DisponibilidadeFindOneResultView;
@@ -28,7 +29,7 @@ model ProfessorDisponibilidadeView {
 }
 
 /** Dados de entrada para encontrar uma ProfessorDisponibilidade por ID. */
-@entity(Tokens.ProfessorDisponibilidade_FindOneInput_View)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade_FindOneInput_View)
 model ProfessorDisponibilidadeFindOneInputView {
   @extension(
     "x-unispec-constraint-entity-exists",
@@ -38,8 +39,8 @@ model ProfessorDisponibilidadeFindOneInputView {
 }
 
 /** Visão FindOne de uma ProfessorDisponibilidade. */
-@entity(Tokens.ProfessorDisponibilidade_FindOneResult_View)
-@entityPartialOf(Tokens.ProfessorDisponibilidade)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.ProfessorDisponibilidade)
 model ProfessorDisponibilidadeFindOneResultView {
   ...PickProperties<ProfessorDisponibilidadeView, "id">;
   ...PickProperties<ProfessorDisponibilidadeView, "disponibilidade" | "perfil">;
@@ -50,62 +51,18 @@ model ProfessorDisponibilidadeFindOneResultView {
 }
 
 /** Dados de entrada para a criação de uma ProfessorDisponibilidade. */
-@entity(Tokens.ProfessorDisponibilidade_InputCreate_View)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade_InputCreate_View)
 model ProfessorDisponibilidadeInputCreateView {
   disponibilidade: DisponibilidadeFindOneInputView;
   perfil: PerfilFindOneInputView;
 }
 
 /** Dados de entrada para a atualização de uma ProfessorDisponibilidade. */
-@entity(Tokens.ProfessorDisponibilidade_InputUpdate_View)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade_InputUpdate_View)
 model ProfessorDisponibilidadeInputUpdateView
   is OptionalProperties<ProfessorDisponibilidadeInputCreateView>;
 
 /** Resultados da busca a ProfessorDisponibilidades. */
-@entity(Tokens.ProfessorDisponibilidade_ListResult_View)
+@Metadata.EntityId(Tokens.ProfessorDisponibilidade_ListResult_View)
 model ProfessorDisponibilidadeListResultView
   is PaginationResultView<ProfessorDisponibilidadeFindOneResultView>;
-
-// =====================================
-// Operações
-// =====================================
-
-model ProfessorDisponibilidadeFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.ProfessorDisponibilidade_Operations_FindOneById,
-    ProfessorDisponibilidadeFindOneInputView.id,
-    ProfessorDisponibilidadeFindOneResultView
-  >;
-
-model ProfessorDisponibilidadeDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.ProfessorDisponibilidade_Operations_DeleteOneById,
-    ProfessorDisponibilidadeFindOneInputView.id
-  >;
-
-model ProfessorDisponibilidadeCreateOperation
-  is GenericOperationCreate<
-    Tokens.ProfessorDisponibilidade_Operations_Create,
-    ProfessorDisponibilidadeInputCreateView,
-    ProfessorDisponibilidadeFindOneResultView
-  >;
-
-model ProfessorDisponibilidadeUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.ProfessorDisponibilidade_Operations_UpdateOneById,
-    ProfessorDisponibilidadeFindOneInputView.id,
-    ProfessorDisponibilidadeInputUpdateView,
-    ProfessorDisponibilidadeFindOneResultView
-  >;
-
-model ProfessorDisponibilidadeListOperation
-  is GenericOperationList<
-    Tokens.ProfessorDisponibilidade_Operations_List,
-    ProfessorDisponibilidadeListResultView,
-    {
-      // filtros
-      @extension("x-unispec-gql-key", "filterPerfilId")
-      @extension("x-unispec-http-key", "filter.perfil.id")
-      `filter.professor.id`?: Pagination.GenericFilter.eq[] | null;
-    }
-  >;

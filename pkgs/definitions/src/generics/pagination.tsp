@@ -1,5 +1,8 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
+
+using Ladesa.v3.Schemas;
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 
 @baseUri("ladesa://schemas/v3/generics/pagination")
 namespace Ladesa.Schemas.Pagination;
@@ -8,7 +11,7 @@ namespace Ladesa.Schemas.Pagination;
  * Configuração de ordenação de uma propriedade.
  */
 #deprecated ""
-@entity(Tokens.Shared_Pagination_SortBy_View)
+@Metadata.EntityId(Tokens.Shared_Pagination_SortBy_View)
 model PaginationSortByView {
   /**
    * Propriedade ordenada.
@@ -27,7 +30,7 @@ model PaginationSortByView {
  * Configuração de filtro por restrições de uma propriedade.
  */
 #deprecated ""
-@entity(Tokens.Shared_Pagination_Filter_View)
+@Metadata.EntityId(Tokens.Shared_Pagination_Filter_View)
 model PaginationFilterView {
   /**
    * Propriedade filtrada.
@@ -70,7 +73,7 @@ namespace Input {
   @pattern("^[\\D\\.]+:(ASC|DESC)$")
   scalar sort_by_constraint extends string;
 
-  @entity(Tokens.Shared_Pagination_Input_Base_View)
+  @Metadata.EntityId(Tokens.Shared_Pagination_Input_Base_View)
   model PaginationInputBaseView {
     /**
      * Página de consulta.
@@ -91,7 +94,7 @@ namespace Input {
   }
 
   #deprecated ""
-  @entity(Tokens.Shared_Pagination_Input_View)
+  @Metadata.EntityId(Tokens.Shared_Pagination_Input_View)
   model PaginationInputView {
     ...PaginationInputBaseView;
 
@@ -106,7 +109,7 @@ namespace Input {
     filter?: PaginationFilterView[];
   }
 
-  @entity(Tokens.Shared_SearchInput_View)
+  @Metadata.EntityId(Tokens.Shared_SearchInput_View)
   model GenericSearchInputView {
     ...PaginationInputBaseView;
 
@@ -126,7 +129,7 @@ namespace Result {
   /**
    * Metadados dos resultados de busca.
    */
-  @entity(Tokens.Shared_Pagination_Result_Meta_View)
+  @Metadata.EntityId(Tokens.Shared_Pagination_Result_Meta_View)
   model PaginationResultMeta {
     @doc("Quantidade de itens por página.")
     itemsPerPage: integer;
@@ -150,7 +153,7 @@ namespace Result {
     filter: PaginationFilterView[];
   }
 
-  @entity(Tokens.Shared_Pagination_Result_Links_View)
+  @Metadata.EntityId(Tokens.Shared_Pagination_Result_Links_View)
   model PaginationResultLinks {
     first: string | null;
     previous: string | null;
@@ -159,7 +162,7 @@ namespace Result {
     last: string | null;
   }
 
-  @entity(Tokens.Shared_Pagination_Result_View)
+  @Metadata.EntityId(Tokens.Shared_Pagination_Result_View)
   model PaginationResultView<Target> {
     @doc("Metadados da busca.")
     meta: PaginationResultMeta;

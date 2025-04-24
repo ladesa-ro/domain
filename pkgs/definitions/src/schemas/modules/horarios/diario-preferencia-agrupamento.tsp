@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** DiarioPreferenciaAgrupamento. */
-@entity(Tokens.DiarioPreferenciaAgrupamento)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento)
 model DiarioPreferenciaAgrupamento {
   ...EntityIdUuid;
 
@@ -32,7 +33,7 @@ model DiarioPreferenciaAgrupamento {
 }
 
 /** Visão completa de um DiarioPreferenciaAgrupamento. */
-@entity(Tokens.DiarioPreferenciaAgrupamento_View)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_View)
 model DiarioPreferenciaAgrupamentoView {
   ...OmitProperties<
     DiarioPreferenciaAgrupamento,
@@ -43,7 +44,7 @@ model DiarioPreferenciaAgrupamentoView {
 }
 
 /** Dados de entrada para encontrar um DiarioPreferenciaAgrupamento por ID. */
-@entity(Tokens.DiarioPreferenciaAgrupamento_FindOneInput_View)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_FindOneInput_View)
 model DiarioPreferenciaAgrupamentoFindOneInputView {
   @extension(
     "x-unispec-constraint-entity-exists",
@@ -53,8 +54,8 @@ model DiarioPreferenciaAgrupamentoFindOneInputView {
 }
 
 /** Visão FindOne de um DiarioPreferenciaAgrupamento. */
-@entity(Tokens.DiarioPreferenciaAgrupamento_FindOneResult_View)
-@entityPartialOf(Tokens.DiarioPreferenciaAgrupamento)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.DiarioPreferenciaAgrupamento)
 model DiarioPreferenciaAgrupamentoFindOneResultView {
   ...PickProperties<DiarioPreferenciaAgrupamentoView, "id">;
   ...PickProperties<
@@ -72,7 +73,7 @@ model DiarioPreferenciaAgrupamentoFindOneResultView {
 }
 
 /** Dados de entrada para a criação de um DiarioPreferenciaAgrupamento. */
-@entity(Tokens.DiarioPreferenciaAgrupamento_InputCreate_View)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_InputCreate_View)
 model DiarioPreferenciaAgrupamentoInputCreateView {
   diaSemanaIso: DiarioPreferenciaAgrupamento.diaSemanaIso;
   aulasSeguidas: DiarioPreferenciaAgrupamento.aulasSeguidas;
@@ -87,55 +88,11 @@ model DiarioPreferenciaAgrupamentoInputCreateView {
 }
 
 /** Dados de entrada para a atualização de um DiarioPreferenciaAgrupamento. */
-@entity(Tokens.DiarioPreferenciaAgrupamento_InputUpdate_View)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_InputUpdate_View)
 model DiarioPreferenciaAgrupamentoInputUpdateView
   is OptionalProperties<DiarioPreferenciaAgrupamentoInputCreateView>;
 
 /** Resultados da busca de DiarioPreferenciaAgrupamentos. */
-@entity(Tokens.DiarioPreferenciaAgrupamento_ListResult_View)
+@Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_ListResult_View)
 model DiarioPreferenciaAgrupamentoListResultView
   is PaginationResultView<DiarioPreferenciaAgrupamentoFindOneResultView>;
-
-// =====================================
-// Operações
-// =====================================
-
-model DiarioPreferenciaAgrupamentoFindByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.DiarioPreferenciaAgrupamento_Operations_FindOneById,
-    DiarioPreferenciaAgrupamentoFindOneInputView.id,
-    DiarioPreferenciaAgrupamentoFindOneResultView
-  >;
-
-model DiarioPreferenciaAgrupamentoDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.DiarioPreferenciaAgrupamento_Operations_DeleteOneById,
-    DiarioPreferenciaAgrupamentoFindOneInputView.id
-  >;
-
-model DiarioPreferenciaAgrupamentoCreateOperation
-  is GenericOperationCreate<
-    Tokens.DiarioPreferenciaAgrupamento_Operations_Create,
-    DiarioPreferenciaAgrupamentoInputCreateView,
-    DiarioPreferenciaAgrupamentoFindOneResultView
-  >;
-
-model DiarioPreferenciaAgrupamentoUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.DiarioPreferenciaAgrupamento_Operations_UpdateOneById,
-    DiarioPreferenciaAgrupamentoFindOneInputView.id,
-    DiarioPreferenciaAgrupamentoInputUpdateView,
-    DiarioPreferenciaAgrupamentoFindOneResultView
-  >;
-
-model DiarioPreferenciaAgrupamentoListOperation
-  is GenericOperationList<
-    Tokens.DiarioPreferenciaAgrupamento_Operations_List,
-    DiarioPreferenciaAgrupamentoListResultView,
-    {
-      // filtros
-      @extension("x-unispec-gql-key", "filterDiarioId")
-      @extension("x-unispec-http-key", "filter.diario.id")
-      `filter.diario.id`?: Pagination.GenericFilter.eq[] | null;
-    }
-  >;

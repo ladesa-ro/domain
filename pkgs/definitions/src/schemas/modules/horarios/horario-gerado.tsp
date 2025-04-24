@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** HorarioGerado. */
-@entity(Tokens.HorarioGerado)
+@Metadata.EntityId(Tokens.HorarioGerado)
 model HorarioGerado {
   ...EntityIdUuid;
 
@@ -32,22 +33,22 @@ model HorarioGerado {
 }
 
 /** Visão completa de um HorarioGerado. */
-@entity(Tokens.HorarioGerado_View)
+@Metadata.EntityId(Tokens.HorarioGerado_View)
 model HorarioGeradoView {
   ...OmitProperties<HorarioGerado, "calendario">;
   calendario: CalendarioLetivoFindOneResultView;
 }
 
 /** Dados de entrada para encontrar um HorarioGerado por ID. */
-@entity(Tokens.HorarioGerado_FindOneInput_View)
+@Metadata.EntityId(Tokens.HorarioGerado_FindOneInput_View)
 model HorarioGeradoFindOneInputView {
   @extension("x-unispec-constraint-entity-exists", Json<Tokens.HorarioGerado>)
   id: HorarioGerado.id;
 }
 
 /** Visão FindOne de um HorarioGerado. */
-@entity(Tokens.HorarioGerado_FindOneResult_View)
-@entityPartialOf(Tokens.HorarioGerado)
+@Metadata.EntityId(Tokens.HorarioGerado_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.HorarioGerado)
 model HorarioGeradoFindOneResultView {
   ...PickProperties<HorarioGeradoView, "id">;
   ...PickProperties<
@@ -62,7 +63,7 @@ model HorarioGeradoFindOneResultView {
 }
 
 /** Dados de entrada para a criação de um HorarioGerado. */
-@entity(Tokens.HorarioGerado_InputCreate_View)
+@Metadata.EntityId(Tokens.HorarioGerado_InputCreate_View)
 model HorarioGeradoInputCreateView {
   status: HorarioGerado.status;
   tipo: HorarioGerado.tipo;
@@ -75,53 +76,11 @@ model HorarioGeradoInputCreateView {
 }
 
 /** Dados de entrada para a atualização de um HorarioGerado. */
-@entity(Tokens.HorarioGerado_InputUpdate_View)
+@Metadata.EntityId(Tokens.HorarioGerado_InputUpdate_View)
 model HorarioGeradoInputUpdateView
   is OptionalProperties<HorarioGeradoInputCreateView>;
 
 /** Resultados da busca de HorariosGerados. */
-@entity(Tokens.HorarioGerado_ListResult_View)
+@Metadata.EntityId(Tokens.HorarioGerado_ListResult_View)
 model HorarioGeradoListResultView
   is PaginationResultView<HorarioGeradoFindOneResultView>;
-
-// =====================================
-// Operações
-// =====================================
-
-model HorarioGeradoFindByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.HorarioGerado_Operations_FindOneById,
-    HorarioGeradoFindOneInputView.id,
-    HorarioGeradoFindOneResultView
-  >;
-
-model HorarioGeradoDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.HorarioGerado_Operations_DeleteOneById,
-    HorarioGeradoFindOneInputView.id
-  >;
-
-model HorarioGeradoCreateOperation
-  is GenericOperationCreate<
-    Tokens.HorarioGerado_Operations_Create,
-    HorarioGeradoInputCreateView,
-    HorarioGeradoFindOneResultView
-  >;
-
-model HorarioGeradoUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.HorarioGerado_Operations_UpdateOneById,
-    HorarioGeradoFindOneInputView.id,
-    HorarioGeradoInputUpdateView,
-    HorarioGeradoFindOneResultView
-  >;
-
-model HorarioGeradoListOperation
-  is GenericOperationList<
-    Tokens.HorarioGerado_Operations_List,
-    HorarioGeradoListResultView,
-    {
-      // filtros
-      // Adicione aqui os filtros necessários, se houver
-    }
-  >;

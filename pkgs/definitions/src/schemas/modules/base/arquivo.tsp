@@ -1,14 +1,13 @@
-import "../../../extensions/index.tsp";
-
-using Unispec.JsonSchema;
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
+namespace Ladesa.v3.Schemas;
 
 /**
  * Arquivo.
  */
-@entity(Tokens.Arquivo)
+@Metadata.EntityId(Tokens.Arquivo)
 model Arquivo {
   ...EntityIdUuid;
 
@@ -30,7 +29,7 @@ model Arquivo {
 /**
  * Visão completa de um arquivo.
  */
-@entity(Tokens.Arquivo_View)
+@Metadata.EntityId(Tokens.Arquivo_View)
 model ArquivoView {
   ...Arquivo;
 }
@@ -38,7 +37,7 @@ model ArquivoView {
 /**
  * Dados de entrada para encontrar um arquivo por id.
  */
-@entity(Tokens.Arquivo_FindOneInput_View)
+@Metadata.EntityId(Tokens.Arquivo_FindOneInput_View)
 model ArquivoFindOneInputView {
   ...PickProperties<Arquivo, "id">;
 }
@@ -46,8 +45,8 @@ model ArquivoFindOneInputView {
 /**
  * Dados de saída para encontrar um arquivo por id.
  */
-@entity(Tokens.Arquivo_FindOneResult_View)
-@entityPartialOf(Tokens.Arquivo_View)
+@Metadata.EntityId(Tokens.Arquivo_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Arquivo_View)
 model ArquivoFindOneResultView {
   ...PickProperties<ArquivoView, "id">;
 
@@ -62,35 +61,3 @@ model ArquivoFindOneResultView {
 
   ...PickProperties<ArquivoView, "dateCreated" | "dateUpdated" | "dateDeleted">;
 }
-
-/**
- * Obtêm o conteúdo de um Arquivo.
- */
-model ArquivoGetFileOperation
-  is GenericOperation<
-    Tokens.Arquivo_Operations_GetFile,
-    #{},
-    {
-      input: {
-        queries: {
-          /**
-           * Acesso via recurso: nome.
-           */
-          nomeRecurso: string;
-
-          /**
-           * Acesso via recurso: id.
-           */
-          idRecurso: string;
-        };
-      };
-      output: {
-        /**
-         * Binário do Arquivo.
-         */
-        @format("binary")
-        @extension("mimeTypes", #["application/octet-stream"])
-        success: string;
-      };
-    }
-  >;

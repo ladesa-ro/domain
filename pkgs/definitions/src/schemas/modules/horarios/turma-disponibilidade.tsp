@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** TurmaDisponibilidade. */
-@entity(Tokens.TurmaDisponibilidade)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade)
 model TurmaDisponibilidade {
   ...EntityIdUuid;
 
@@ -20,7 +21,7 @@ model TurmaDisponibilidade {
 }
 
 /** Visão completa de uma TurmaDisponibilidade. */
-@entity(Tokens.TurmaDisponibilidade_View)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade_View)
 model TurmaDisponibilidadeView {
   ...OmitProperties<TurmaDisponibilidade, "disponibilidade" | "turma">;
   disponibilidade: DisponibilidadeFindOneResultView;
@@ -28,7 +29,7 @@ model TurmaDisponibilidadeView {
 }
 
 /** Dados de entrada para encontrar uma TurmaDisponibilidade por ID. */
-@entity(Tokens.TurmaDisponibilidade_FindOneInput_View)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade_FindOneInput_View)
 model TurmaDisponibilidadeFindOneInputView {
   @extension(
     "x-unispec-constraint-entity-exists",
@@ -38,8 +39,8 @@ model TurmaDisponibilidadeFindOneInputView {
 }
 
 /** Visão FindOne de uma TurmaDisponibilidade. */
-@entity(Tokens.TurmaDisponibilidade_FindOneResult_View)
-@entityPartialOf(Tokens.TurmaDisponibilidade)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.TurmaDisponibilidade)
 model TurmaDisponibilidadeFindOneResultView {
   ...PickProperties<TurmaDisponibilidadeView, "id">;
   ...PickProperties<TurmaDisponibilidadeView, "disponibilidade" | "turma">;
@@ -50,62 +51,18 @@ model TurmaDisponibilidadeFindOneResultView {
 }
 
 /** Dados de entrada para a criação de uma TurmaDisponibilidade. */
-@entity(Tokens.TurmaDisponibilidade_InputCreate_View)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade_InputCreate_View)
 model TurmaDisponibilidadeInputCreateView {
   disponibilidade: DisponibilidadeFindOneInputView;
   turma: TurmaFindOneInputView;
 }
 
 /** Dados de entrada para a atualização de uma TurmaDisponibilidade. */
-@entity(Tokens.TurmaDisponibilidade_InputUpdate_View)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade_InputUpdate_View)
 model TurmaDisponibilidadeInputUpdateView
   is OptionalProperties<TurmaDisponibilidadeInputCreateView>;
 
 /** Resultados da busca a TurmaDisponibilidades. */
-@entity(Tokens.TurmaDisponibilidade_ListResult_View)
+@Metadata.EntityId(Tokens.TurmaDisponibilidade_ListResult_View)
 model TurmaDisponibilidadeListResultView
   is PaginationResultView<TurmaDisponibilidadeFindOneResultView>;
-
-// =====================================
-// Operações
-// =====================================
-
-model TurmaDisponibilidadeFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.TurmaDisponibilidade_Operations_FindOneById,
-    TurmaDisponibilidadeFindOneInputView.id,
-    TurmaDisponibilidadeFindOneResultView
-  >;
-
-model TurmaDisponibilidadeDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.TurmaDisponibilidade_Operations_DeleteOneById,
-    TurmaDisponibilidadeFindOneInputView.id
-  >;
-
-model TurmaDisponibilidadeCreateOperation
-  is GenericOperationCreate<
-    Tokens.TurmaDisponibilidade_Operations_Create,
-    TurmaDisponibilidadeInputCreateView,
-    TurmaDisponibilidadeFindOneResultView
-  >;
-
-model TurmaDisponibilidadeUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.TurmaDisponibilidade_Operations_UpdateOneById,
-    TurmaDisponibilidadeFindOneInputView.id,
-    TurmaDisponibilidadeInputUpdateView,
-    TurmaDisponibilidadeFindOneResultView
-  >;
-
-model TurmaDisponibilidadeListOperation
-  is GenericOperationList<
-    Tokens.TurmaDisponibilidade_Operations_List,
-    TurmaDisponibilidadeListResultView,
-    {
-      // filtros
-      @extension("x-unispec-gql-key", "filterTurmaId")
-      @extension("x-unispec-http-key", "filter.turma.id")
-      `filter.turma.id`?: Pagination.GenericFilter.eq[] | null;
-    }
-  >;

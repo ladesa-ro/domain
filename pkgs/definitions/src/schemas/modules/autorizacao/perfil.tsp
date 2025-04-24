@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** Vínculo. */
-@entity(Tokens.Perfil)
+@Metadata.EntityId(Tokens.Perfil)
 model Perfil {
   ...EntityIdUuid;
 
@@ -26,7 +27,7 @@ model Perfil {
 }
 
 /** Visão completa de um Vínculo. */
-@entity(Tokens.Perfil_View)
+@Metadata.EntityId(Tokens.Perfil_View)
 model PerfilView {
   ...OmitProperties<Perfil, "campus" | "usuario">;
   campus: CampusFindOneResultView;
@@ -34,15 +35,15 @@ model PerfilView {
 }
 
 /** Dados de entrada para encontrar um Vínculo por ID. */
-@entity(Tokens.Perfil_FindOneInput_View)
+@Metadata.EntityId(Tokens.Perfil_FindOneInput_View)
 model PerfilFindOneInputView {
   @extension("x-unispec-constraint-entity-exists", Json<Tokens.Perfil>)
   id: Perfil.id;
 }
 
 /** Visão FindOne de um Vínculo. */
-@entity(Tokens.Perfil_FindOneResult_View)
-@entityPartialOf(Tokens.Perfil_View)
+@Metadata.EntityId(Tokens.Perfil_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Perfil_View)
 model PerfilFindOneResultView {
   //
   ...PickProperties<PerfilView, "id">;
@@ -61,11 +62,11 @@ model PerfilFindOneResultView {
 }
 
 /** Resultados da busca a Vínculos. */
-@entity(Tokens.Perfil_ListResult_View)
+@Metadata.EntityId(Tokens.Perfil_ListResult_View)
 model PerfilListResultView is PaginationResultView<PerfilFindOneResultView>;
 
 /** Dados de entrada para a alteração de vínculo de um Usuário a um Campus. */
-@entity(Tokens.Perfil_InputUpdate_View)
+@Metadata.EntityId(Tokens.Perfil_InputUpdate_View)
 model PerfilUpdateView {
   /** Cargos do usuário no vínculo. */
   cargos: string[];
@@ -73,51 +74,3 @@ model PerfilUpdateView {
   campus: CampusFindOneInputView;
   usuario: UsuarioFindOneInputView;
 }
-
-// =====================================
-// operações
-// =====================================
-
-model PerfilFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.Perfil_Operations_FindOneById,
-    PerfilFindOneInputView.id,
-    PerfilFindOneResultView
-  >;
-
-model PerfilListOperation
-  is GenericOperationList<
-    Tokens.Perfil_Operations_List,
-    PerfilListResultView,
-    {
-      @extension("x-unispec-gql-key", "filterCargo")
-      @extension("x-unispec-http-key", "filter.cargo")
-      `filter.cargo`?: Pagination.GenericFilter.eq[];
-
-      @extension("x-unispec-gql-key", "filterAtivo")
-      @extension("x-unispec-http-key", "filter.ativo")
-      `filter.ativo`?: Pagination.GenericFilter.eq[];
-
-      @extension("x-unispec-gql-key", "filterCampusId")
-      @extension("x-unispec-http-key", "filter.campus.id")
-      `filter.campus.id`?: Pagination.GenericFilter.eq[];
-
-      @extension("x-unispec-gql-key", "filterUsuarioId")
-      @extension("x-unispec-http-key", "filter.usuario.id")
-      `filter.usuario.id`?: Pagination.GenericFilter.eq[];
-    }
-  >;
-
-model PerfilUpdateOperation
-  is GenericOperation<
-    Tokens.Perfil_Operations_UpdateOneById,
-    #{ meta: #{ gql: #{ kind: "mutation" } } },
-    {
-      input: {
-        body: PerfilUpdateView;
-      };
-      output: {
-        success: PerfilListResultView;
-      };
-    }
-  >;

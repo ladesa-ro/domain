@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** Estado. */
-@entity(Tokens.Estado)
+@Metadata.EntityId(Tokens.Estado)
 model Estado {
   ...EntityIdInteger;
 
@@ -19,7 +20,7 @@ model Estado {
 }
 
 /** Visão completa de um estado. */
-@entity(Tokens.Estado_View)
+@Metadata.EntityId(Tokens.Estado_View)
 model EstadoView {
   ...Estado;
 }
@@ -27,14 +28,14 @@ model EstadoView {
 /**
  * Dados de entrada para encontrar um estado por id.
  */
-@entity(Tokens.Estado_FindOneInput_View)
+@Metadata.EntityId(Tokens.Estado_FindOneInput_View)
 model EstadoFindOneInputView is PickProperties<EstadoView, "id">;
 
 /**
  * Visão FindOne de um estado.
  */
-@entity(Tokens.Estado_FindOneResult_View)
-@entityPartialOf(Tokens.Estado_View)
+@Metadata.EntityId(Tokens.Estado_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Estado_View)
 model EstadoFindOneResultView {
   //
   ...PickProperties<EstadoView, "id">;
@@ -44,19 +45,5 @@ model EstadoFindOneResultView {
 }
 
 /** Resultados da busca a estados. */
-@entity(Tokens.Estado_ListResult_View)
+@Metadata.EntityId(Tokens.Estado_ListResult_View)
 model EstadoListResultView is PaginationResultView<EstadoFindOneResultView>;
-
-// =====================================
-// operações
-// =====================================
-
-model EstadoFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.Estado_Operations_FindOneById,
-    Estado.id,
-    EstadoFindOneResultView
-  >;
-
-model EstadoListOperation
-  is GenericOperationList<Tokens.Estado_Operations_List, EstadoListResultView>;

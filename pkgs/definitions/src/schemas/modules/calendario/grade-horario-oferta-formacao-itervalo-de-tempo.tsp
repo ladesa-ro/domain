@@ -1,12 +1,13 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
-
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
 using Ladesa.Schemas.Pagination.Result;
 
+namespace Ladesa.v3.Schemas;
+
 /** GradeHorarioOfertaFormacaoIntervaloDeTempo. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo)
+@Metadata.EntityId(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo)
 model GradeHorarioOfertaFormacaoIntervaloDeTempo {
   ...EntityIdUuid;
 
@@ -20,7 +21,7 @@ model GradeHorarioOfertaFormacaoIntervaloDeTempo {
 }
 
 /** Visão completa de uma oferta de formação. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_View)
+@Metadata.EntityId(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_View)
 model GradeHorarioOfertaFormacaoIntervaloDeTempoView {
   ...OmitProperties<
     GradeHorarioOfertaFormacaoIntervaloDeTempo,
@@ -31,7 +32,9 @@ model GradeHorarioOfertaFormacaoIntervaloDeTempoView {
 }
 
 /** Dados de entrada para encontrar uma oferta de formação por ID. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_FindOneInput_View)
+@Metadata.EntityId(
+  Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_FindOneInput_View
+)
 model GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView {
   @extension(
     "x-unispec-constraint-entity-exists",
@@ -41,8 +44,12 @@ model GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView {
 }
 
 /** Visão FindOne de uma oferta de formação. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_FindOneResult_View)
-@entityPartialOf(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_View)
+@Metadata.EntityId(
+  Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_FindOneResult_View
+)
+@Metadata.EntityPartialOfId(
+  Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_View
+)
 model GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView {
   ...PickProperties<GradeHorarioOfertaFormacaoIntervaloDeTempoView, "id">;
   ...PickProperties<
@@ -56,57 +63,24 @@ model GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView {
 }
 
 /** Dados de entrada para a criação de uma oferta de formação. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_InputCreate_View)
+@Metadata.EntityId(
+  Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_InputCreate_View
+)
 model GradeHorarioOfertaFormacaoIntervaloDeTempoInputCreateView {
   gradeHorarioOfertaFormacao: GradeHorarioOfertaFormacaoFindOneInputView;
   intervaloDeTempo: IntervaloDeTempoInputView;
 }
 
 /** Dados de entrada para a atualização de uma oferta de formação. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_InputUpdate_View)
+@Metadata.EntityId(
+  Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_InputUpdate_View
+)
 model GradeHorarioOfertaFormacaoIntervaloDeTempoInputUpdateView
   is OptionalProperties<GradeHorarioOfertaFormacaoIntervaloDeTempoInputCreateView>;
 
 /** Resultados da busca a GradeHorarioOfertaFormacaoIntervaloDeTempos. */
-@entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_ListResult_View)
+@Metadata.EntityId(
+  Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_ListResult_View
+)
 model GradeHorarioOfertaFormacaoIntervaloDeTempoListResultView
   is PaginationResultView<GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView>;
-
-// =====================================
-// Operações
-// =====================================
-
-model GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneByIdOperation
-  is GenericOperationFindOneById<
-    Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_Operations_FindOneById,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView.id,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView
-  >;
-
-model GradeHorarioOfertaFormacaoIntervaloDeTempoDeleteByIdOperation
-  is GenericOperationDeleteOneById<
-    Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_Operations_DeleteOneById,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView.id
-  >;
-
-model GradeHorarioOfertaFormacaoIntervaloDeTempoCreateOperation
-  is GenericOperationCreate<
-    Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_Operations_Create,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoInputCreateView,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView
-  >;
-
-model GradeHorarioOfertaFormacaoIntervaloDeTempoUpdateByIdOperation
-  is GenericOperationUpdate<
-    Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_Operations_UpdateOneById,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView.id,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoInputUpdateView,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView
-  >;
-
-model GradeHorarioOfertaFormacaoIntervaloDeTempoListOperation
-  is GenericOperationList<
-    Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_Operations_List,
-    GradeHorarioOfertaFormacaoIntervaloDeTempoListResultView,
-    {}
-  >;

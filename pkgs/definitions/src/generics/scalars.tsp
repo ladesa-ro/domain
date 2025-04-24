@@ -1,20 +1,19 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-@baseUri("ladesa://schemas/v3/generics/scalars")
-namespace Ladesa.Schemas;
+@baseUri("ladesa://schemas/v3/generics")
+namespace Ladesa.v3.Generics;
 
 /**
  * Identificador Único Universal.
  */
 @format("uuid")
-scalar uuid extends string;
+scalar id_uuid extends string;
 
 /**
  * Identificador numérico.
  */
 @minValue(1)
-scalar numeric_id extends integer;
+scalar id_integer extends integer;
 
 /**
  * Date time ISO 8601.

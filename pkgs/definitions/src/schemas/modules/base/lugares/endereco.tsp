@@ -1,10 +1,12 @@
-using Unispec.JsonSchema;
 using TypeSpec.JsonSchema;
 
-namespace Ladesa.Schemas;
+using Ladesa.v3.Generics;
+using Ladesa.v3.Generics.Entities;
+
+namespace Ladesa.v3.Schemas;
 
 /** Endereço. */
-@entity(Tokens.Endereco)
+@Metadata.EntityId(Tokens.Endereco)
 model Endereco {
   ...EntityIdUuid;
 
@@ -36,7 +38,7 @@ model Endereco {
 }
 
 /** Visão completa de um endereco. */
-@entity(Tokens.Endereco_View)
+@Metadata.EntityId(Tokens.Endereco_View)
 model EnderecoView {
   ...OmitProperties<Endereco, "cidade">;
   cidade: CidadeFindOneResultView;
@@ -45,14 +47,14 @@ model EnderecoView {
 /**
  * Dados de entrada para encontrar um endereço por id.
  */
-@entity(Tokens.Endereco_FindOneInput_View)
+@Metadata.EntityId(Tokens.Endereco_FindOneInput_View)
 model EnderecoFindOneInputView is PickProperties<EnderecoView, "id">;
 
 /**
  * Visão FindOne de um endereço.
  */
-@entity(Tokens.Endereco_FindOneResult_View)
-@entityPartialOf(Tokens.Endereco_View)
+@Metadata.EntityId(Tokens.Endereco_FindOneResult_View)
+@Metadata.EntityPartialOfId(Tokens.Endereco_View)
 model EnderecoFindOneResultView {
   //
   ...PickProperties<EnderecoView, "id">;
@@ -77,7 +79,7 @@ model EnderecoFindOneResultView {
 /**
  * Dados de entrada para um endereco.
  */
-@entity(Tokens.Endereco_Input_View)
+@Metadata.EntityId(Tokens.Endereco_Input_View)
 model EnderecoInput {
   ...PickProperties<EnderecoView, "cep">;
   ...PickProperties<EnderecoView, "logradouro">;
