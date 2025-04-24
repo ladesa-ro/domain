@@ -8,13 +8,13 @@ using Ladesa.Schemas.Pagination.Result;
 /** NivelFormacao. */
 @entity(Tokens.NivelFormacao)
 model NivelFormacao {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Apelido do nível de formação. */
   @minLength(1)
   slug: string;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um nível de formação. */

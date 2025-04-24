@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Campus. */
 @entity(Tokens.Campus)
 model Campus {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome fantasia do campus. */
   @minLength(1)
@@ -29,7 +29,7 @@ model Campus {
   /** Endereço do campus */
   endereco: Endereco;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um campus. */

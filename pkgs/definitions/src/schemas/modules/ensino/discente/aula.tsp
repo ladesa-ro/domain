@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Aula. */
 @entity(Tokens.Aula)
 model Aula {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Data da aula. */
   data: date;
@@ -25,7 +25,7 @@ model Aula {
   /** Ambiente associado à aula. */
   ambiente: Ambiente | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma Aula. */

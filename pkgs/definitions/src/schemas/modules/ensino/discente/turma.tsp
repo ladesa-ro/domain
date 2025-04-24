@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Turma. */
 @entity(Tokens.Turma)
 model Turma {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Período da Turma. */
   @minLength(1)
@@ -23,7 +23,7 @@ model Turma {
   /** Imagem de capa da Turma. */
   imagemCapa: Imagem | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma Turma. */

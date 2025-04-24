@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Disponibilidade. */
 @entity(Tokens.Disponibilidade)
 model Disponibilidade {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Data de início. */
   dataInicio: date;
@@ -16,7 +16,7 @@ model Disponibilidade {
   /** Data de término. */
   dataFim: date | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma Disponibilidade. */

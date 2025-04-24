@@ -6,7 +6,7 @@ namespace Ladesa.Schemas;
 /** Intervalo de Tempo. */
 @entity(Tokens.IntervaloDeTempo)
 model IntervaloDeTempo {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Horário que o intervalo de tempo inicia. */
   periodoInicio: time;
@@ -14,7 +14,7 @@ model IntervaloDeTempo {
   /** Horário que o intervalo de tempo termina. */
   periodoFim: time;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um Intervalo de Tempo. */

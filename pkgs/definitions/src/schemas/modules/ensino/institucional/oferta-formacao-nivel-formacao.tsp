@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** OfertaFormacaoNivelFormacao. */
 @entity(Tokens.OfertaFormacaoNivelFormacao)
 model OfertaFormacaoNivelFormacao {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Oferta de formação. */
   ofertaFormacao: OfertaFormacao;
@@ -16,7 +16,7 @@ model OfertaFormacaoNivelFormacao {
   /** Nível de formação. */
   nivelFormacao: NivelFormacao;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma oferta de formação. */

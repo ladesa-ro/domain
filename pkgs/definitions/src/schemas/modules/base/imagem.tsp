@@ -10,7 +10,7 @@ namespace Ladesa.Schemas;
  */
 @entity(Tokens.Imagem)
 model Imagem {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /**
    * Descrição da imagem.
@@ -22,7 +22,7 @@ model Imagem {
    */
   versoes: ImagemArquivo[];
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /**

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Vínculo. */
 @entity(Tokens.Perfil)
 model Perfil {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Indica se o vínculo está ativo. */
   ativo: boolean;
@@ -22,7 +22,7 @@ model Perfil {
   /** Usuário associado ao vínculo. */
   usuario: Usuario;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um Vínculo. */

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** DiaCalendario. */
 @entity(Tokens.DiaCalendario)
 model DiaCalendario {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Data. */
   data: date;
@@ -22,7 +22,7 @@ model DiaCalendario {
   /** Calendario. */
   calendario: CalendarioLetivo;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um DiaCalendario. */

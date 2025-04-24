@@ -6,7 +6,7 @@ namespace Ladesa.Schemas;
 /** Endereço. */
 @entity(Tokens.Endereco)
 model Endereco {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Código postal (CEP). */
   @extension("x-unispec-constraint-cep", true)
@@ -32,7 +32,7 @@ model Endereco {
   /** Cidade. */
   cidade: Cidade;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um endereco. */

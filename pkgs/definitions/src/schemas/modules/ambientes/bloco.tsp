@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Bloco. */
 @entity(Tokens.Bloco)
 model Bloco {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do Bloco. */
   @minLength(1)
@@ -27,7 +27,7 @@ model Bloco {
   /** Ambientes. */
   ambientes: Ambiente[];
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um bloco. */

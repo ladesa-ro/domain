@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** GradeHorarioOfertaFormacao. */
 @entity(Tokens.GradeHorarioOfertaFormacao)
 model GradeHorarioOfertaFormacao {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Campus. */
   campus: Campus;
@@ -16,7 +16,7 @@ model GradeHorarioOfertaFormacao {
   /** Oferta de formação. */
   ofertaFormacao: OfertaFormacao;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma oferta de formação. */

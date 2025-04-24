@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Usuário. */
 @entity(Tokens.Usuario)
 model Usuario {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do usuário. */
   @minLength(1)
@@ -31,7 +31,7 @@ model Usuario {
   /** Imagem de perfil do usuário. */
   imagemPerfil: Imagem | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um Usuário. */

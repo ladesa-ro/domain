@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** HorarioGerado. */
 @entity(Tokens.HorarioGerado)
 model HorarioGerado {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Status do horário gerado. */
   status: string | null;
@@ -28,7 +28,7 @@ model HorarioGerado {
   /** calendário. */
   calendario: CalendarioLetivo;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um HorarioGerado. */

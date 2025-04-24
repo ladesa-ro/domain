@@ -10,7 +10,7 @@ namespace Ladesa.Schemas;
  */
 @entity(Tokens.Arquivo)
 model Arquivo {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do arquivo. */
   name: string | null;
@@ -24,7 +24,7 @@ model Arquivo {
   /** Estratégia de armazenamento do conteúdo. */
   storageType: string;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /**

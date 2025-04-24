@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** DiarioProfessor. */
 @entity(Tokens.DiarioProfessor)
 model DiarioProfessor {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Situação do vínculo. */
   situacao: boolean;
@@ -19,7 +19,7 @@ model DiarioProfessor {
   /** Diário vinculado. */
   diario: Diario;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um DiarioProfessor. */

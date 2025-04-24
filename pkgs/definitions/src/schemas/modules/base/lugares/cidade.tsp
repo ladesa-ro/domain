@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Cidade. */
 @entity(Tokens.Cidade)
 model Cidade {
-  ...ObjectIntegerId;
+  ...EntityIdInteger;
 
   /** Nome oficial da cidade. */
   nome: string;

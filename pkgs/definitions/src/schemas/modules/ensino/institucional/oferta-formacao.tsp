@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** OfertaFormacao. */
 @entity(Tokens.OfertaFormacao)
 model OfertaFormacao {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome da oferta de formação. */
   @minLength(1)
@@ -24,7 +24,7 @@ model OfertaFormacao {
   /** Array de relações entre a oferta e níveis de formações. */
   ofertaFormacaoNiveisFormacoes: OfertaFormacaoNivelFormacao[];
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma oferta de formação. */

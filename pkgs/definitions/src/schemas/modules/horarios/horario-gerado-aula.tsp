@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** HorarioGeradoAula. */
 @entity(Tokens.HorarioGeradoAula)
 model HorarioGeradoAula {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Data da aula gerada. */
   data: date;

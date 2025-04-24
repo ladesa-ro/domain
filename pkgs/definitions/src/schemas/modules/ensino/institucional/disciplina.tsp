@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Disciplina. */
 @entity(Tokens.Disciplina)
 model Disciplina {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome da disciplina. */
   @minLength(1)
@@ -28,7 +28,7 @@ model Disciplina {
   /** Diários que vinculam esta disciplina. */
   diarios: Diario[];
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma Disciplina. */

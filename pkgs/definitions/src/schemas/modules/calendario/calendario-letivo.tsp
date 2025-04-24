@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** CalendarioLetivo. */
 @entity(Tokens.CalendarioLetivo)
 model CalendarioLetivo {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do calendário letivo. */
   nome: string;
@@ -22,7 +22,7 @@ model CalendarioLetivo {
   /** Oferta de formação do calendário letivo. */
   ofertaFormacao: OfertaFormacao;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um calendário letivo. */

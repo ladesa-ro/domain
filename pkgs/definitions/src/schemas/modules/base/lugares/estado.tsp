@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Estado. */
 @entity(Tokens.Estado)
 model Estado {
-  ...ObjectIntegerId;
+  ...EntityIdInteger;
 
   /** Nome oficial do estado. */
   nome: string;

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** TurmaDisponibilidade. */
 @entity(Tokens.TurmaDisponibilidade)
 model TurmaDisponibilidade {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Disponibilidade. */
   disponibilidade: Disponibilidade;
@@ -16,7 +16,7 @@ model TurmaDisponibilidade {
   /** Turma. */
   turma: Turma;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma TurmaDisponibilidade. */

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Evento. */
 @entity(Tokens.Evento)
 model Evento {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do evento. */
   nome: string | null;
@@ -22,7 +22,7 @@ model Evento {
   /** Calendario. */
   calendario: CalendarioLetivo;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um Evento. */

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Reserva. */
 @entity(Tokens.Reserva)
 model Reserva {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Situação da reserva. */
   @minLength(1)
@@ -31,7 +31,7 @@ model Reserva {
   /** Ambiente reservado. */
   ambiente: Ambiente;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma Reserva. */

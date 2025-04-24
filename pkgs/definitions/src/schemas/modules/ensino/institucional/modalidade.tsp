@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Modalidade. */
 @entity(Tokens.Modalidade)
 model Modalidade {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome da modalidade. */
   @minLength(1)
@@ -18,7 +18,7 @@ model Modalidade {
   @minLength(1)
   slug: string;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma modalidade. */

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** GradeHorarioOfertaFormacaoIntervaloDeTempo. */
 @entity(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo)
 model GradeHorarioOfertaFormacaoIntervaloDeTempo {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Grade de horário da oferta de formação. */
   gradeHorarioOfertaFormacao: GradeHorarioOfertaFormacao;
@@ -16,7 +16,7 @@ model GradeHorarioOfertaFormacaoIntervaloDeTempo {
   /** Intervalo de tempo. */
   intervaloDeTempo: IntervaloDeTempo;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma oferta de formação. */

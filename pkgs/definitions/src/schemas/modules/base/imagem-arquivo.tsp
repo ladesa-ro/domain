@@ -9,7 +9,7 @@ namespace Ladesa.Schemas;
  */
 @entity(Tokens.ImagemArquivo)
 model ImagemArquivo {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Largura da imagem. */
   largura: integer;
@@ -29,7 +29,7 @@ model ImagemArquivo {
   /** Arquivo. */
   arquivo: Arquivo;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /**

@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** DiarioPreferenciaAgrupamento. */
 @entity(Tokens.DiarioPreferenciaAgrupamento)
 model DiarioPreferenciaAgrupamento {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Início da vigência da preferência de agrupamento. */
   dataInicio: date;
@@ -28,7 +28,7 @@ model DiarioPreferenciaAgrupamento {
   /** Diário vinculado. */
   diario: Diario;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um DiarioPreferenciaAgrupamento. */

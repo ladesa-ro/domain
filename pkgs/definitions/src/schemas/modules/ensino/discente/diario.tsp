@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Diario. */
 @entity(Tokens.Diario)
 model Diario {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Situação do diário. */
   ativo: boolean;
@@ -28,7 +28,7 @@ model Diario {
   /** Imagem de capa do diário. */
   imagemCapa: Imagem | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um diário. */

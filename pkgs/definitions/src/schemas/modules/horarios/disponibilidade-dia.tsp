@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** DisponibilidadeDia. */
 @entity(Tokens.DisponibilidadeDia)
 model DisponibilidadeDia {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar. */
   rrule: string;
@@ -19,7 +19,7 @@ model DisponibilidadeDia {
   /** Disponibilidade. */
   disponibilidade: Disponibilidade;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um DisponibilidadeDia. */

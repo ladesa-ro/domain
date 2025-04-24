@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Curso. */
 @entity(Tokens.Curso)
 model Curso {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do curso. */
   @minLength(1)
@@ -27,7 +27,7 @@ model Curso {
   /** Imagem de capa do curso. */
   imagemCapa: Imagem | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um Curso. */

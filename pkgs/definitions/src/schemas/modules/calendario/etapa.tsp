@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Etapa. */
 @entity(Tokens.Etapa)
 model Etapa {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Número da etapa. */
   numero: uint8 | null;
@@ -25,7 +25,7 @@ model Etapa {
   /** Calendario. */
   calendario: CalendarioLetivo;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma Etapa. */

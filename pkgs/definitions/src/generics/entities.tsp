@@ -7,7 +7,7 @@ namespace Ladesa.Schemas;
 /**
  * Estrutura identificada por id no formato uuid.
  */
-model ObjectUuid {
+model EntityIdUuid {
   /** Identificador do registro (uuid). */
   id: uuid;
 }
@@ -15,7 +15,7 @@ model ObjectUuid {
 /**
  * Estrutura identificada por id no formato numérico.
  */
-model ObjectIntegerId {
+model EntityIdInteger {
   /** Identificador do registro (numérico). */
   id: numeric_id;
 }
@@ -23,7 +23,7 @@ model ObjectIntegerId {
 /**
  * Estrutura datada.
  */
-model DatedObject {
+model EntityDated {
   /** Data e hora da criação do registro. */
   dateCreated: date_time;
 

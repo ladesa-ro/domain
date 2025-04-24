@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** ProfessorDisponibilidade. */
 @entity(Tokens.ProfessorDisponibilidade)
 model ProfessorDisponibilidade {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Disponibilidade. */
   disponibilidade: Disponibilidade;
@@ -16,7 +16,7 @@ model ProfessorDisponibilidade {
   /** Professor. */
   perfil: Perfil;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de uma ProfessorDisponibilidade. */

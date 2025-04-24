@@ -8,7 +8,7 @@ using Ladesa.Schemas.Pagination.Result;
 /** Ambiente. */
 @entity(Tokens.Ambiente)
 model Ambiente {
-  ...ObjectUuid;
+  ...EntityIdUuid;
 
   /** Nome do ambiente/sala. */
   @minLength(1)
@@ -33,7 +33,7 @@ model Ambiente {
   /** Imagem de capa. */
   imagemCapa: Imagem | null;
 
-  ...DatedObject;
+  ...EntityDated;
 }
 
 /** Visão completa de um ambiente. */
