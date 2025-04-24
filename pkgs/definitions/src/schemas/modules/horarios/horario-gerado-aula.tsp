@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -38,10 +36,7 @@ model HorarioGeradoAulaView {
 /** Dados de entrada para encontrar um HorarioGeradoAula por ID. */
 @Metadata.EntityId(Tokens.HorarioGeradoAula_FindOneInput_View)
 model HorarioGeradoAulaFindOneInputView {
-  @extension(
-    "x-unispec-constraint-entity-exists",
-    Json<Tokens.HorarioGeradoAula>
-  )
+  @Metadata.Constraints.EntityExists(Tokens.HorarioGeradoAula)
   id: HorarioGeradoAula.id;
 }
 

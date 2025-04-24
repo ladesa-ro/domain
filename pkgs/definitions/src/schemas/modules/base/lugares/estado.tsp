@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -14,7 +12,7 @@ model Estado {
   nome: string;
 
   /** Sigla do estado. */
-  @extension("x-unispec-constraint-estado-sigla", true)
+  @Metadata.Constraints.EnderecoEstadoSigla
   sigla: string;
 }
 

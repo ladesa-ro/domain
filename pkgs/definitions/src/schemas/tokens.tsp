@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 namespace Ladesa.v3.Schemas;
 
 @doc("Define os nomes de indentificação das entidades.")

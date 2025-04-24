@@ -1,6 +1,5 @@
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using TypeSpec.JsonSchema;
 
 namespace Ladesa.v3.Schemas;
 

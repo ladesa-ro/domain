@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -41,7 +39,7 @@ model DisciplinaView {
 /** Dados de entrada para encontrar uma Disciplina por ID. */
 @Metadata.EntityId(Tokens.Disciplina_FindOneInput_View)
 model DisciplinaFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Disciplina>)
+  @Metadata.Constraints.EntityExists(Tokens.Disciplina)
   id: Disciplina.id;
 }
 

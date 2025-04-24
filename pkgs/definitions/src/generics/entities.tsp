@@ -40,4 +40,11 @@ model EntityDated {
 namespace Metadata {
   extern dec EntityId(target: Model, entityToken: string | unknown);
   extern dec EntityPartialOfId(target: unknown, partialOf: string | unknown);
+
+  namespace Constraints {
+    extern dec EntityExists(target: unknown, entityToken: string | unknown);
+
+    extern dec EnderecoCep(target: ModelProperty);
+    extern dec EnderecoEstadoSigla(target: ModelProperty);
+  }
 }

@@ -1,8 +1,6 @@
 import { setTypeSpecNamespace } from "@typespec/compiler"
 import { $extension } from "@typespec/json-schema"
 
-const namespace = "Ladesa.v3.Generics.Entities.Metadata";
-
 export function $EntityId(context, target, entityId) {
   $extension(context, target, "x-ladesa-schema-kind", "entity")
   $extension(context, target, "x-ladesa-schema-entity-id", entityId.value)
@@ -13,5 +11,21 @@ export function $EntityPartialOfId(context, target, partialOf) {
   $extension(context, target, "x-ladesa-schema-entity-partial-of-id", partialOf.value)
 }
 
-setTypeSpecNamespace(namespace, $EntityId)
-setTypeSpecNamespace(namespace, $EntityPartialOfId)
+
+export function $EntityExists(context, target, partialOf) {
+  $extension(context, target, "x-ladesa-schema-constraint-entity-partial-of-id", partialOf.value)
+}
+
+export function $EnderecoCep(context, target) {
+  $extension(context, target, "x-ladesa-schema-constraint-cep", true)
+}
+
+export function $EnderecoEstadoSigla(context, target) {
+  $extension(context, target, "x-ladesa-schema-constraint-estado-sigla", true)
+}
+
+setTypeSpecNamespace("Ladesa.v3.Generics.Entities.Metadata", $EntityId)
+setTypeSpecNamespace("Ladesa.v3.Generics.Entities.Metadata", $EntityPartialOfId)
+setTypeSpecNamespace("Ladesa.v3.Generics.Entities.Metadata.Constraints", $EntityExists)
+setTypeSpecNamespace("Ladesa.v3.Generics.Entities.Metadata.Constraints", $EnderecoCep)
+setTypeSpecNamespace("Ladesa.v3.Generics.Entities.Metadata.Constraints", $EnderecoEstadoSigla)

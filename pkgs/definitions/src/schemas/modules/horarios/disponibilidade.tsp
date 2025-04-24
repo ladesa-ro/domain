@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -28,7 +26,7 @@ model DisponibilidadeView {
 /** Dados de entrada para encontrar uma Disponibilidade por ID. */
 @Metadata.EntityId(Tokens.Disponibilidade_FindOneInput_View)
 model DisponibilidadeFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Disponibilidade>)
+  @Metadata.Constraints.EntityExists(Tokens.Disponibilidade)
   id: Disponibilidade.id;
 }
 

@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -49,7 +47,7 @@ model AmbienteView {
  */
 @Metadata.EntityId(Tokens.Ambiente_FindOneInput_View)
 model AmbienteFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Ambiente>)
+  @Metadata.Constraints.EntityExists(Tokens.Ambiente)
   id: Ambiente.id;
 }
 
@@ -97,4 +95,5 @@ model AmbienteInputUpdateView is OptionalProperties<AmbienteInputCreateView>;
 
 /** Resultados da busca a ambientes. */
 @Metadata.EntityId(Tokens.Ambiente_ListResult_View)
-model AmbienteListResultView is Pagination.Result.View<AmbienteFindOneResultView>;
+model AmbienteListResultView
+  is Pagination.Result.View<AmbienteFindOneResultView>;

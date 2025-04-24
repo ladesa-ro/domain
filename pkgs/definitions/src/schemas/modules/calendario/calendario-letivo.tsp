@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -36,10 +34,7 @@ model CalendarioLetivoView {
 /** Dados de entrada para encontrar um calendário letivo por ID. */
 @Metadata.EntityId(Tokens.CalendarioLetivo_FindOneInput_View)
 model CalendarioLetivoFindOneInputView {
-  @extension(
-    "x-unispec-constraint-entity-exists",
-    Json<Tokens.CalendarioLetivo>
-  )
+  @Metadata.Constraints.EntityExists(Tokens.CalendarioLetivo)
   id: CalendarioLetivo.id;
 }
 

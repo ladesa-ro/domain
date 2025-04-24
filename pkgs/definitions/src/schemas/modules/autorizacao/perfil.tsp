@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -36,7 +34,7 @@ model PerfilView {
 /** Dados de entrada para encontrar um Vínculo por ID. */
 @Metadata.EntityId(Tokens.Perfil_FindOneInput_View)
 model PerfilFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Perfil>)
+  @Metadata.Constraints.EntityExists(Tokens.Perfil)
   id: Perfil.id;
 }
 

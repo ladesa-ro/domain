@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -35,7 +33,7 @@ model EventoView {
 /** Dados de entrada para encontrar um Evento por ID. */
 @Metadata.EntityId(Tokens.Evento_FindOneInput_View)
 model EventoFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Evento>)
+  @Metadata.Constraints.EntityExists(Tokens.Evento)
   id: Evento.id;
 }
 

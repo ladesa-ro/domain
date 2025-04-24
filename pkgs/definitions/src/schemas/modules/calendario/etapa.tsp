@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -38,7 +36,7 @@ model EtapaView {
 /** Dados de entrada para encontrar uma Etapa por ID. */
 @Metadata.EntityId(Tokens.Etapa_FindOneInput_View)
 model EtapaFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Etapa>)
+  @Metadata.Constraints.EntityExists(Tokens.Etapa)
   id: Etapa.id;
 }
 

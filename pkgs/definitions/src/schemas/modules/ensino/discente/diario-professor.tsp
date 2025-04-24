@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -33,7 +31,7 @@ model DiarioProfessorView {
 /** Dados de entrada para encontrar um DiarioProfessor por ID. */
 @Metadata.EntityId(Tokens.DiarioProfessor_FindOneInput_View)
 model DiarioProfessorFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.DiarioProfessor>)
+  @Metadata.Constraints.EntityExists(Tokens.DiarioProfessor)
   id: DiarioProfessor.id;
 }
 

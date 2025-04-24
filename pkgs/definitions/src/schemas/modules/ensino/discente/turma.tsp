@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -38,7 +36,7 @@ model TurmaView {
 /** Dados de entrada para encontrar uma Turma por ID. */
 @Metadata.EntityId(Tokens.Turma_FindOneInput_View)
 model TurmaFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Turma>)
+  @Metadata.Constraints.EntityExists(Tokens.Turma)
   id: Turma.id;
 }
 

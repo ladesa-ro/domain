@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -45,7 +43,7 @@ model UsuarioView {
 /** Dados de entrada para encontrar um Usuário por ID. */
 @Metadata.EntityId(Tokens.Usuario_FindOneInput_View)
 model UsuarioFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Usuario>)
+  @Metadata.Constraints.EntityExists(Tokens.Usuario)
   id: Usuario.id;
 }
 

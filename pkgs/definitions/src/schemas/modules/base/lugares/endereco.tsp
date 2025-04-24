@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -11,7 +9,7 @@ model Endereco {
   ...EntityIdUuid;
 
   /** Código postal (CEP). */
-  @extension("x-unispec-constraint-cep", true)
+  @Metadata.Constraints.EnderecoCep
   cep: string;
 
   /** Logradouro. */

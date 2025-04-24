@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -44,7 +42,7 @@ model BlocoView {
  */
 @Metadata.EntityId(Tokens.Bloco_FindOneInput_View)
 model BlocoFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Bloco>)
+  @Metadata.Constraints.EntityExists(Tokens.Bloco)
   id: Bloco.id;
 }
 

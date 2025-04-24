@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -35,9 +33,8 @@ model GradeHorarioOfertaFormacaoIntervaloDeTempoView {
   Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo_FindOneInput_View
 )
 model GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView {
-  @extension(
-    "x-unispec-constraint-entity-exists",
-    Json<Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo>
+  @Metadata.Constraints.EntityExists(
+    Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo
   )
   id: GradeHorarioOfertaFormacaoIntervaloDeTempo.id;
 }

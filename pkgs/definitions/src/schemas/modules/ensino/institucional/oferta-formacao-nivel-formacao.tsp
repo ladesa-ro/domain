@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -33,10 +31,7 @@ model OfertaFormacaoNivelFormacaoView {
 /** Dados de entrada para encontrar uma oferta de formação por ID. */
 @Metadata.EntityId(Tokens.OfertaFormacaoNivelFormacao_FindOneInput_View)
 model OfertaFormacaoNivelFormacaoFindOneInputView {
-  @extension(
-    "x-unispec-constraint-entity-exists",
-    Json<Tokens.OfertaFormacaoNivelFormacao>
-  )
+  @Metadata.Constraints.EntityExists(Tokens.OfertaFormacaoNivelFormacao)
   id: OfertaFormacaoNivelFormacao.id;
 }
 

@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -45,7 +43,7 @@ model ReservaView {
 /** Dados de entrada para encontrar uma Reserva por ID. */
 @Metadata.EntityId(Tokens.Reserva_FindOneInput_View)
 model ReservaFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Reserva>)
+  @Metadata.Constraints.EntityExists(Tokens.Reserva)
   id: Reserva.id;
 }
 

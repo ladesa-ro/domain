@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -42,7 +40,7 @@ model CursoView {
 /** Dados de entrada para encontrar um Curso por ID. */
 @Metadata.EntityId(Tokens.Curso_FindOneInput_View)
 model CursoFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Curso>)
+  @Metadata.Constraints.EntityExists(Tokens.Curso)
   id: Curso.id;
 }
 

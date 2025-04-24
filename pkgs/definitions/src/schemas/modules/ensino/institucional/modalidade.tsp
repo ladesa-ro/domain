@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -30,7 +28,7 @@ model ModalidadeView {
 /** Dados de entrada para encontrar uma modalidade por ID. */
 @Metadata.EntityId(Tokens.Modalidade_FindOneInput_View)
 model ModalidadeFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Modalidade>)
+  @Metadata.Constraints.EntityExists(Tokens.Modalidade)
   id: Modalidade.id;
 }
 

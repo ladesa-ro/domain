@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -35,7 +33,7 @@ model DiaCalendarioView {
 /** Dados de entrada para encontrar um DiaCalendario por ID. */
 @Metadata.EntityId(Tokens.DiaCalendario_FindOneInput_View)
 model DiaCalendarioFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.DiaCalendario>)
+  @Metadata.Constraints.EntityExists(Tokens.DiaCalendario)
   id: DiaCalendario.id;
 }
 

@@ -1,5 +1,3 @@
-using TypeSpec.JsonSchema;
-
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
@@ -44,7 +42,7 @@ model CampusView {
  */
 @Metadata.EntityId(Tokens.Campus_FindOneInput_View)
 model CampusFindOneInputView {
-  @extension("x-unispec-constraint-entity-exists", Json<Tokens.Campus>)
+  @Metadata.Constraints.EntityExists(Tokens.Campus)
   id: Campus.id;
 }
 
