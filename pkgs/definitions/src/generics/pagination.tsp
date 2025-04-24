@@ -5,7 +5,7 @@ using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
 @baseUri("ladesa://schemas/v3/generics/pagination")
-namespace Ladesa.Schemas.Pagination;
+namespace Ladesa.v3.Generics.Pagination;
 
 /**
  * Configuração de ordenação de uma propriedade.
