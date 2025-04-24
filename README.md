@@ -1,0 +1,1 @@
+# @ladesa-ro/domain
