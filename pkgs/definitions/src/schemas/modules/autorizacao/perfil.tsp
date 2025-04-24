@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -63,7 +62,7 @@ model PerfilFindOneResultView {
 
 /** Resultados da busca a Vínculos. */
 @Metadata.EntityId(Tokens.Perfil_ListResult_View)
-model PerfilListResultView is PaginationResultView<PerfilFindOneResultView>;
+model PerfilListResultView is Pagination.Result.View<PerfilFindOneResultView>;
 
 /** Dados de entrada para a alteração de vínculo de um Usuário a um Campus. */
 @Metadata.EntityId(Tokens.Perfil_InputUpdate_View)

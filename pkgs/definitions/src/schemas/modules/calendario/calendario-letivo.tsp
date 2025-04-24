@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -79,4 +78,4 @@ model CalendarioLetivoInputUpdateView
 /** Resultados da busca a CalendarioLetivos. */
 @Metadata.EntityId(Tokens.CalendarioLetivo_ListResult_View)
 model CalendarioLetivoListResultView
-  is PaginationResultView<CalendarioLetivoFindOneResultView>;
+  is Pagination.Result.View<CalendarioLetivoFindOneResultView>;

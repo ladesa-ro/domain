@@ -14,8 +14,8 @@
     "all:lint:fix": "nx run-many -t lint:fix && biome lint --write .",
     "all:format:check": "nx run-many -t format:check && biome format .",
     "all:format:fix": "nx run-many -t format:fix && biome format --write .",
-    "all:code-static:check": "bun run lint:check && bun run format:check",
-    "all:code-static:fix": "bun run lint:fix && bun run format:fix",
+    "all:code-static:check": "bun run all:lint:check && bun run all:format:check",
+    "all:code-static:fix": "bun run all:lint:fix && bun run all:format:fix",
     "all:chore:upgrade": "bun upgrade && bun update --latest && nx exec -- bun update --latest"
   },
   "dependencies": {

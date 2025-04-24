@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -84,4 +83,4 @@ model BlocoInputUpdateView is OptionalProperties<BlocoInputCreateView>;
 
 /** Resultados da busca a blocos. */
 @Metadata.EntityId(Tokens.Bloco_ListResult_View)
-model BlocoListResultView is PaginationResultView<BlocoFindOneResultView>;
+model BlocoListResultView is Pagination.Result.View<BlocoFindOneResultView>;

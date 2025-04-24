@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -65,4 +64,4 @@ model ProfessorDisponibilidadeInputUpdateView
 /** Resultados da busca a ProfessorDisponibilidades. */
 @Metadata.EntityId(Tokens.ProfessorDisponibilidade_ListResult_View)
 model ProfessorDisponibilidadeListResultView
-  is PaginationResultView<ProfessorDisponibilidadeFindOneResultView>;
+  is Pagination.Result.View<ProfessorDisponibilidadeFindOneResultView>;

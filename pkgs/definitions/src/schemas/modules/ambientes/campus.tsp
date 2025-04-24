@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -72,7 +71,7 @@ model CampusFindOneResultView {
 
 /** Resultados da busca a campi. */
 @Metadata.EntityId(Tokens.Campus_ListResult_View)
-model CampusListResultView is PaginationResultView<CampusFindOneResultView>;
+model CampusListResultView is Pagination.Result.View<CampusFindOneResultView>;
 
 /**
  * Dados de entrada para a criação de um campus.

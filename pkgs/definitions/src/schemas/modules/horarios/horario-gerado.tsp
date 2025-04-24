@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -83,4 +82,4 @@ model HorarioGeradoInputUpdateView
 /** Resultados da busca de HorariosGerados. */
 @Metadata.EntityId(Tokens.HorarioGerado_ListResult_View)
 model HorarioGeradoListResultView
-  is PaginationResultView<HorarioGeradoFindOneResultView>;
+  is Pagination.Result.View<HorarioGeradoFindOneResultView>;

@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -69,4 +68,4 @@ model EtapaInputUpdateView is OptionalProperties<EtapaInputCreateView>;
 
 /** Resultados da busca a Etapas. */
 @Metadata.EntityId(Tokens.Etapa_ListResult_View)
-model EtapaListResultView is PaginationResultView<EtapaFindOneResultView>;
+model EtapaListResultView is Pagination.Result.View<EtapaFindOneResultView>;

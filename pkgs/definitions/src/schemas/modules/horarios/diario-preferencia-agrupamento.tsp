@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -95,4 +94,4 @@ model DiarioPreferenciaAgrupamentoInputUpdateView
 /** Resultados da busca de DiarioPreferenciaAgrupamentos. */
 @Metadata.EntityId(Tokens.DiarioPreferenciaAgrupamento_ListResult_View)
 model DiarioPreferenciaAgrupamentoListResultView
-  is PaginationResultView<DiarioPreferenciaAgrupamentoFindOneResultView>;
+  is Pagination.Result.View<DiarioPreferenciaAgrupamentoFindOneResultView>;

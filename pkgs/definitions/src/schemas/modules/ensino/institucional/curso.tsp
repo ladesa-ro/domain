@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -77,4 +76,4 @@ model CursoInputUpdateView is OptionalProperties<CursoInputCreateView>;
 
 /** Resultados da busca a Cursos. */
 @Metadata.EntityId(Tokens.Curso_ListResult_View)
-model CursoListResultView is PaginationResultView<CursoFindOneResultView>;
+model CursoListResultView is Pagination.Result.View<CursoFindOneResultView>;

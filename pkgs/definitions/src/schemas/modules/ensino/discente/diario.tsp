@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -91,4 +90,4 @@ model DiarioInputUpdateView is OptionalProperties<DiarioInputCreateView>;
 
 /** Resultados da busca a Diarios. */
 @Metadata.EntityId(Tokens.Diario_ListResult_View)
-model DiarioListResultView is PaginationResultView<DiarioFindOneResultView>;
+model DiarioListResultView is Pagination.Result.View<DiarioFindOneResultView>;

@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -46,4 +45,4 @@ model CidadeFindOneResultView {
 
 /** Resultados da busca a cidades. */
 @Metadata.EntityId(Tokens.Cidade_ListResult_View)
-model CidadeListResultView is PaginationResultView<CidadeFindOneResultView>;
+model CidadeListResultView is Pagination.Result.View<CidadeFindOneResultView>;

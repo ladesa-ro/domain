@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -74,7 +73,7 @@ model UsuarioFindOneResultView {
 
 /** Resultados da busca a usuários. */
 @Metadata.EntityId(Tokens.Usuario_ListResult_View)
-model UsuarioListResultView is PaginationResultView<UsuarioFindOneResultView>;
+model UsuarioListResultView is Pagination.Result.View<UsuarioFindOneResultView>;
 
 /** Dados de entrada para a criação de um usuário. */
 @Metadata.EntityId(Tokens.Usuario_InputCreate_View)

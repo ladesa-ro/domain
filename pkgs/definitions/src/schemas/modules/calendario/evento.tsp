@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -65,4 +64,4 @@ model EventoInputUpdateView is OptionalProperties<EventoInputCreateView>;
 
 /** Resultados da busca a Eventos. */
 @Metadata.EntityId(Tokens.Evento_ListResult_View)
-model EventoListResultView is PaginationResultView<EventoFindOneResultView>;
+model EventoListResultView is Pagination.Result.View<EventoFindOneResultView>;

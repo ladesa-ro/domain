@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -46,4 +45,4 @@ model EstadoFindOneResultView {
 
 /** Resultados da busca a estados. */
 @Metadata.EntityId(Tokens.Estado_ListResult_View)
-model EstadoListResultView is PaginationResultView<EstadoFindOneResultView>;
+model EstadoListResultView is Pagination.Result.View<EstadoFindOneResultView>;

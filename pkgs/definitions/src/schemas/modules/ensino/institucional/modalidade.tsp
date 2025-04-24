@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -61,4 +60,4 @@ model ModalidadeInputUpdateView
 /** Resultados da busca a Modalidades. */
 @Metadata.EntityId(Tokens.Modalidade_ListResult_View)
 model ModalidadeListResultView
-  is PaginationResultView<ModalidadeFindOneResultView>;
+  is Pagination.Result.View<ModalidadeFindOneResultView>;

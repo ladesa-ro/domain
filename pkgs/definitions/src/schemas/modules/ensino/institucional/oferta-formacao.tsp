@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -85,4 +84,4 @@ model OfertaFormacaoInputUpdateView
 /** Resultados da busca a OfertaFormacaos. */
 @Metadata.EntityId(Tokens.OfertaFormacao_ListResult_View)
 model OfertaFormacaoListResultView
-  is PaginationResultView<OfertaFormacaoFindOneResultView>;
+  is Pagination.Result.View<OfertaFormacaoFindOneResultView>;

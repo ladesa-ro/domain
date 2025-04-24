@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -80,4 +79,4 @@ model ReservaInputUpdateView is OptionalProperties<ReservaInputCreateView>;
 
 /** Resultados da busca a Reservas. */
 @Metadata.EntityId(Tokens.Reserva_ListResult_View)
-model ReservaListResultView is PaginationResultView<ReservaFindOneResultView>;
+model ReservaListResultView is Pagination.Result.View<ReservaFindOneResultView>;

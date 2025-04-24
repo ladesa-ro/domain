@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -73,4 +72,4 @@ model DisponibilidadeDiaInputUpdateView
 /** Resultados da busca a DisponibilidadeDia. */
 @Metadata.EntityId(Tokens.DisponibilidadeDia_ListResult_View)
 model DisponibilidadeDiaListResultView
-  is PaginationResultView<DisponibilidadeDiaFindOneResultView>;
+  is Pagination.Result.View<DisponibilidadeDiaFindOneResultView>;

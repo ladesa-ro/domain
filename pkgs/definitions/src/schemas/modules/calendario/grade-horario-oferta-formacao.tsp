@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -68,4 +67,4 @@ model GradeHorarioOfertaFormacaoInputUpdateView
 /** Resultados da busca a GradeHorarioOfertaFormacaos. */
 @Metadata.EntityId(Tokens.GradeHorarioOfertaFormacao_ListResult_View)
 model GradeHorarioOfertaFormacaoListResultView
-  is PaginationResultView<GradeHorarioOfertaFormacaoFindOneResultView>;
+  is Pagination.Result.View<GradeHorarioOfertaFormacaoFindOneResultView>;

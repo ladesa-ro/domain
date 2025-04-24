@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -71,4 +70,4 @@ model AulaInputUpdateView is OptionalProperties<AulaInputCreateView>;
 
 /** Resultados da busca a Aulas. */
 @Metadata.EntityId(Tokens.Aula_ListResult_View)
-model AulaListResultView is PaginationResultView<AulaFindOneResultView>;
+model AulaListResultView is Pagination.Result.View<AulaFindOneResultView>;

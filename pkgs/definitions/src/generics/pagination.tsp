@@ -1,7 +1,6 @@
 using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Schemas;
-using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
 
 @baseUri("ladesa://schemas/v3/generics/pagination")
@@ -43,7 +42,7 @@ model PaginationFilterView {
   restrictions: Array<string>;
 }
 
-model GenericFilter<Http = never, Gql = never> {
+model GenericFilter {
   @pattern("^(true|false)$")
   bool: string;
 
@@ -74,7 +73,7 @@ namespace Input {
   scalar sort_by_constraint extends string;
 
   @Metadata.EntityId(Tokens.Shared_Pagination_Input_Base_View)
-  model PaginationInputBaseView {
+  model InputBaseView {
     /**
      * Página de consulta.
      */
@@ -95,8 +94,8 @@ namespace Input {
 
   #deprecated ""
   @Metadata.EntityId(Tokens.Shared_Pagination_Input_View)
-  model PaginationInputView {
-    ...PaginationInputBaseView;
+  model InputView {
+    ...InputBaseView;
 
     /**
      * Ordenação.
@@ -111,7 +110,7 @@ namespace Input {
 
   @Metadata.EntityId(Tokens.Shared_SearchInput_View)
   model GenericSearchInputView {
-    ...PaginationInputBaseView;
+    ...InputBaseView;
 
     /**
      * Ordenação.
@@ -130,7 +129,7 @@ namespace Result {
    * Metadados dos resultados de busca.
    */
   @Metadata.EntityId(Tokens.Shared_Pagination_Result_Meta_View)
-  model PaginationResultMeta {
+  model Meta {
     @doc("Quantidade de itens por página.")
     itemsPerPage: integer;
 
@@ -154,7 +153,7 @@ namespace Result {
   }
 
   @Metadata.EntityId(Tokens.Shared_Pagination_Result_Links_View)
-  model PaginationResultLinks {
+  model Links {
     first: string | null;
     previous: string | null;
     current: string | null;
@@ -163,14 +162,14 @@ namespace Result {
   }
 
   @Metadata.EntityId(Tokens.Shared_Pagination_Result_View)
-  model PaginationResultView<Target> {
+  model View<Target> {
     @doc("Metadados da busca.")
-    meta: PaginationResultMeta;
+    meta: Meta;
 
     @doc("Resultados da busca atual.")
     data: Target[];
 
     @doc("Links da busca.")
-    links: PaginationResultLinks;
+    links: Links;
   }
 }

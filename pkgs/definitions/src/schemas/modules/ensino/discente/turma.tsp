@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -73,4 +72,4 @@ model TurmaInputUpdateView is OptionalProperties<TurmaInputCreateView>;
 
 /** Resultados da busca a Turmas. */
 @Metadata.EntityId(Tokens.Turma_ListResult_View)
-model TurmaListResultView is PaginationResultView<TurmaFindOneResultView>;
+model TurmaListResultView is Pagination.Result.View<TurmaFindOneResultView>;

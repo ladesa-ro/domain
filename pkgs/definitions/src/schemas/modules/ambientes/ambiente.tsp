@@ -2,7 +2,6 @@ using TypeSpec.JsonSchema;
 
 using Ladesa.v3.Generics;
 using Ladesa.v3.Generics.Entities;
-using Ladesa.v3.Generics.Pagination.Result;
 
 namespace Ladesa.v3.Schemas;
 
@@ -98,4 +97,4 @@ model AmbienteInputUpdateView is OptionalProperties<AmbienteInputCreateView>;
 
 /** Resultados da busca a ambientes. */
 @Metadata.EntityId(Tokens.Ambiente_ListResult_View)
-model AmbienteListResultView is PaginationResultView<AmbienteFindOneResultView>;
+model AmbienteListResultView is Pagination.Result.View<AmbienteFindOneResultView>;
