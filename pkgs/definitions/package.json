@@ -1,8 +1,8 @@
 {
-  "name": "@ladesa-ro/domain.v3.definitions",
+  "name": "@ladesa-ro/domain.v4.definitions",
   "private": true,
   "type": "module",
-  "version": "3.3.0",
+  "version": "4.0.0-alpha",
   "scripts": {
     "generate-json-schema:watch": "tsp compile src/main.tsp --config tspconfig.yaml --output-dir '.generated' --watch",
     "generate-json-schema": "nx run generate-json-schema",

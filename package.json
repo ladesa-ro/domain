@@ -1,5 +1,5 @@
 {
-  "name": "@ladesa-ro/domain.v3.root",
+  "name": "@ladesa-ro/domain.v4.root",
   "private": true,
   "workspaces": [
     "./pkgs/definitions",

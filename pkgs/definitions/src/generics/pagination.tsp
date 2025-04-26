@@ -1,10 +1,10 @@
 using TypeSpec.JsonSchema;
 
-using Ladesa.Domain.v3.Schemas;
-using Ladesa.Domain.v3.Generics.Entities;
+using Ladesa.Domain.v4.Schemas;
+using Ladesa.Domain.v4.Generics.Entities;
 
-@baseUri("ladesa://domain/v3/generics/pagination")
-namespace Ladesa.Domain.v3.Generics.Pagination;
+@baseUri("ladesa://domain/v4/generics/pagination")
+namespace Ladesa.Domain.v4.Generics.Pagination;
 
 /**
  * Configuração de ordenação de uma propriedade.

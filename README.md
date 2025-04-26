@@ -90,15 +90,15 @@ A Especificação do Ladesa pode ser utilizada por:
 #### Instalar o pacote para dotnet
 
 ```sh
-dotnet add package Ladesa.Domain.v3
+dotnet add package Ladesa.Domain.v4
 ```
 
 #### Utilizar o pacote para dotnet
 
-- Utilização do namespace `Ladesa.Domain.v3`
+- Utilização do namespace `Ladesa.Domain.v4`
 
 ```cs
-using Ladesa.Domain.v3;
+using Ladesa.Domain.v4;
 ```
 
 - Conversão de uma `string` `JSON` para uma instância de alguma das classes
@@ -115,19 +115,19 @@ Arquivo arquivo = Arquivo.FromJson(jsonString);
 
 ```sh
 # npm
-npm install @ladesa-ro/domain.v3
+npm install @ladesa-ro/domain.v4
 
 # pnpm
-pnpm add @ladesa-ro/domain.v3
+pnpm add @ladesa-ro/domain.v4
 
 # yarn
-yarn add @ladesa-ro/domain.v3
+yarn add @ladesa-ro/domain.v4
 ```
 
 #### Utilizar o pacote para TypeScript / JavaScript
 
 ```ts
-import type {} from "@ladesa-ro/domain.v3";
+import type {} from "@ladesa-ro/domain.v4";
 ```
 
 ## 🧑‍💻 Desenvolvimento Local
@@ -259,19 +259,19 @@ Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conos
 <!-- Badges / Integrations / NPM -->
 
 [npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
-[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v3
+[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v4
 
 <!-- Badges / Integrations / NPM / Versions -->
 
-[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v3?activeTab=versions
+[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v4?activeTab=versions
 [npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
 
 <!-- Badges / Integrations / NuGet -->
 
-[nuget-package-src]: https://img.shields.io/badge/nuget-Ladesa.Domain.v3-18181B?style=flat&logo=nuget&logoColor=white&labelColor=%23004880
-[nuget-package-href]: https://www.nuget.org/packages/Ladesa.Domain.v3/
+[nuget-package-src]: https://img.shields.io/badge/nuget-Ladesa.Domain.v4-18181B?style=flat&logo=nuget&logoColor=white&labelColor=%23004880
+[nuget-package-href]: https://www.nuget.org/packages/Ladesa.Domain.v4/
 
 <!-- Badges / Integrations / NuGet / Versions -->
 
-[nuget-package-versions-href]: https://www.nuget.org/packages/Ladesa.Domain.v3#versions-body-tab
-[nuget-package-stable-version-src]: https://img.shields.io/nuget/v/Ladesa.Domain.v3?style=flat&style=flat&logo=nuget&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
+[nuget-package-versions-href]: https://www.nuget.org/packages/Ladesa.Domain.v4#versions-body-tab
+[nuget-package-stable-version-src]: https://img.shields.io/nuget/v/Ladesa.Domain.v4?style=flat&style=flat&logo=nuget&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white

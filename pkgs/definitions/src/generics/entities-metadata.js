@@ -24,8 +24,8 @@ export function $EnderecoEstadoSigla(context, target) {
   $extension(context, target, "x-ladesa-schema-constraint-estado-sigla", true)
 }
 
-setTypeSpecNamespace("Ladesa.Domain.v3.Generics.Entities.Metadata", $EntityId)
-setTypeSpecNamespace("Ladesa.Domain.v3.Generics.Entities.Metadata", $EntityPartialOfId)
-setTypeSpecNamespace("Ladesa.Domain.v3.Generics.Entities.Metadata.Constraints", $EntityExists)
-setTypeSpecNamespace("Ladesa.Domain.v3.Generics.Entities.Metadata.Constraints", $EnderecoCep)
-setTypeSpecNamespace("Ladesa.Domain.v3.Generics.Entities.Metadata.Constraints", $EnderecoEstadoSigla)
+setTypeSpecNamespace("Ladesa.Domain.v4.Generics.Entities.Metadata", $EntityId)
+setTypeSpecNamespace("Ladesa.Domain.v4.Generics.Entities.Metadata", $EntityPartialOfId)
+setTypeSpecNamespace("Ladesa.Domain.v4.Generics.Entities.Metadata.Constraints", $EntityExists)
+setTypeSpecNamespace("Ladesa.Domain.v4.Generics.Entities.Metadata.Constraints", $EnderecoCep)
+setTypeSpecNamespace("Ladesa.Domain.v4.Generics.Entities.Metadata.Constraints", $EnderecoEstadoSigla)

@@ -1,7 +1,7 @@
-using Ladesa.Domain.v3.Generics;
-using Ladesa.Domain.v3.Generics.Entities;
+using Ladesa.Domain.v4.Generics;
+using Ladesa.Domain.v4.Generics.Entities;
 
-namespace Ladesa.Domain.v3.Schemas;
+namespace Ladesa.Domain.v4.Schemas;
 
 /** Evento. */
 @Metadata.EntityId(Tokens.Evento)

@@ -1,5 +1,5 @@
 {
-  "name": "@ladesa-ro/domain.v3.integrations.json-schema",
+  "name": "@ladesa-ro/domain.v4.integrations.json-schema",
   "private": true,
   "scripts": {
     "format:check": "biome format ./lib",

@@ -5,4 +5,4 @@ options:
   "@typespec/json-schema":
     file-type: "json"
     emitter-output-dir: "{output-dir}/json-schema"
-    bundleId: "ladesa.domain.v3.json"
+    bundleId: "Ladesa.Domain.v4.json"
