@@ -3,7 +3,9 @@
   "private": true,
   "workspaces": [
     "./pkgs/definitions",
-    "./pkgs/integrations/json-schema"
+    "./pkgs/integrations/json-schema",
+    "./pkgs/integrations/typescript",
+    "./pkgs/integrations/dotnet"
   ],
   "scripts": {
     "changeset:add": "changeset add",

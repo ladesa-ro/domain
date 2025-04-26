@@ -11,14 +11,22 @@
     },
     "pkgs/definitions": {
       "name": "@ladesa-ro/domain.v4.definitions",
-      "version": "3.3.0",
+      "version": "4.0.0-alpha",
       "devDependencies": {
         "@typespec/compiler": "^1.0.0-rc.1",
         "@typespec/json-schema": "^1.0.0-rc.1",
       },
     },
+    "pkgs/integrations/dotnet": {
+      "name": "@ladesa-ro/domain.v4.integrations.dotnet",
+      "version": "4.0.0-alpha",
+    },
     "pkgs/integrations/json-schema": {
       "name": "@ladesa-ro/domain.v4.integrations.json-schema",
+    },
+    "pkgs/integrations/typescript": {
+      "name": "@ladesa-ro/domain.v4.integrations.typescript",
+      "version": "4.0.0-alpha",
     },
   },
   "packages": {
@@ -120,7 +128,11 @@
 
     "@ladesa-ro/domain.v4.definitions": ["@ladesa-ro/domain.v4.definitions@workspace:pkgs/definitions"],
 
+    "@ladesa-ro/domain.v4.integrations.dotnet": ["@ladesa-ro/domain.v4.integrations.dotnet@workspace:pkgs/integrations/dotnet"],
+
     "@ladesa-ro/domain.v4.integrations.json-schema": ["@ladesa-ro/domain.v4.integrations.json-schema@workspace:pkgs/integrations/json-schema"],
+
+    "@ladesa-ro/domain.v4.integrations.typescript": ["@ladesa-ro/domain.v4.integrations.typescript@workspace:pkgs/integrations/typescript"],
 
     "@manypkg/find-root": ["@manypkg/find-root@1.1.0", "", { "dependencies": { "@babel/runtime": "^7.5.5", "@types/node": "^12.7.1", "find-up": "^4.1.0", "fs-extra": "^8.1.0" } }, "sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA=="],
 
