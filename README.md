@@ -90,15 +90,15 @@ A Especificação do Ladesa pode ser utilizada por:
 #### Instalar o pacote para dotnet
 
 ```sh
-dotnet add package Ladesa.Dtos
+dotnet add package Ladesa.Domain.v3
 ```
 
 #### Utilizar o pacote para dotnet
 
-- Utilização do namespace `Ladesa.Dtos`
+- Utilização do namespace `Ladesa.Domain.v3`
 
 ```cs
-using Ladesa.Dtos;
+using Ladesa.Domain.v3;
 ```
 
 - Conversão de uma `string` `JSON` para uma instância de alguma das classes
@@ -115,19 +115,19 @@ Arquivo arquivo = Arquivo.FromJson(jsonString);
 
 ```sh
 # npm
-npm install @ladesa-ro/domain
+npm install @ladesa-ro/domain.v3
 
 # pnpm
-pnpm add @ladesa-ro/domain
+pnpm add @ladesa-ro/domain.v3
 
 # yarn
-yarn add @ladesa-ro/domain
+yarn add @ladesa-ro/domain.v3
 ```
 
 #### Utilizar o pacote para TypeScript / JavaScript
 
 ```ts
-import {} from "@ladesa-ro/domain";
+import type {} from "@ladesa-ro/domain.v3";
 ```
 
 ## 🧑‍💻 Desenvolvimento Local
@@ -177,23 +177,23 @@ bun run all:generate
 
 Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 
-| Comando                       | Ação                                |
-| :---------------------------- | :---------------------------------- |
-| `bun install`                 | Instala as dependências.            |
-| `bun run all:generate`        | Gera os artefatos da especificação. |
-| `bun run all:code-static:fix` | Correção de lint e formatação.      |
+| Comando                | Ação                                |
+| :--------------------- | :---------------------------------- |
+| `bun install`          | Instala as dependências.            |
+| `bun run all:generate` | Gera os artefatos da especificação. |
+| `bun run all:code:fix` | Correção de lint e formatação.      |
 
 <details>
 
 <summary>Outros comandos</summary>
 
-| Comando                         | Ação                                                |
-| :------------------------------ | :-------------------------------------------------- |
-| `bun run all:lint:check`        | Checa as regras do lint.                            |
-| `bun run all:lint:fix`          | Corrige erros resolviveis de lint.                  |
-| `bun run all:format:check`      | Checa as formatações dos arquivos.                  |
-| `bun run all:format:fix`        | Corrige as formatações inconsistêntes dos arquivos. |
-| `bun run all:code-static:check` | Checagem de lint e formatação.                      |
+| Comando                    | Ação                                                |
+| :------------------------- | :-------------------------------------------------- |
+| `bun run all:lint:check`   | Checa as regras do lint.                            |
+| `bun run all:lint:fix`     | Corrige erros resolviveis de lint.                  |
+| `bun run all:format:check` | Checa as formatações dos arquivos.                  |
+| `bun run all:format:fix`   | Corrige as formatações inconsistêntes dos arquivos. |
+| `bun run all:code:check`   | Checagem de lint e formatação.                      |
 
 </details>
 
@@ -259,19 +259,19 @@ Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conos
 <!-- Badges / Integrations / NPM -->
 
 [npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
-[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain
+[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v3
 
 <!-- Badges / Integrations / NPM / Versions -->
 
-[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain?activeTab=versions
+[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v3?activeTab=versions
 [npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
 
 <!-- Badges / Integrations / NuGet -->
 
-[nuget-package-src]: https://img.shields.io/badge/nuget-Ladesa.Dtos-18181B?style=flat&logo=nuget&logoColor=white&labelColor=%23004880
-[nuget-package-href]: https://www.nuget.org/packages/Ladesa.Dtos/
+[nuget-package-src]: https://img.shields.io/badge/nuget-Ladesa.Domain.v3-18181B?style=flat&logo=nuget&logoColor=white&labelColor=%23004880
+[nuget-package-href]: https://www.nuget.org/packages/Ladesa.Domain.v3/
 
 <!-- Badges / Integrations / NuGet / Versions -->
 
-[nuget-package-versions-href]: https://www.nuget.org/packages/Ladesa.Dtos#versions-body-tab
-[nuget-package-stable-version-src]: https://img.shields.io/nuget/v/Ladesa.Dtos?style=flat&style=flat&logo=nuget&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
+[nuget-package-versions-href]: https://www.nuget.org/packages/Ladesa.Domain.v3#versions-body-tab
+[nuget-package-stable-version-src]: https://img.shields.io/nuget/v/Ladesa.Domain.v3?style=flat&style=flat&logo=nuget&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white

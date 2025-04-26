@@ -1,11 +1,11 @@
 import "./entities-metadata.js";
 
-using Ladesa.v3.Generics;
+using Ladesa.Domain.v3.Generics;
 using TypeSpec.JsonSchema;
 using TypeSpec.Reflection;
 
-@baseUri("ladesa://schemas/v3/generics/entities")
-namespace Ladesa.v3.Generics.Entities;
+@baseUri("ladesa://domain/v3/generics/entities")
+namespace Ladesa.Domain.v3.Generics.Entities;
 
 /**
  * Estrutura identificada por id no formato uuid.

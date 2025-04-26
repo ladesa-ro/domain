@@ -1,7 +1,7 @@
-using Ladesa.v3.Generics;
-using Ladesa.v3.Generics.Entities;
+using Ladesa.Domain.v3.Generics;
+using Ladesa.Domain.v3.Generics.Entities;
 
-namespace Ladesa.v3.Schemas;
+namespace Ladesa.Domain.v3.Schemas;
 
 /** GradeHorarioOfertaFormacaoIntervaloDeTempo. */
 @Metadata.EntityId(Tokens.GradeHorarioOfertaFormacaoIntervaloDeTempo)

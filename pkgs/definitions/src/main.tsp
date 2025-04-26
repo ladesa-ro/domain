@@ -6,5 +6,5 @@ import "./generics/index.tsp";
 using TypeSpec.JsonSchema;
 
 @jsonSchema
-@baseUri("ladesa://schemas/v3/")
-namespace Ladesa.v3.Schemas;
+@baseUri("ladesa://domain/v3/")
+namespace Ladesa.Domain.v3.Schemas;

@@ -1,4 +1,4 @@
-namespace Ladesa.v3.Schemas;
+namespace Ladesa.Domain.v3.Schemas;
 
 @doc("Define os nomes de indentificação das entidades.")
 enum Tokens {

@@ -1,5 +1,5 @@
 {
-  "name": "@ladesa-ro/domain.definitions",
+  "name": "@ladesa-ro/domain.v3.definitions",
   "private": true,
   "type": "module",
   "version": "3.3.0",
@@ -8,8 +8,8 @@
     "generate-json-schema": "nx run generate-json-schema",
     "format:check": "tsp format --check src/**/*.tsp",
     "format:fix": "tsp format src/**/*.tsp",
-    "code-static:check": "bun run format:check",
-    "code-static:fix": "bun run format:fix"
+    "code:check": "bun run format:check",
+    "code:fix": "bun run format:fix"
   },
   "devDependencies": {
     "@typespec/compiler": "^1.0.0-rc.1",

@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@ladesa-ro/domain.root",
+      "name": "@ladesa-ro/domain.v3.root",
       "dependencies": {
         "@biomejs/biome": "1.9.4",
         "@changesets/cli": "^2.29.2",
@@ -10,7 +10,7 @@
       },
     },
     "pkgs/definitions": {
-      "name": "@ladesa-ro/domain.definitions",
+      "name": "@ladesa-ro/domain.v3.definitions",
       "version": "3.3.0",
       "devDependencies": {
         "@typespec/compiler": "^1.0.0-rc.1",
@@ -18,7 +18,7 @@
       },
     },
     "pkgs/integrations/json-schema": {
-      "name": "@ladesa-ro/domain.integrations.json-schema",
+      "name": "@ladesa-ro/domain.v3.integrations.json-schema",
     },
   },
   "packages": {
@@ -118,9 +118,9 @@
 
     "@jest/schemas": ["@jest/schemas@29.6.3", "", { "dependencies": { "@sinclair/typebox": "^0.27.8" } }, "sha512-mo5j5X+jIZmJQveBKeS/clAueipV7KgiX1vMgCxam1RNYiqE1w62n0/tJJnHtjW8ZHcQco5gY85jA3mi0L+nSA=="],
 
-    "@ladesa-ro/domain.definitions": ["@ladesa-ro/domain.definitions@workspace:pkgs/definitions"],
+    "@ladesa-ro/domain.v3.definitions": ["@ladesa-ro/domain.v3.definitions@workspace:pkgs/definitions"],
 
-    "@ladesa-ro/domain.integrations.json-schema": ["@ladesa-ro/domain.integrations.json-schema@workspace:pkgs/integrations/json-schema"],
+    "@ladesa-ro/domain.v3.integrations.json-schema": ["@ladesa-ro/domain.v3.integrations.json-schema@workspace:pkgs/integrations/json-schema"],
 
     "@manypkg/find-root": ["@manypkg/find-root@1.1.0", "", { "dependencies": { "@babel/runtime": "^7.5.5", "@types/node": "^12.7.1", "find-up": "^4.1.0", "fs-extra": "^8.1.0" } }, "sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA=="],
 

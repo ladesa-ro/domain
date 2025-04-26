@@ -1,7 +1,7 @@
 using TypeSpec.JsonSchema;
 
-@baseUri("ladesa://schemas/v3/generics")
-namespace Ladesa.v3.Generics;
+@baseUri("ladesa://domain/v3/generics")
+namespace Ladesa.Domain.v3.Generics;
 
 /**
  * Identificador Único Universal.
