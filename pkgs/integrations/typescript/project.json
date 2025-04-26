@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "@ladesa-ro/domain.v4.integrations.typescript",
+  "namedInputs": {},
+  "targets": {
+    "generate": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bash ./.tools/quicktype.sh --src-lang schema 'pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json#$defs/' -o {projectRoot}/lib/ladesa.domain.v4.ts --just-types --no-nice-property-names --no-runtime-typecheck --acronym-style original",
+          "(cd '{projectRoot}'; biome format ./lib/ladesa.domain.v4.ts --write)"
+        ],
+        "parallel": false,
+        "cwd": "{workspaceRoot}"
+      },
+      "inputs": [
+        {
+          "projects": ["@ladesa-ro/domain.v4.integrations.json-schema"],
+          "input": "src"
+        }
+      ],
+      "outputs": ["{projectRoot}/lib/**/*"],
+      "dependsOn": ["@ladesa-ro/domain.v4.integrations.json-schema:generate"]
+    }
+  }
+}
