@@ -140,10 +140,11 @@ Para o desenvolvimento local, é necessário preparar o seu ambiente de trabalho
 
 Preparamos dicas e tutoriais para você acerca de cada pré-requisito, basta clicar nos links para saber mais.
 
-- [Acesso à Linha de Comando](https://docs.ladesa.com.br/developers/tutorials/os/command-line/);
-- [Git](https://docs.ladesa.com.br/developers/tutorials/source-code/git/);
-- [bun]
-- [podman]
+- linux ou wsl, com [acesso à linha de comando bash](https://docs.ladesa.com.br/developers/tutorials/os/command-line/);
+- [git](https://docs.ladesa.com.br/developers/tutorials/source-code/git/);
+- [bun](https://bun.sh/)
+
+<!-- - [podman] -->
 
 ### Obter o código-fonte
 
