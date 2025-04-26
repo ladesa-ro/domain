@@ -1,7 +1,7 @@
 .vscode                                              @ladesa-ro/security 
 .github                                              @ladesa-ro/security 
+.nx                                                  @ladesa-ro/security 
 **/bun.lock                                          @ladesa-ro/security 
-**/pnpm-workspace.yaml                               @ladesa-ro/security 
 **/package.json                                      @ladesa-ro/security 
 **/project.json                                      @ladesa-ro/security 
 .husky                                               @ladesa-ro/security 
