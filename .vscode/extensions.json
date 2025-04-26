@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "typespec.typespec-vscode",
+    "biomejs.biome"
+  ]
+}
