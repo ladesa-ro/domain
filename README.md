@@ -23,7 +23,7 @@ Formatos e estruturas dos dados para comunicação entre sistemas.
 
 ### Artefatos de Integração
 
-[Esquemas JSON](./integrations/json-schema/lib/), pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos [gerados automaticamente][ladesa-domain-repo-automation].
+[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json), pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos [gerados automaticamente][ladesa-domain-repo-automation].
 
 ## 👽 O quê este projeto não é
 
@@ -251,8 +251,8 @@ Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conos
 <!-- Links / Especificação -->
 
 [ladesa-domain-issues]: https://github.com/ladesa-ro/domain/issues
-[ladesa-domain-repo-automation]: https://github.com/ladesa-ro/domain/tree/development/.github/workflows
-[ladesa-domain-repo-code-of-conduct]: https://github.com/ladesa-ro/domain/blob/development/CODE_OF_CONDUCT.md
+[ladesa-domain-repo-automation]: https://github.com/ladesa-ro/domain/tree/main/.github/workflows
+[ladesa-domain-repo-code-of-conduct]: https://github.com/ladesa-ro/domain/blob/main/CODE_OF_CONDUCT.md
 
 <!-- Badges -->
 
