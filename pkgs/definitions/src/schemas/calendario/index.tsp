@@ -5,3 +5,4 @@ import "./dia-calendario.tsp";
 import "./evento.tsp";
 import "./etapa.tsp";
 import "./grade-horario-oferta-formacao-dtos.tsp";
+import "./grade-horario-oferta-formacao-itervalo-de-tempo.dtos.tsp";
