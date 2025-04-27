@@ -3,16 +3,12 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** Modalidade. */
-@Metadata.EntityId(Tokens.Modalidade)
-model Modalidade {
+/** NivelFormacao. */
+@Metadata.EntityId(Tokens.NivelFormacao)
+model NivelFormacao {
   ...EntityIdUuid;
 
-  /** Nome da modalidade. */
-  @minLength(1)
-  nome: string;
-
-  /** Apelido da modalidade. */
+  /** Apelido do nível de formação. */
   @minLength(1)
   slug: string;
 

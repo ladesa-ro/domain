@@ -3,20 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** OfertaFormacaoNivelFormacao. */
-@Metadata.EntityId(Tokens.OfertaFormacaoNivelFormacao)
-model OfertaFormacaoNivelFormacao {
-  ...EntityIdUuid;
-
-  /** Oferta de formação. */
-  ofertaFormacao: OfertaFormacao;
-
-  /** Nível de formação. */
-  nivelFormacao: NivelFormacao;
-
-  ...EntityDated;
-}
-
 /** Visão completa de uma oferta de formação. */
 @Metadata.EntityId(Tokens.OfertaFormacaoNivelFormacao_View)
 model OfertaFormacaoNivelFormacaoView {

@@ -1,7 +1,12 @@
-import "./nivel-de-formacao.tsp";
+import "./nivel-de-formacao.model.tsp";
+import "./nivel-de-formacao.dtos.tsp";
 import "./modalidade.model.tsp";
 import "./modalidade.dtos.tsp";
-import "./oferta-formacao.tsp";
-import "./oferta-formacao-nivel-formacao.tsp";
-import "./curso.tsp";
-import "./disciplina.tsp";
+import "./oferta-formacao.model.tsp";
+import "./oferta-formacao.dtos.tsp";
+import "./oferta-formacao-nivel-formacao.model.tsp";
+import "./oferta-formacao-nivel-formacao.dtos.tsp";
+import "./curso.model.tsp";
+import "./curso.dtos.tsp";
+import "./disciplina.model.tsp";
+import "./disciplina.dtos.tsp";
