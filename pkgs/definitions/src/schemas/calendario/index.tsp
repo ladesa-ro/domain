@@ -8,3 +8,5 @@ import "./evento.dtos.tsp";
 import "./etapa.tsp";
 import "./grade-horario-oferta-formacao-dtos.tsp";
 import "./grade-horario-oferta-formacao-itervalo-de-tempo.dtos.tsp";
+import "./calendario-dias.dtos.tsp";
+import "./calendario-dias.model.tsp";
