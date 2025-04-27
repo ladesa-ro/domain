@@ -3,20 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** ProfessorDisponibilidade. */
-@Metadata.EntityId(Tokens.ProfessorDisponibilidade)
-model ProfessorDisponibilidade {
-  ...EntityIdUuid;
-
-  /** Disponibilidade. */
-  disponibilidade: Disponibilidade;
-
-  /** Professor. */
-  perfil: Perfil;
-
-  ...EntityDated;
-}
-
 /** Visão completa de uma ProfessorDisponibilidade. */
 @Metadata.EntityId(Tokens.ProfessorDisponibilidade_View)
 model ProfessorDisponibilidadeView {

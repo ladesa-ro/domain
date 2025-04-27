@@ -3,24 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** HorarioGeradoAula. */
-@Metadata.EntityId(Tokens.HorarioGeradoAula)
-model HorarioGeradoAula {
-  ...EntityIdUuid;
-
-  /** Data da aula gerada. */
-  data: date;
-
-  /** Intervalo de tempo. */
-  intervaloDeTempo: IntervaloDeTempo;
-
-  /** Vínculo de diário e professor. */
-  diarioProfessor: DiarioProfessor;
-
-  /** Horário ao qual a aula pertence. */
-  horarioGerado: HorarioGerado;
-}
-
 /** Visão completa de um HorarioGeradoAula. */
 @Metadata.EntityId(Tokens.HorarioGeradoAula_View)
 model HorarioGeradoAulaView {

@@ -3,20 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** Disponibilidade. */
-@Metadata.EntityId(Tokens.Disponibilidade)
-model Disponibilidade {
-  ...EntityIdUuid;
-
-  /** Data de início. */
-  dataInicio: date;
-
-  /** Data de término. */
-  dataFim: date | null;
-
-  ...EntityDated;
-}
-
 /** Visão completa de uma Disponibilidade. */
 @Metadata.EntityId(Tokens.Disponibilidade_View)
 model DisponibilidadeView {
