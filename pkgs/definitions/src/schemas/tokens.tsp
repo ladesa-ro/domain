@@ -375,4 +375,11 @@ enum Tokens {
   HorarioGeradoAula_ListResult_View: "HorarioGeradoAulaListResultView",
   HorarioGeradoAula_InputCreate_View: "HorarioGeradoAulaInputCreateView",
   HorarioGeradoAula_InputUpdate_View: "HorarioGeradoAulaInputUpdateView",
+
+  //
+
+  GerarHorario: "GerarHorario",
+
+  GerarHorarioInput: "GerarHorarioInput",
+  GerarHorarioOutput: "GerarHorarioOutput",
 }
