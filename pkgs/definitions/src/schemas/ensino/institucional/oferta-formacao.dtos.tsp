@@ -3,28 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** OfertaFormacao. */
-@Metadata.EntityId(Tokens.OfertaFormacao)
-model OfertaFormacao {
-  ...EntityIdUuid;
-
-  /** Nome da oferta de formação. */
-  @minLength(1)
-  nome: string;
-
-  /** Apelido da oferta de formação. */
-  @minLength(1)
-  slug: string;
-
-  /** Modalidade da oferta de formação. */
-  modalidade: Modalidade;
-
-  /** Array de relações entre a oferta e níveis de formações. */
-  ofertaFormacaoNiveisFormacoes: OfertaFormacaoNivelFormacao[];
-
-  ...EntityDated;
-}
-
 /** Visão completa de uma oferta de formação. */
 @Metadata.EntityId(Tokens.OfertaFormacao_View)
 model OfertaFormacaoView {

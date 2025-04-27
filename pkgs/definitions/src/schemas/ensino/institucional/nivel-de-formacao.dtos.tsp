@@ -3,18 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** NivelFormacao. */
-@Metadata.EntityId(Tokens.NivelFormacao)
-model NivelFormacao {
-  ...EntityIdUuid;
-
-  /** Apelido do nível de formação. */
-  @minLength(1)
-  slug: string;
-
-  ...EntityDated;
-}
-
 /** Visão completa de um nível de formação. */
 @Metadata.EntityId(Tokens.NivelFormacao_View)
 model NivelFormacaoView {
