@@ -3,38 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** Endereço. */
-@Metadata.EntityId(Tokens.Endereco)
-model Endereco {
-  ...EntityIdUuid;
-
-  /** Código postal (CEP). */
-  @Metadata.Constraints.EnderecoCep
-  cep: string;
-
-  /** Logradouro. */
-  logradouro: string;
-
-  /** Número. */
-  @minValue(0)
-  @maxValue(99999)
-  numero: uint16;
-
-  /** Bairro. */
-  bairro: string;
-
-  /** Complemento. */
-  complemento: string | null;
-
-  /** Ponto de referência. */
-  pontoReferencia: string | null;
-
-  /** Cidade. */
-  cidade: Cidade;
-
-  ...EntityDated;
-}
-
 /** Visão completa de um endereco. */
 @Metadata.EntityId(Tokens.Endereco_View)
 model EnderecoView {
