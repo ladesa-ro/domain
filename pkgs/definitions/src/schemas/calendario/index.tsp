@@ -15,3 +15,9 @@ import "./evento.dtos.tsp";
 
 import "./etapa.model.tsp";
 import "./etapa.dtos.tsp";
+
+import "./grade-horario-oferta-formacao-dtos.tsp";
+import "./grade-horario-oferta-formacao-intervalo-de-tempo.dtos.tsp"; 
+
+import "./calendario-dias.dtos.tsp";
+import "./calendario-dias.model.tsp";
