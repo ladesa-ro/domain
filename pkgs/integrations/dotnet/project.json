@@ -1,7 +1,11 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "@ladesa-ro/domain.v4.integrations.dotnet",
-  "namedInputs": {},
+  "namedInputs": {
+    "src": [
+      "{workspaceRoot}/pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json"
+    ]
+  },
   "targets": {
     "generate": {
       "cache": true,
@@ -13,16 +17,14 @@
         "parallel": false,
         "cwd": "{workspaceRoot}"
       },
-      "inputs": [
-        {
-          "projects": ["@ladesa-ro/domain.v4.integrations.json-schema"],
-          "input": "src"
-        }
-      ],
       "outputs": [
         "{projectRoot}/ladesa-domain-v4-sln/Ladesa.Domain.v4/Ladesa.Domain.v4.cs"
       ],
-      "dependsOn": ["@ladesa-ro/domain.v4.integrations.json-schema:generate"]
+      "dependsOn": ["@ladesa-ro/domain.v4.integrations.json-schema:generate"],
+      "inputs": [
+        "src",
+        { "dependentTasksOutputFiles": "**/*", "transitive": true }
+      ]
     }
   }
 }

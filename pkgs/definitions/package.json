@@ -16,6 +16,7 @@
     "@typespec/json-schema": "^1.0.0-rc.1"
   },
   "nx": {
+    "name": "@ladesa-ro/domain.v4.definitions",
     "tags": [
       "definitions"
     ],

@@ -1,6 +1,7 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "@ladesa-ro/domain.v4.integrations.json-schema",
+
   "namedInputs": {
     "src": ["{workspaceRoot}/pkgs/definitions/.generated/json-schema/**/*"]
   },
@@ -18,14 +19,12 @@
         "parallel": false,
         "cwd": "{workspaceRoot}"
       },
-      "inputs": [
-        {
-          "projects": ["@ladesa-ro/domain.v4.definitions"],
-          "input": "src"
-        }
-      ],
       "outputs": ["{projectRoot}/lib/**/*"],
-      "dependsOn": ["@ladesa-ro/domain.v4.definitions:generate-json-schema"]
+      "dependsOn": ["@ladesa-ro/domain.v4.definitions:generate-json-schema"],
+      "inputs": [
+        "src",
+        { "dependentTasksOutputFiles": "**/*", "transitive": true }
+      ]
     }
   }
 }

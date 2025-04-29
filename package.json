@@ -2,6 +2,7 @@
   "name": "@ladesa-ro/domain.v4.root",
   "private": true,
   "workspaces": [
+    "./",
     "./pkgs/definitions",
     "./pkgs/integrations/json-schema",
     "./pkgs/integrations/typescript",

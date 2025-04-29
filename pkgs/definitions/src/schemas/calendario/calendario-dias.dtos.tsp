@@ -1,17 +1,12 @@
 using Ladesa.Domain.v4.Generics;
 using Ladesa.Domain.v4.Generics.Entities;
 
-namespace Ladesa.Domain.v4;
-
-/** Tokens de Identificadores das Views */
-model Tokens {
-  CalendarioDias_FindInput_View: string = "CalendarioDias_FindInput_View";
-  CalendarioDias_FindResult_View: string = "CalendarioDias_FindResult_View";
-}
+namespace Ladesa.Domain.v4.Schemas;
 
 /** Dados de entrada para buscar dias do calendário. */
 @Metadata.EntityId(Tokens.CalendarioDias_FindInput_View)
 model CalendarioDiasFindInputView {
+  /** Ano */
   ano: int32;
 
   /** Mês opcional. */
