@@ -8293,24 +8293,46 @@
         }
       }
     },
-    "CalendarioLetivoView": {
+    "EtapaView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/CalendarioLetivoView.json",
+      "$id": "ladesa://domain/v4/EtapaView.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid)."
         },
-        "nome": {
-          "type": "string",
-          "description": "Nome do calendário letivo."
+        "numero": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Número da etapa."
         },
-        "ano": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535,
-          "description": "Ano do calendário letivo."
+        "dataInicio": {
+          "$ref": "#/$defs/date",
+          "description": "Data de início."
+        },
+        "dataTermino": {
+          "$ref": "#/$defs/date",
+          "description": "Data de término."
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Cor da etapa."
         },
         "dateCreated": {
           "$ref": "#/$defs/date_time",
@@ -8331,52 +8353,30 @@
           ],
           "description": "Data e hora da exclusão do registro."
         },
-        "campus": {
-          "$ref": "ladesa://domain/v4/CampusFindOneResultView.json"
-        },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneResultView.json"
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
         }
       },
-      "required": ["id", "nome", "ano", "dateCreated", "dateUpdated", "dateDeleted", "campus", "ofertaFormacao"],
-      "description": "Visão completa de um calendário letivo.",
+      "required": ["id", "numero", "dataInicio", "dataTermino", "cor", "dateCreated", "dateUpdated", "dateDeleted", "calendario"],
+      "description": "Visão completa de uma Etapa.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "CalendarioLetivoView",
+      "x-ladesa-schema-entity-id": "EtapaView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
           "type": "string",
           "format": "uuid",
           "description": "Identificador Único Universal."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
         },
         "date_time": {
           "type": "string",
           "format": "date-time",
           "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "CalendarioLetivoFindOneInputView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid).",
-          "x-ladesa-schema-constraint-entity-partial-of-id": "CalendarioLetivo"
-        }
-      },
-      "required": ["id"],
-      "description": "Dados de entrada para encontrar um calendário letivo por ID.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "CalendarioLetivoFindOneInputView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
         }
       }
     },
@@ -8444,252 +8444,50 @@
         }
       }
     },
-    "CalendarioLetivoInputCreateView": {
+    "Etapa": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/CalendarioLetivoInputCreateView.json",
-      "type": "object",
-      "properties": {
-        "nome": {
-          "type": "string",
-          "description": "Nome do calendário letivo."
-        },
-        "ano": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535,
-          "description": "Ano do calendário letivo."
-        },
-        "campus": {
-          "$ref": "ladesa://domain/v4/CampusFindOneInputView.json"
-        },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneInputView.json"
-        }
-      },
-      "required": ["nome", "ano", "campus", "ofertaFormacao"],
-      "description": "Dados de entrada para a criação de um calendário letivo.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "CalendarioLetivoInputCreateView",
-      "additionalProperties": false
-    },
-    "CalendarioLetivoInputUpdateView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/CalendarioLetivoInputUpdateView.json",
-      "type": "object",
-      "properties": {
-        "nome": {
-          "type": "string",
-          "description": "Nome do calendário letivo."
-        },
-        "ano": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 65535,
-          "description": "Ano do calendário letivo."
-        },
-        "campus": {
-          "$ref": "ladesa://domain/v4/CampusFindOneInputView.json"
-        },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneInputView.json"
-        }
-      },
-      "description": "Dados de entrada para a atualização de um calendário letivo.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "CalendarioLetivoInputUpdateView",
-      "additionalProperties": false
-    },
-    "CalendarioLetivoListResultView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/CalendarioLetivoListResultView.json",
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/$defs/Meta",
-          "description": "Metadados da busca."
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
-          },
-          "description": "Resultados da busca atual."
-        },
-        "links": {
-          "$ref": "#/$defs/Links",
-          "description": "Links da busca."
-        }
-      },
-      "required": ["meta", "data", "links"],
-      "description": "Resultados da busca a CalendarioLetivos.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "CalendarioLetivoListResultView",
-      "additionalProperties": false,
-      "$defs": {
-        "Meta": {
-          "type": "object",
-          "properties": {
-            "itemsPerPage": {
-              "type": "integer",
-              "description": "Quantidade de itens por página."
-            },
-            "totalItems": {
-              "type": "integer",
-              "description": "Total de itens."
-            },
-            "currentPage": {
-              "type": "integer",
-              "description": "Página atual."
-            },
-            "totalPages": {
-              "type": "integer",
-              "description": "Quantidade total de páginas."
-            },
-            "search": {
-              "type": "string",
-              "description": "Termo textual da busca."
-            },
-            "sortBy": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/PaginationSortByView"
-              },
-              "description": "Ordenação."
-            },
-            "filter": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/PaginationFilterView"
-              },
-              "description": "Filtros."
-            }
-          },
-          "required": ["itemsPerPage", "totalItems", "currentPage", "totalPages", "search", "sortBy", "filter"],
-          "description": "Metadados dos resultados de busca.",
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedResultMetaView",
-          "additionalProperties": false
-        },
-        "Links": {
-          "type": "object",
-          "properties": {
-            "first": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "previous": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "current": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "next": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "last": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            }
-          },
-          "required": ["first", "previous", "current", "next", "last"],
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedResultLinksView",
-          "additionalProperties": false
-        },
-        "PaginationSortByView": {
-          "type": "object",
-          "properties": {
-            "property": {
-              "type": "string",
-              "pattern": "^[\\D\\.]+$",
-              "description": "Propriedade ordenada."
-            },
-            "mode": {
-              "type": "string",
-              "pattern": "^(ASC|DESC)$",
-              "description": "Modo de ordenação."
-            }
-          },
-          "required": ["property", "mode"],
-          "description": "Configuração de ordenação de uma propriedade.",
-          "deprecated": true,
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedSortByView",
-          "additionalProperties": false
-        },
-        "PaginationFilterView": {
-          "type": "object",
-          "properties": {
-            "property": {
-              "type": "string",
-              "description": "Propriedade filtrada."
-            },
-            "restrictions": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "Restrições de filtragem."
-            }
-          },
-          "required": ["property", "restrictions"],
-          "description": "Configuração de filtro por restrições de uma propriedade.",
-          "deprecated": true,
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedFilterView",
-          "additionalProperties": false
-        }
-      }
-    },
-    "GradeHorarioOfertaFormacao": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacao.json",
+      "$id": "ladesa://domain/v4/Etapa.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid)."
         },
-        "campus": {
-          "$ref": "ladesa://domain/v4/Campus.json",
-          "description": "Campus."
+        "numero": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Número da etapa."
         },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacao.json",
-          "description": "Oferta de formação."
+        "dataInicio": {
+          "$ref": "#/$defs/date",
+          "description": "Data de início."
+        },
+        "dataTermino": {
+          "$ref": "#/$defs/date",
+          "description": "Data de término."
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Cor da etapa."
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivo.json",
+          "description": "Calendario."
         },
         "dateCreated": {
           "$ref": "#/$defs/date_time",
@@ -8711,16 +8509,21 @@
           "description": "Data e hora da exclusão do registro."
         }
       },
-      "required": ["id", "campus", "ofertaFormacao", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "GradeHorarioOfertaFormacao.",
+      "required": ["id", "numero", "dataInicio", "dataTermino", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
+      "description": "Etapa.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacao",
+      "x-ladesa-schema-entity-id": "Etapa",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
           "type": "string",
           "format": "uuid",
           "description": "Identificador Único Universal."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
         },
         "date_time": {
           "type": "string",
@@ -8729,14 +8532,24 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoView": {
+    "CalendarioLetivoView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoView.json",
+      "$id": "ladesa://domain/v4/CalendarioLetivoView.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid)."
+        },
+        "nome": {
+          "type": "string",
+          "description": "Nome do calendário letivo."
+        },
+        "ano": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "Ano do calendário letivo."
         },
         "dateCreated": {
           "$ref": "#/$defs/date_time",
@@ -8764,10 +8577,10 @@
           "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneResultView.json"
         }
       },
-      "required": ["id", "dateCreated", "dateUpdated", "dateDeleted", "campus", "ofertaFormacao"],
-      "description": "Visão completa de uma oferta de formação.",
+      "required": ["id", "nome", "ano", "dateCreated", "dateUpdated", "dateDeleted", "campus", "ofertaFormacao"],
+      "description": "Visão completa de um calendário letivo.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoView",
+      "x-ladesa-schema-entity-id": "CalendarioLetivoView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
@@ -8782,21 +8595,21 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoFindOneInputView": {
+    "EtapaFindOneInputView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneInputView.json",
+      "$id": "ladesa://domain/v4/EtapaFindOneInputView.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid).",
-          "x-ladesa-schema-constraint-entity-partial-of-id": "GradeHorarioOfertaFormacao"
+          "x-ladesa-schema-constraint-entity-partial-of-id": "Etapa"
         }
       },
       "required": ["id"],
-      "description": "Dados de entrada para encontrar uma oferta de formação por ID.",
+      "description": "Dados de entrada para encontrar uma Etapa por ID.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoFindOneInputView",
+      "x-ladesa-schema-entity-id": "EtapaFindOneInputView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
@@ -8806,20 +8619,49 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoFindOneResultView": {
+    "EtapaFindOneResultView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneResultView.json",
+      "$id": "ladesa://domain/v4/EtapaFindOneResultView.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid)."
         },
-        "campus": {
-          "$ref": "ladesa://domain/v4/CampusFindOneResultView.json"
+        "numero": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Número da etapa."
         },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneResultView.json"
+        "dataInicio": {
+          "$ref": "#/$defs/date",
+          "description": "Data de início."
+        },
+        "dataTermino": {
+          "$ref": "#/$defs/date",
+          "description": "Data de término."
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Cor da etapa."
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
         },
         "dateCreated": {
           "$ref": "#/$defs/date_time",
@@ -8841,17 +8683,22 @@
           "description": "Data e hora da exclusão do registro."
         }
       },
-      "required": ["id", "campus", "ofertaFormacao", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "Visão FindOne de uma oferta de formação.",
-      "x-ladesa-schema-entity-partial-of-id": "GradeHorarioOfertaFormacaoView",
+      "required": ["id", "numero", "dataInicio", "dataTermino", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
+      "description": "Visão FindOne de uma Etapa.",
+      "x-ladesa-schema-entity-partial-of-id": "EtapaView",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoFindOneResultView",
+      "x-ladesa-schema-entity-id": "EtapaFindOneResultView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
           "type": "string",
           "format": "uuid",
           "description": "Identificador Único Universal."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
         },
         "date_time": {
           "type": "string",
@@ -8860,44 +8707,132 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoInputCreateView": {
+    "EtapaInputCreateView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoInputCreateView.json",
+      "$id": "ladesa://domain/v4/EtapaInputCreateView.json",
       "type": "object",
       "properties": {
-        "campus": {
-          "$ref": "ladesa://domain/v4/CampusFindOneInputView.json"
+        "numero": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneInputView.json"
+        "dataInicio": {
+          "$ref": "#/$defs/date"
+        },
+        "dataTermino": {
+          "$ref": "#/$defs/date"
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
         }
       },
-      "required": ["campus", "ofertaFormacao"],
-      "description": "Dados de entrada para a criação de uma oferta de formação.",
+      "required": ["numero", "dataInicio", "dataTermino", "cor", "calendario"],
+      "description": "Dados de entrada para a criação de uma Etapa.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoInputCreateView",
-      "additionalProperties": false
+      "x-ladesa-schema-entity-id": "EtapaInputCreateView",
+      "additionalProperties": false,
+      "$defs": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
+        }
+      }
     },
-    "GradeHorarioOfertaFormacaoInputUpdateView": {
+    "CalendarioLetivoFindOneInputView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoInputUpdateView.json",
+      "$id": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json",
       "type": "object",
       "properties": {
-        "campus": {
-          "$ref": "ladesa://domain/v4/CampusFindOneInputView.json"
-        },
-        "ofertaFormacao": {
-          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneInputView.json"
+        "id": {
+          "$ref": "#/$defs/id_uuid",
+          "description": "Identificador do registro (uuid).",
+          "x-ladesa-schema-constraint-entity-partial-of-id": "CalendarioLetivo"
         }
       },
-      "description": "Dados de entrada para a atualização de uma oferta de formação.",
+      "required": ["id"],
+      "description": "Dados de entrada para encontrar um calendário letivo por ID.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoInputUpdateView",
-      "additionalProperties": false
+      "x-ladesa-schema-entity-id": "CalendarioLetivoFindOneInputView",
+      "additionalProperties": false,
+      "$defs": {
+        "id_uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Identificador Único Universal."
+        }
+      }
     },
-    "GradeHorarioOfertaFormacaoListResultView": {
+    "EtapaInputUpdateView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoListResultView.json",
+      "$id": "ladesa://domain/v4/EtapaInputUpdateView.json",
+      "type": "object",
+      "properties": {
+        "numero": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dataInicio": {
+          "$ref": "#/$defs/date"
+        },
+        "dataTermino": {
+          "$ref": "#/$defs/date"
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
+        }
+      },
+      "description": "Dados de entrada para a atualização de uma Etapa.",
+      "x-ladesa-schema-kind": "entity",
+      "x-ladesa-schema-entity-id": "EtapaInputUpdateView",
+      "additionalProperties": false,
+      "$defs": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
+        }
+      }
+    },
+    "EtapaListResultView": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/EtapaListResultView.json",
       "type": "object",
       "properties": {
         "meta": {
@@ -8907,7 +8842,7 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneResultView.json"
+            "$ref": "ladesa://domain/v4/EtapaFindOneResultView.json"
           },
           "description": "Resultados da busca atual."
         },
@@ -8917,9 +8852,9 @@
         }
       },
       "required": ["meta", "data", "links"],
-      "description": "Resultados da busca a GradeHorarioOfertaFormacaos.",
+      "description": "Resultados da busca a Etapas.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoListResultView",
+      "x-ladesa-schema-entity-id": "EtapaListResultView",
       "additionalProperties": false,
       "$defs": {
         "Meta": {
@@ -9125,9 +9060,64 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoIntervaloDeTempoView": {
+    "GradeHorarioOfertaFormacao": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoView.json",
+      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacao.json",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id_uuid",
+          "description": "Identificador do registro (uuid)."
+        },
+        "campus": {
+          "$ref": "ladesa://domain/v4/Campus.json",
+          "description": "Campus."
+        },
+        "ofertaFormacao": {
+          "$ref": "ladesa://domain/v4/OfertaFormacao.json",
+          "description": "Oferta de formação."
+        },
+        "dateCreated": {
+          "$ref": "#/$defs/date_time",
+          "description": "Data e hora da criação do registro."
+        },
+        "dateUpdated": {
+          "$ref": "#/$defs/date_time",
+          "description": "Data e hora da alteração do registro."
+        },
+        "dateDeleted": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/date_time"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Data e hora da exclusão do registro."
+        }
+      },
+      "required": ["id", "campus", "ofertaFormacao", "dateCreated", "dateUpdated", "dateDeleted"],
+      "description": "GradeHorarioOfertaFormacao.",
+      "x-ladesa-schema-kind": "entity",
+      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacao",
+      "additionalProperties": false,
+      "$defs": {
+        "id_uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Identificador Único Universal."
+        },
+        "date_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date time ISO 8601."
+        }
+      }
+    },
+    "GradeHorarioOfertaFormacaoView": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoView.json",
       "type": "object",
       "properties": {
         "id": {
@@ -9153,17 +9143,17 @@
           ],
           "description": "Data e hora da exclusão do registro."
         },
-        "gradeHorarioOfertaFormacao": {
-          "$ref": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneResultView.json"
+        "campus": {
+          "$ref": "ladesa://domain/v4/CampusFindOneResultView.json"
         },
-        "intervaloDeTempo": {
-          "$ref": "ladesa://domain/v4/IntervaloDeTempoFindOneResultView.json"
+        "ofertaFormacao": {
+          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneResultView.json"
         }
       },
-      "required": ["id", "dateCreated", "dateUpdated", "dateDeleted", "gradeHorarioOfertaFormacao", "intervaloDeTempo"],
+      "required": ["id", "dateCreated", "dateUpdated", "dateDeleted", "campus", "ofertaFormacao"],
       "description": "Visão completa de uma oferta de formação.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoView",
+      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
@@ -9178,21 +9168,174 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView": {
+    "EventoView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView.json",
+      "$id": "ladesa://domain/v4/EventoView.json",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id_uuid",
+          "description": "Identificador do registro (uuid)."
+        },
+        "nome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Nome do evento."
+        },
+        "rrule": {
+          "type": "string",
+          "description": "Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar."
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Cor da Evento."
+        },
+        "dateCreated": {
+          "$ref": "#/$defs/date_time",
+          "description": "Data e hora da criação do registro."
+        },
+        "dateUpdated": {
+          "$ref": "#/$defs/date_time",
+          "description": "Data e hora da alteração do registro."
+        },
+        "dateDeleted": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/date_time"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Data e hora da exclusão do registro."
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
+        }
+      },
+      "required": ["id", "nome", "rrule", "cor", "dateCreated", "dateUpdated", "dateDeleted", "calendario"],
+      "description": "Visão completa de um Evento.",
+      "x-ladesa-schema-kind": "entity",
+      "x-ladesa-schema-entity-id": "EventoView",
+      "additionalProperties": false,
+      "$defs": {
+        "id_uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Identificador Único Universal."
+        },
+        "date_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date time ISO 8601."
+        }
+      }
+    },
+    "Evento": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/Evento.json",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id_uuid",
+          "description": "Identificador do registro (uuid)."
+        },
+        "nome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Nome do evento."
+        },
+        "rrule": {
+          "type": "string",
+          "description": "Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar."
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Cor da Evento."
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivo.json",
+          "description": "Calendario."
+        },
+        "dateCreated": {
+          "$ref": "#/$defs/date_time",
+          "description": "Data e hora da criação do registro."
+        },
+        "dateUpdated": {
+          "$ref": "#/$defs/date_time",
+          "description": "Data e hora da alteração do registro."
+        },
+        "dateDeleted": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/date_time"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Data e hora da exclusão do registro."
+        }
+      },
+      "required": ["id", "nome", "rrule", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
+      "description": "Evento.",
+      "x-ladesa-schema-kind": "entity",
+      "x-ladesa-schema-entity-id": "Evento",
+      "additionalProperties": false,
+      "$defs": {
+        "id_uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Identificador Único Universal."
+        },
+        "date_time": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date time ISO 8601."
+        }
+      }
+    },
+    "EventoFindOneInputView": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/EventoFindOneInputView.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid).",
-          "x-ladesa-schema-constraint-entity-partial-of-id": "GradeHorarioOfertaFormacaoIntervaloDeTempo"
+          "x-ladesa-schema-constraint-entity-partial-of-id": "Evento"
         }
       },
       "required": ["id"],
-      "description": "Dados de entrada para encontrar uma oferta de formação por ID.",
+      "description": "Dados de entrada para encontrar um Evento por ID.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneInputView",
+      "x-ladesa-schema-entity-id": "EventoFindOneInputView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
@@ -9202,20 +9345,43 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView": {
+    "EventoFindOneResultView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView.json",
+      "$id": "ladesa://domain/v4/EventoFindOneResultView.json",
       "type": "object",
       "properties": {
         "id": {
           "$ref": "#/$defs/id_uuid",
           "description": "Identificador do registro (uuid)."
         },
-        "gradeHorarioOfertaFormacao": {
-          "$ref": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneResultView.json"
+        "nome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Nome do evento."
         },
-        "intervaloDeTempo": {
-          "$ref": "ladesa://domain/v4/IntervaloDeTempoFindOneResultView.json"
+        "rrule": {
+          "type": "string",
+          "description": "Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar."
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Cor da Evento."
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
         },
         "dateCreated": {
           "$ref": "#/$defs/date_time",
@@ -9237,11 +9403,11 @@
           "description": "Data e hora da exclusão do registro."
         }
       },
-      "required": ["id", "gradeHorarioOfertaFormacao", "intervaloDeTempo", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "Visão FindOne de uma oferta de formação.",
-      "x-ladesa-schema-entity-partial-of-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoView",
+      "required": ["id", "nome", "rrule", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
+      "description": "Visão FindOne de um Evento.",
+      "x-ladesa-schema-entity-partial-of-id": "EventoView",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView",
+      "x-ladesa-schema-entity-id": "EventoFindOneResultView",
       "additionalProperties": false,
       "$defs": {
         "id_uuid": {
@@ -9256,44 +9422,84 @@
         }
       }
     },
-    "GradeHorarioOfertaFormacaoIntervaloDeTempoInputCreateView": {
+    "EventoInputCreateView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoInputCreateView.json",
+      "$id": "ladesa://domain/v4/EventoInputCreateView.json",
       "type": "object",
       "properties": {
-        "gradeHorarioOfertaFormacao": {
-          "$ref": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneInputView.json"
+        "nome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "intervaloDeTempo": {
-          "$ref": "ladesa://domain/v4/IntervaloDeTempoInputView.json"
+        "rrule": {
+          "type": "string"
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
         }
       },
-      "required": ["gradeHorarioOfertaFormacao", "intervaloDeTempo"],
-      "description": "Dados de entrada para a criação de uma oferta de formação.",
+      "required": ["nome", "rrule", "cor", "calendario"],
+      "description": "Dados de entrada para a criação de um Evento.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoInputCreateView",
+      "x-ladesa-schema-entity-id": "EventoInputCreateView",
       "additionalProperties": false
     },
-    "GradeHorarioOfertaFormacaoIntervaloDeTempoInputUpdateView": {
+    "EventoInputUpdateView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoInputUpdateView.json",
+      "$id": "ladesa://domain/v4/EventoInputUpdateView.json",
       "type": "object",
       "properties": {
-        "gradeHorarioOfertaFormacao": {
-          "$ref": "ladesa://domain/v4/GradeHorarioOfertaFormacaoFindOneInputView.json"
+        "nome": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
-        "intervaloDeTempo": {
-          "$ref": "ladesa://domain/v4/IntervaloDeTempoInputView.json"
+        "rrule": {
+          "type": "string"
+        },
+        "cor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "calendario": {
+          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
         }
       },
-      "description": "Dados de entrada para a atualização de uma oferta de formação.",
+      "description": "Dados de entrada para a atualização de um Evento.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoInputUpdateView",
+      "x-ladesa-schema-entity-id": "EventoInputUpdateView",
       "additionalProperties": false
     },
-    "GradeHorarioOfertaFormacaoIntervaloDeTempoListResultView": {
+    "EventoListResultView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoListResultView.json",
+      "$id": "ladesa://domain/v4/EventoListResultView.json",
       "type": "object",
       "properties": {
         "meta": {
@@ -9303,7 +9509,7 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "ladesa://domain/v4/GradeHorarioOfertaFormacaoIntervaloDeTempoFindOneResultView.json"
+            "$ref": "ladesa://domain/v4/EventoFindOneResultView.json"
           },
           "description": "Resultados da busca atual."
         },
@@ -9313,9 +9519,9 @@
         }
       },
       "required": ["meta", "data", "links"],
-      "description": "Resultados da busca a GradeHorarioOfertaFormacaoIntervaloDeTempos.",
+      "description": "Resultados da busca a Eventos.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "GradeHorarioOfertaFormacaoIntervaloDeTempoListResultView",
+      "x-ladesa-schema-entity-id": "EventoListResultView",
       "additionalProperties": false,
       "$defs": {
         "Meta": {
@@ -9943,338 +10149,107 @@
         }
       }
     },
-    "Evento": {
+    "CalendarioDiasFindInputView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/Evento.json",
+      "$id": "ladesa://domain/v4/CalendarioDiasFindInputView.json",
       "type": "object",
       "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid)."
+        "ano": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647,
+          "description": "Ano"
         },
-        "nome": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Nome do evento."
-        },
-        "rrule": {
-          "type": "string",
-          "description": "Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar."
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Cor da Evento."
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivo.json",
-          "description": "Calendario."
-        },
-        "dateCreated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da criação do registro."
-        },
-        "dateUpdated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da alteração do registro."
-        },
-        "dateDeleted": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/date_time"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Data e hora da exclusão do registro."
+        "mes": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647,
+          "description": "Mês opcional."
         }
       },
-      "required": ["id", "nome", "rrule", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "Evento.",
+      "required": ["ano"],
+      "description": "Dados de entrada para buscar dias do calendário.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "Evento",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        },
-        "date_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "EventoView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EventoView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid)."
-        },
-        "nome": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Nome do evento."
-        },
-        "rrule": {
-          "type": "string",
-          "description": "Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar."
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Cor da Evento."
-        },
-        "dateCreated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da criação do registro."
-        },
-        "dateUpdated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da alteração do registro."
-        },
-        "dateDeleted": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/date_time"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Data e hora da exclusão do registro."
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
-        }
-      },
-      "required": ["id", "nome", "rrule", "cor", "dateCreated", "dateUpdated", "dateDeleted", "calendario"],
-      "description": "Visão completa de um Evento.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EventoView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        },
-        "date_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "EventoFindOneInputView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EventoFindOneInputView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid).",
-          "x-ladesa-schema-constraint-entity-partial-of-id": "Evento"
-        }
-      },
-      "required": ["id"],
-      "description": "Dados de entrada para encontrar um Evento por ID.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EventoFindOneInputView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        }
-      }
-    },
-    "EventoFindOneResultView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EventoFindOneResultView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid)."
-        },
-        "nome": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Nome do evento."
-        },
-        "rrule": {
-          "type": "string",
-          "description": "Regra RRule para a recorrência do evento. Segue a RFC 5545 do iCalendar."
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Cor da Evento."
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
-        },
-        "dateCreated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da criação do registro."
-        },
-        "dateUpdated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da alteração do registro."
-        },
-        "dateDeleted": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/date_time"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Data e hora da exclusão do registro."
-        }
-      },
-      "required": ["id", "nome", "rrule", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "Visão FindOne de um Evento.",
-      "x-ladesa-schema-entity-partial-of-id": "EventoView",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EventoFindOneResultView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        },
-        "date_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "EventoInputCreateView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EventoInputCreateView.json",
-      "type": "object",
-      "properties": {
-        "nome": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "rrule": {
-          "type": "string"
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
-        }
-      },
-      "required": ["nome", "rrule", "cor", "calendario"],
-      "description": "Dados de entrada para a criação de um Evento.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EventoInputCreateView",
+      "x-ladesa-schema-entity-id": "CalendarioDias_FindInput_View",
       "additionalProperties": false
     },
-    "EventoInputUpdateView": {
+    "CalendarioDiasFindResultView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EventoInputUpdateView.json",
+      "$id": "ladesa://domain/v4/CalendarioDiasFindResultView.json",
+      "type": "object",
+      "properties": {
+        "dias": {
+          "type": "array",
+          "items": {
+            "$ref": "ladesa://domain/v4/DiaCalendario.json"
+          },
+          "description": "Lista de dias do calendário encontrados."
+        }
+      },
+      "required": ["dias"],
+      "description": "Resultado da busca de dias do calendário.",
+      "x-ladesa-schema-kind": "entity",
+      "x-ladesa-schema-entity-id": "CalendarioDias_FindResult_View",
+      "additionalProperties": false
+    },
+    "CalendarioLetivoInputCreateView": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/CalendarioLetivoInputCreateView.json",
       "type": "object",
       "properties": {
         "nome": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
+          "type": "string",
+          "description": "Nome do calendário letivo."
         },
-        "rrule": {
-          "type": "string"
+        "ano": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "Ano do calendário letivo."
         },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
+        "campus": {
+          "$ref": "ladesa://domain/v4/CampusFindOneInputView.json"
         },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
+        "ofertaFormacao": {
+          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneInputView.json"
         }
       },
-      "description": "Dados de entrada para a atualização de um Evento.",
+      "required": ["nome", "ano", "campus", "ofertaFormacao"],
+      "description": "Dados de entrada para a criação de um calendário letivo.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EventoInputUpdateView",
+      "x-ladesa-schema-entity-id": "CalendarioLetivoInputCreateView",
       "additionalProperties": false
     },
-    "EventoListResultView": {
+    "CalendarioLetivoInputUpdateView": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EventoListResultView.json",
+      "$id": "ladesa://domain/v4/CalendarioLetivoInputUpdateView.json",
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "description": "Nome do calendário letivo."
+        },
+        "ano": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535,
+          "description": "Ano do calendário letivo."
+        },
+        "campus": {
+          "$ref": "ladesa://domain/v4/CampusFindOneInputView.json"
+        },
+        "ofertaFormacao": {
+          "$ref": "ladesa://domain/v4/OfertaFormacaoFindOneInputView.json"
+        }
+      },
+      "description": "Dados de entrada para a atualização de um calendário letivo.",
+      "x-ladesa-schema-kind": "entity",
+      "x-ladesa-schema-entity-id": "CalendarioLetivoInputUpdateView",
+      "additionalProperties": false
+    },
+    "CalendarioLetivoListResultView": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/CalendarioLetivoListResultView.json",
       "type": "object",
       "properties": {
         "meta": {
@@ -10284,7 +10259,7 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "ladesa://domain/v4/EventoFindOneResultView.json"
+            "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
           },
           "description": "Resultados da busca atual."
         },
@@ -10294,570 +10269,9 @@
         }
       },
       "required": ["meta", "data", "links"],
-      "description": "Resultados da busca a Eventos.",
+      "description": "Resultados da busca a CalendarioLetivos.",
       "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EventoListResultView",
-      "additionalProperties": false,
-      "$defs": {
-        "Meta": {
-          "type": "object",
-          "properties": {
-            "itemsPerPage": {
-              "type": "integer",
-              "description": "Quantidade de itens por página."
-            },
-            "totalItems": {
-              "type": "integer",
-              "description": "Total de itens."
-            },
-            "currentPage": {
-              "type": "integer",
-              "description": "Página atual."
-            },
-            "totalPages": {
-              "type": "integer",
-              "description": "Quantidade total de páginas."
-            },
-            "search": {
-              "type": "string",
-              "description": "Termo textual da busca."
-            },
-            "sortBy": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/PaginationSortByView"
-              },
-              "description": "Ordenação."
-            },
-            "filter": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/PaginationFilterView"
-              },
-              "description": "Filtros."
-            }
-          },
-          "required": ["itemsPerPage", "totalItems", "currentPage", "totalPages", "search", "sortBy", "filter"],
-          "description": "Metadados dos resultados de busca.",
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedResultMetaView",
-          "additionalProperties": false
-        },
-        "Links": {
-          "type": "object",
-          "properties": {
-            "first": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "previous": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "current": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "next": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            },
-            "last": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
-            }
-          },
-          "required": ["first", "previous", "current", "next", "last"],
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedResultLinksView",
-          "additionalProperties": false
-        },
-        "PaginationSortByView": {
-          "type": "object",
-          "properties": {
-            "property": {
-              "type": "string",
-              "pattern": "^[\\D\\.]+$",
-              "description": "Propriedade ordenada."
-            },
-            "mode": {
-              "type": "string",
-              "pattern": "^(ASC|DESC)$",
-              "description": "Modo de ordenação."
-            }
-          },
-          "required": ["property", "mode"],
-          "description": "Configuração de ordenação de uma propriedade.",
-          "deprecated": true,
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedSortByView",
-          "additionalProperties": false
-        },
-        "PaginationFilterView": {
-          "type": "object",
-          "properties": {
-            "property": {
-              "type": "string",
-              "description": "Propriedade filtrada."
-            },
-            "restrictions": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "description": "Restrições de filtragem."
-            }
-          },
-          "required": ["property", "restrictions"],
-          "description": "Configuração de filtro por restrições de uma propriedade.",
-          "deprecated": true,
-          "x-ladesa-schema-kind": "entity",
-          "x-ladesa-schema-entity-id": "PaginatedFilterView",
-          "additionalProperties": false
-        }
-      }
-    },
-    "Etapa": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/Etapa.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid)."
-        },
-        "numero": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 255
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Número da etapa."
-        },
-        "dataInicio": {
-          "$ref": "#/$defs/date",
-          "description": "Data de início."
-        },
-        "dataTermino": {
-          "$ref": "#/$defs/date",
-          "description": "Data de término."
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Cor da etapa."
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivo.json",
-          "description": "Calendario."
-        },
-        "dateCreated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da criação do registro."
-        },
-        "dateUpdated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da alteração do registro."
-        },
-        "dateDeleted": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/date_time"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Data e hora da exclusão do registro."
-        }
-      },
-      "required": ["id", "numero", "dataInicio", "dataTermino", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "Etapa.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "Etapa",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        },
-        "date": {
-          "type": "string",
-          "format": "date",
-          "description": "Date ISO 8601."
-        },
-        "date_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "EtapaView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EtapaView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid)."
-        },
-        "numero": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 255
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Número da etapa."
-        },
-        "dataInicio": {
-          "$ref": "#/$defs/date",
-          "description": "Data de início."
-        },
-        "dataTermino": {
-          "$ref": "#/$defs/date",
-          "description": "Data de término."
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Cor da etapa."
-        },
-        "dateCreated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da criação do registro."
-        },
-        "dateUpdated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da alteração do registro."
-        },
-        "dateDeleted": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/date_time"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Data e hora da exclusão do registro."
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
-        }
-      },
-      "required": ["id", "numero", "dataInicio", "dataTermino", "cor", "dateCreated", "dateUpdated", "dateDeleted", "calendario"],
-      "description": "Visão completa de uma Etapa.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EtapaView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        },
-        "date": {
-          "type": "string",
-          "format": "date",
-          "description": "Date ISO 8601."
-        },
-        "date_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "EtapaFindOneInputView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EtapaFindOneInputView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid).",
-          "x-ladesa-schema-constraint-entity-partial-of-id": "Etapa"
-        }
-      },
-      "required": ["id"],
-      "description": "Dados de entrada para encontrar uma Etapa por ID.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EtapaFindOneInputView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        }
-      }
-    },
-    "EtapaFindOneResultView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EtapaFindOneResultView.json",
-      "type": "object",
-      "properties": {
-        "id": {
-          "$ref": "#/$defs/id_uuid",
-          "description": "Identificador do registro (uuid)."
-        },
-        "numero": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 255
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Número da etapa."
-        },
-        "dataInicio": {
-          "$ref": "#/$defs/date",
-          "description": "Data de início."
-        },
-        "dataTermino": {
-          "$ref": "#/$defs/date",
-          "description": "Data de término."
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Cor da etapa."
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneResultView.json"
-        },
-        "dateCreated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da criação do registro."
-        },
-        "dateUpdated": {
-          "$ref": "#/$defs/date_time",
-          "description": "Data e hora da alteração do registro."
-        },
-        "dateDeleted": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/date_time"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "description": "Data e hora da exclusão do registro."
-        }
-      },
-      "required": ["id", "numero", "dataInicio", "dataTermino", "cor", "calendario", "dateCreated", "dateUpdated", "dateDeleted"],
-      "description": "Visão FindOne de uma Etapa.",
-      "x-ladesa-schema-entity-partial-of-id": "EtapaView",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EtapaFindOneResultView",
-      "additionalProperties": false,
-      "$defs": {
-        "id_uuid": {
-          "type": "string",
-          "format": "uuid",
-          "description": "Identificador Único Universal."
-        },
-        "date": {
-          "type": "string",
-          "format": "date",
-          "description": "Date ISO 8601."
-        },
-        "date_time": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Date time ISO 8601."
-        }
-      }
-    },
-    "EtapaInputCreateView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EtapaInputCreateView.json",
-      "type": "object",
-      "properties": {
-        "numero": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 255
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "dataInicio": {
-          "$ref": "#/$defs/date"
-        },
-        "dataTermino": {
-          "$ref": "#/$defs/date"
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
-        }
-      },
-      "required": ["numero", "dataInicio", "dataTermino", "cor", "calendario"],
-      "description": "Dados de entrada para a criação de uma Etapa.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EtapaInputCreateView",
-      "additionalProperties": false,
-      "$defs": {
-        "date": {
-          "type": "string",
-          "format": "date",
-          "description": "Date ISO 8601."
-        }
-      }
-    },
-    "EtapaInputUpdateView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EtapaInputUpdateView.json",
-      "type": "object",
-      "properties": {
-        "numero": {
-          "anyOf": [
-            {
-              "type": "integer",
-              "minimum": 0,
-              "maximum": 255
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "dataInicio": {
-          "$ref": "#/$defs/date"
-        },
-        "dataTermino": {
-          "$ref": "#/$defs/date"
-        },
-        "cor": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "calendario": {
-          "$ref": "ladesa://domain/v4/CalendarioLetivoFindOneInputView.json"
-        }
-      },
-      "description": "Dados de entrada para a atualização de uma Etapa.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EtapaInputUpdateView",
-      "additionalProperties": false,
-      "$defs": {
-        "date": {
-          "type": "string",
-          "format": "date",
-          "description": "Date ISO 8601."
-        }
-      }
-    },
-    "EtapaListResultView": {
-      "$schema": "https://json-schema.org/draft/2020-12/schema",
-      "$id": "ladesa://domain/v4/EtapaListResultView.json",
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/$defs/Meta",
-          "description": "Metadados da busca."
-        },
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "ladesa://domain/v4/EtapaFindOneResultView.json"
-          },
-          "description": "Resultados da busca atual."
-        },
-        "links": {
-          "$ref": "#/$defs/Links",
-          "description": "Links da busca."
-        }
-      },
-      "required": ["meta", "data", "links"],
-      "description": "Resultados da busca a Etapas.",
-      "x-ladesa-schema-kind": "entity",
-      "x-ladesa-schema-entity-id": "EtapaListResultView",
+      "x-ladesa-schema-entity-id": "CalendarioLetivoListResultView",
       "additionalProperties": false,
       "$defs": {
         "Meta": {
@@ -16208,6 +15622,72 @@
         }
       }
     },
+    "GerarHorarioInput": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/GerarHorarioInput.json",
+      "type": "object",
+      "properties": {
+        "dataInicial": {
+          "$ref": "#/$defs/date"
+        },
+        "dataFinal": {
+          "$ref": "#/$defs/date"
+        },
+        "professores": {
+          "type": "array",
+          "items": {
+            "$ref": "ladesa://domain/v4/PerfilFindOneResultView.json"
+          }
+        },
+        "turmas": {
+          "type": "array",
+          "items": {
+            "$ref": "ladesa://domain/v4/TurmaFindOneResultView.json"
+          }
+        },
+        "intervalos": {
+          "type": "array",
+          "items": {
+            "$ref": "ladesa://domain/v4/IntervaloDeTempoFindOneResultView.json"
+          }
+        }
+      },
+      "required": ["dataInicial", "dataFinal", "professores", "turmas", "intervalos"],
+      "$defs": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
+        }
+      }
+    },
+    "GerarHorarioOutput": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "ladesa://domain/v4/GerarHorarioOutput.json",
+      "type": "object",
+      "properties": {
+        "dataInicial": {
+          "$ref": "#/$defs/date"
+        },
+        "dataFinal": {
+          "$ref": "#/$defs/date"
+        },
+        "aulas": {
+          "type": "array",
+          "items": {
+            "$ref": "ladesa://domain/v4/HorarioGeradoAulaFindOneInputView.json"
+          }
+        }
+      },
+      "required": ["dataInicial", "dataFinal", "aulas"],
+      "$defs": {
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date ISO 8601."
+        }
+      }
+    },
     "Tokens": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
       "$id": "ladesa://domain/v4/Tokens.json",
@@ -16462,7 +15942,12 @@
         "HorarioGeradoAulaFindOneResultView",
         "HorarioGeradoAulaListResultView",
         "HorarioGeradoAulaInputCreateView",
-        "HorarioGeradoAulaInputUpdateView"
+        "HorarioGeradoAulaInputUpdateView",
+        "GerarHorario",
+        "GerarHorarioInput",
+        "GerarHorarioOutput",
+        "CalendarioDias_FindInput_View",
+        "CalendarioDias_FindResult_View"
       ],
       "description": "Define os nomes de indentificação das entidades."
     }

@@ -15,4 +15,4 @@ set -euo pipefail;
 
 # podman run --rm -v $(pwd):/pwd -w /pwd -it ${IMG_SHA} $@;
 
-bunx quicktype@latest $@;
+bunx quicktype@22 $@;

@@ -382,4 +382,6 @@ enum Tokens {
 
   GerarHorarioInput: "GerarHorarioInput",
   GerarHorarioOutput: "GerarHorarioOutput",
+  CalendarioDias_FindInput_View: "CalendarioDias_FindInput_View",
+  CalendarioDias_FindResult_View: "CalendarioDias_FindResult_View",
 }
