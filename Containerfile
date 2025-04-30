@@ -7,6 +7,8 @@ FROM base AS devcontainer
 RUN apt install -y git unzip curl;
 
 ENV BUN_INSTALL=/usr/local
+ENV BUN_INSTALL_CACHE_DIR=/usr/lib/bun/cache
+
 RUN curl -fsSL https://bun.sh/install | bash
 ENV PATH="${PATH}:${BUN_INSTALL}/bin"
 
@@ -22,5 +24,8 @@ RUN apt install -y sudo \
 
 RUN mkdir -p /var/lib/ladesa-ro/sources/domain \
     && chown -R debian:debian /var/lib/ladesa-ro/sources/domain
+
+RUN mkdir -p /usr/lib/bun \
+    && chown -R debian:debian /usr/lib/bun
 
 USER debian

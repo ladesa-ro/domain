@@ -25,6 +25,7 @@
   "dependencies": {
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "^2.29.2",
-    "nx": "^20.8.0"
+    "nx": "^20.8.0",
+    "quicktype": "22"
   }
 }

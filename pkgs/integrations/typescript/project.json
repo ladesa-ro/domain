@@ -12,7 +12,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "bash ./.tools/quicktype.sh --src-lang schema --src 'pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json#$defs/' -o '{projectRoot}/lib/ladesa.domain.v4.ts' --just-types --no-nice-property-names --no-runtime-typecheck --acronym-style original",
+          "bun x quicktype --src-lang schema --src 'pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json#$defs/' -o '{projectRoot}/lib/ladesa.domain.v4.ts' --just-types --no-nice-property-names --no-runtime-typecheck --acronym-style original",
           "(cd '{projectRoot}'; biome format ./lib/ladesa.domain.v4.ts --write)"
         ],
         "parallel": false,

@@ -12,7 +12,7 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "bash ./.tools/quicktype.sh --src-lang schema --src 'pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json#$defs/' -o '{projectRoot}/ladesa-domain-v4-sln/Ladesa.Domain.v4/Ladesa.Domain.v4.cs' --lang csharp --namespace Ladesa.Domain.v4 --framework SystemTextJson"
+          "bun x quicktype --src-lang schema --src 'pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json#$defs/' -o '{projectRoot}/ladesa-domain-v4-sln/Ladesa.Domain.v4/Ladesa.Domain.v4.cs' --lang csharp --namespace Ladesa.Domain.v4 --framework SystemTextJson"
         ],
         "parallel": false,
         "cwd": "{workspaceRoot}"
