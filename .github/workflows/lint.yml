@@ -18,7 +18,7 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
-          imageFrom: ghcr.io/ladesa-ro/domain/devcontainer
+          imageName: ghcr.io/ladesa-ro/domain/devcontainer
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           push: always
 
@@ -44,7 +44,7 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
-          imageFrom: ghcr.io/ladesa-ro/domain/devcontainer
+          cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
             bun install;
             bun run changeset:status;
@@ -61,7 +61,7 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
-          imageFrom: ghcr.io/ladesa-ro/domain/devcontainer
+          cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
             bun install;
             bun run all:lint:check;
