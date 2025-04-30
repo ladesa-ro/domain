@@ -12,6 +12,7 @@
     "changeset:add": "changeset add",
     "changeset:tag": "changeset tag",
     "changeset:version": "changeset version && nx run-many -t patch-version",
+    "changeset:status": "changeset status --since=origin/main",
     "all:lint:check": "nx run-many -t lint:check && biome lint .",
     "all:generate": "nx run-many -t generate",
     "all:lint:fix": "nx run-many -t lint:fix && biome lint --write .",
