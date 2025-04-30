@@ -3,7 +3,7 @@
   "name": "@ladesa-ro/domain",
   "build": {
     "dockerfile": "../Containerfile",
-    "target": "devcontainer",
+    "target": "devcontainer-ci",
     "context": "../"
   },
   "shutdownAction": "stopContainer",
@@ -13,10 +13,15 @@
   "postAttachCommand": "sudo chown -R debian:debian /var/lib/ladesa-ro/sources/domain",
   "customizations": {
     "vscode": {
-      "extensions": ["typespec.typespec-vscode", "biomejs.biome"],
+      "extensions": [
+        "typespec.typespec-vscode",
+        "biomejs.biome"
+      ],
       "settings": {
         "terminal.integrated.profiles.linux": {
-          "bash": { "path": "/bin/bash" }
+          "bash": {
+            "path": "/bin/bash"
+          }
         },
         "terminal.integrated.defaultProfile.linux": "bash"
       }
