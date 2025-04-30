@@ -26,13 +26,12 @@ jobs:
 
       - run: git checkout pr-${{ github.event.pull_request.number }}
 
-      - name: install pnpm@8.3.1
-        run: npm i -g pnpm@8.3.1
-
-      - run: pnpm install
-
-      # Enforce a changeset file to be present
-      - run: pnpm exec changeset status --since=main
+      - name: Build and run dev container task
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: |
+            bun install;
+            bun run version:check;
 
   lint:
     name: Lint
