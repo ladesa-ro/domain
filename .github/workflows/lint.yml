@@ -12,6 +12,11 @@ jobs:
   prebuild-devcontainer:
     name: Prebuild dev container
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       
