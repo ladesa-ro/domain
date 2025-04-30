@@ -31,11 +31,13 @@ jobs:
 
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
+        # https://github.com/devcontainers/ci/blob/main/docs/github-action.md#inputs
         with:
-          configFile: .devcontainer/ci/devcontainer.json
+          configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           imageName: ghcr.io/ladesa-ro/domain/devcontainer
-          push: always
+          refFilterForPush: refs/heads/main
+          push: filter
 
   enforce-changeset:
     name: Enforce Changeset
@@ -54,9 +56,10 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
-          configFile: .devcontainer/ci/devcontainer.json
+          configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
+            bun install --frozen-lockfile;
             bun run changeset:status;
 
   lint:
@@ -71,9 +74,10 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
-          configFile: .devcontainer/ci/devcontainer.json
+          configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
+            bun install --frozen-lockfile;
             bun run all:lint:check;
             bun run all:generate;
 

@@ -29,9 +29,3 @@ RUN mkdir -p /usr/lib/bun \
     && chown -R debian:debian /usr/lib/bun
 
 USER debian
-
-FROM devcontainer AS devcontainer-ci
-
-COPY . /var/lib/ladesa-ro/sources/domain
-WORKDIR /var/lib/ladesa-ro/sources/domain
-RUN bun install --frozen-lockfile;
