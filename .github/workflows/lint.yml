@@ -31,7 +31,7 @@ jobs:
         with:
           runCmd: |
             bun install;
-            bun run version:check;
+            bun run changeset:status;
 
   lint:
     name: Lint
