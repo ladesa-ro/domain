@@ -40,17 +40,15 @@ jobs:
     if: (github.event_name == 'pull_request' || github.event_name == 'merge_group') && github.event.pull_request.title != 'Version Packages'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
 
-      - name: install pnpm@8.3.1
-        run: npm i -g pnpm@8.3.1
-      - run: pnpm install
-      - run: pnpm run lint
-      - run: pnpm run prettier-check
-      - run: pnpm run build
-      - run: pnpm run type-check
+      - name: Build and run dev container task
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: |
+            bun install;
+            bun run all:lint:check;
+            bun run all:generate;
+
       - name: Ensure clean git workspace
         run: git diff --name-only --exit-code
 
