@@ -4,7 +4,6 @@ RUN apt update -y;
 
 FROM base AS devcontainer
 
-
 RUN apt install -y git unzip curl;
 
 ENV BUN_INSTALL=/usr/local
