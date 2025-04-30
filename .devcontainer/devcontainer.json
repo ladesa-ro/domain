@@ -1,4 +1,4 @@
-{ 
+{
   "name": "@ladesa-ro/domain",
   "build": {
     "dockerfile": "../Containerfile",
@@ -15,7 +15,7 @@
       "extensions": ["typespec.typespec-vscode", "biomejs.biome"],
       "settings": {
         "terminal.integrated.profiles.linux": {
-          "bash":   { "path": "/bin/bash"  }
+          "bash": { "path": "/bin/bash" }
         },
         "terminal.integrated.defaultProfile.linux": "bash"
       }

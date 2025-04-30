@@ -12,11 +12,13 @@ jobs:
   prebuild-devcontainer:
     name: Prebuild dev container
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
       attestations: write
       id-token: write
+
     steps:
       - uses: actions/checkout@v4
       
@@ -33,16 +35,14 @@ jobs:
           imageName: ghcr.io/ladesa-ro/domain/devcontainer
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           push: always
+          runCmd: |
+            bun install --frozen-lockfile;
 
   enforce-changeset:
     name: Enforce Changeset
-
-    runs-on: ubuntu-latest
-
-    needs: [prebuild-devcontainer]
-
     if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'
-
+    runs-on: ubuntu-latest
+    needs: [prebuild-devcontainer]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -50,7 +50,6 @@ jobs:
           ref: main
 
       - run: git fetch origin ${{ github.event.pull_request.head.sha }}:pr-${{ github.event.pull_request.number }}
-
       - run: git checkout pr-${{ github.event.pull_request.number }}
 
       - name: Build and run dev container task
@@ -58,7 +57,6 @@ jobs:
         with:
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
-            bun install;
             bun run changeset:status;
 
   lint:
@@ -75,7 +73,6 @@ jobs:
         with:
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
-            bun install;
             bun run all:lint:check;
             bun run all:generate;
 
