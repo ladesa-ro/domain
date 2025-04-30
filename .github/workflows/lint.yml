@@ -12,11 +12,13 @@ jobs:
   prebuild-devcontainer:
     name: Prebuild dev container
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
       attestations: write
       id-token: write
+
     steps:
       - uses: actions/checkout@v4
       
@@ -27,22 +29,21 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and run dev container task
+      - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
+        # https://github.com/devcontainers/ci/blob/main/docs/github-action.md#inputs
         with:
-          imageName: ghcr.io/ladesa-ro/domain/devcontainer
+          configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
-          push: always
+          imageName: ghcr.io/ladesa-ro/domain/devcontainer
+          refFilterForPush: refs/heads/main
+          push: filter
 
   enforce-changeset:
     name: Enforce Changeset
-
-    runs-on: ubuntu-latest
-
-    needs: [prebuild-devcontainer]
-
     if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'
-
+    runs-on: ubuntu-latest
+    needs: [prebuild-devcontainer]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -50,15 +51,15 @@ jobs:
           ref: main
 
       - run: git fetch origin ${{ github.event.pull_request.head.sha }}:pr-${{ github.event.pull_request.number }}
-
       - run: git checkout pr-${{ github.event.pull_request.number }}
 
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
+          configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
-            bun install;
+            bun install --frozen-lockfile;
             bun run changeset:status;
 
   lint:
@@ -73,9 +74,10 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
+          configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
-            bun install;
+            bun install --frozen-lockfile;
             bun run all:lint:check;
             bun run all:generate;
 

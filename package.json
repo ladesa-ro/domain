@@ -13,6 +13,8 @@
     "changeset:tag": "changeset tag",
     "changeset:version": "changeset version && nx run-many -t patch-version",
     "changeset:status": "changeset status --since=origin/main",
+    "format:fix": "biome format .",
+    "format:check": "biome format . --check",
     "all:lint:check": "nx run-many -t lint:check && biome lint .",
     "all:generate": "nx run-many -t generate",
     "all:lint:fix": "nx run-many -t lint:fix && biome lint --write .",
@@ -25,6 +27,7 @@
   "dependencies": {
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "^2.29.2",
-    "nx": "^20.8.0"
+    "nx": "^20.8.0",
+    "quicktype": "22"
   }
 }
