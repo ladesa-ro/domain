@@ -2,9 +2,11 @@
   "mode": "pre",
   "tag": "alpha",
   "initialVersions": {
-    "@ladesa-ro/domain.v4.definitions": "4.0.0-alpha",
-    "@ladesa-ro/domain.v4.integrations.dotnet": "4.0.0-alpha",
-    "@ladesa-ro/domain.v4.integrations.typescript": "4.0.0-alpha"
+    "@ladesa-ro/domain.v4.root": "4.0.0-alpha.0",
+    "@ladesa-ro/domain.v4.definitions": "4.0.0-alpha.0",
+    "@ladesa-ro/domain.v4.integrations.dotnet": "4.0.0-alpha.0",
+    "@ladesa-ro/domain.v4.integrations.json-schema": "4.0.0-alpha.0",
+    "@ladesa-ro/domain.v4.integrations.typescript": "4.0.0-alpha.0"
   },
   "changesets": []
 }

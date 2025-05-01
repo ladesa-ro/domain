@@ -1,6 +1,7 @@
 {
   "name": "@ladesa-ro/domain.v4.root",
   "private": true,
+  "version": "4.0.0-alpha.0",
   "workspaces": [
     "./",
     "./pkgs/definitions",

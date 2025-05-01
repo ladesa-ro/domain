@@ -1,6 +1,6 @@
 {
   "name": "@ladesa-ro/domain.v4.definitions",
-  "version": "4.0.0-alpha",
+  "version": "4.0.0-alpha.0",
   "private": true,
   "type": "module",
   "scripts": {
