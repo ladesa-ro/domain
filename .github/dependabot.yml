@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: bun
+    directories:
+      - "/"
+      - "/pkgs/definitions"
+      - "/pkgs/integrations/typescript"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 10
+    groups:
+      dev-dependencies:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: github-actions
+    directories:
+      - "/.github/actions/*"
+      - "/.github/workflows"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 10
