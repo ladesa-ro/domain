@@ -16,6 +16,10 @@ jobs:
     outputs:
       has_changesets: ${{ steps.changeset.outputs.hasChangesets }}
 
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
