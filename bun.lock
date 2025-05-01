@@ -12,7 +12,7 @@
     },
     "pkgs/definitions": {
       "name": "@ladesa-ro/domain.v4.definitions",
-      "version": "4.0.0-alpha",
+      "version": "4.0.0-alpha.0",
       "devDependencies": {
         "@typespec/compiler": "^1.0.0-rc.1",
         "@typespec/json-schema": "^1.0.0-rc.1",
@@ -20,14 +20,14 @@
     },
     "pkgs/integrations/dotnet": {
       "name": "@ladesa-ro/domain.v4.integrations.dotnet",
-      "version": "4.0.0-alpha",
+      "version": "4.0.0-alpha.0",
     },
     "pkgs/integrations/json-schema": {
       "name": "@ladesa-ro/domain.v4.integrations.json-schema",
     },
     "pkgs/integrations/typescript": {
       "name": "@ladesa-ro/domain.v4.integrations.typescript",
-      "version": "4.0.0-alpha",
+      "version": "4.0.0-alpha.0",
     },
   },
   "packages": {

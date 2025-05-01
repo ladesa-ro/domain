@@ -1,6 +1,7 @@
 {
   "name": "@ladesa-ro/domain.v4.root",
   "private": true,
+  "version": "4.0.0-alpha.0",
   "workspaces": [
     "./",
     "./pkgs/definitions",
@@ -13,6 +14,8 @@
     "changeset:tag": "changeset tag",
     "changeset:version": "changeset version && nx run-many -t patch-version",
     "changeset:status": "changeset status --since=origin/main",
+    "changeset:pre:enter": "changeset pre enter alpha",
+    "changeset:pre:exit": "changeset pre exit",
     "format:fix": "biome format . --write",
     "format:check": "biome format .",
     "all:publish": "echo no publish command; exit 1;",

@@ -1,6 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: bun
+    rebase-strategy: "auto"
     directories:
       - "/"
       - "/pkgs/definitions"
@@ -18,6 +19,7 @@ updates:
           - "patch"
 
   - package-ecosystem: github-actions
+    rebase-strategy: "auto"
     directories:
       - "/.github/actions/*"
       - "/.github/workflows"
