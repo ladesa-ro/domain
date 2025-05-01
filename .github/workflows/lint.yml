@@ -1,3 +1,5 @@
+# file based on https://github.com/vercel/vercel/blob/5b72741f1c681bbed8ccfe315f3e1126b3f4bde2/.github/workflows/test-lint.yml
+
 name: Lint
 
 on:
@@ -21,7 +23,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
