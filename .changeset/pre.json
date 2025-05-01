@@ -1,0 +1,10 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "@ladesa-ro/domain.v4.definitions": "4.0.0-alpha",
+    "@ladesa-ro/domain.v4.integrations.dotnet": "4.0.0-alpha",
+    "@ladesa-ro/domain.v4.integrations.typescript": "4.0.0-alpha"
+  },
+  "changesets": []
+}
