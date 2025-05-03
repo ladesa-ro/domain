@@ -4,6 +4,10 @@ on:
       cache-from:
         required: false
         type: string
+      image-name:
+        required: false
+        type: string
+        default: ghcr.io/ladesa-ro/domain/devcontainer
 
 jobs:
   prebuild-devcontainer:
@@ -35,6 +39,6 @@ jobs:
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ${{ inputs.cache-from }}
-          imageName: ghcr.io/ladesa-ro/domain/devcontainer
+          imageName: ${{ inputs.image-name }}
           refFilterForPush: refs/heads/main
-          push: filter
+          push: ${{ github.ref == 'refs/heads/main' && 'filter' || 'never' }}
