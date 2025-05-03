@@ -38,7 +38,7 @@ jobs:
       - run: git checkout pr-${{ github.event.pull_request.number }}
 
       - name: Enforce Changeset with changeset:status
-        uses: devcontainers/ci@v0.3
+        uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         if: ${{ github.event.pull_request.user.login != 'changesets[bot]' }}
         with:
           configFile: .devcontainer/devcontainer.json
@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Static Code and Code Generation Checks
-        uses: devcontainers/ci@v0.3
+        uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'
         with:
           configFile: .devcontainer/devcontainer.json

@@ -3,6 +3,7 @@
   "version": "4.0.0-alpha.0",
   "private": true,
   "scripts": {
-    "patch-version": "./.scripts/patch-version.sh"
+    "patch-version": "./.scripts/patch-version.sh",
+    "pkg:publish": "exit 1;"
   }
 }
