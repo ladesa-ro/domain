@@ -1,5 +1,3 @@
-# this file was based on https://github.com/wobsoriano/vue-clerk/blob/6aba0600b5dbaff23c7ff40d94552b83d4c4b1fc/.github/workflows/dependabot.yml
-
 name: Add changeset to Dependabot updates
 
 on:
@@ -7,28 +5,21 @@ on:
     types: [opened, synchronize, labeled]
 
 jobs:
-  dependabot:
-    name: Update Dependabot PR
+  renovate:
+    name: Update Renovate PR
+    if: contains(github.event.pull_request.labels.*.name, 'dependencies')
     
     runs-on: ubuntu-latest
-    
-    if: contains(github.event.pull_request.labels.*.name, 'dependencies')
 
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
-
       - name: Update PR
-        uses: StafflinePeoplePlus/dependabot-changesets@4844c33bad364143ee39ef4150c60409f306ed21 
+        uses: mscharley/dependency-changesets-action@648188b9f7d7cc54e59bcd367f99706325145257
         with:
-          owner: ladesa-ro
-          repo: domain
-          pr-number: ${{ github.event.pull_request.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          use-conventional-commits: true
+          commit-message: 'chore(deps): changeset for dependency update [skip dependabot]'
+          author-name: github-actions[bot]
+          author-email: github-actions[bot]@users.noreply.github.com
