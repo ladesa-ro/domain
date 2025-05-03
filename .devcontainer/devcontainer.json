@@ -13,12 +13,7 @@
   "postAttachCommand": "sudo chown -R debian:debian /var/lib/ladesa-ro/sources/domain",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "typespec.typespec-vscode",
-        "biomejs.biome",
-        "redhat.vscode-yaml",
-        "ms-dotnettools.csdevkit"
-      ],
+      "extensions": ["typespec.typespec-vscode", "biomejs.biome", "redhat.vscode-yaml", "ms-dotnettools.csdevkit"],
       "settings": {
         "terminal.integrated.profiles.linux": {
           "bash": { "path": "/bin/bash" }

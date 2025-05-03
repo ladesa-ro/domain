@@ -46,6 +46,9 @@ jobs:
     environment: 
       name: ci-pkg-npm
 
+    permissions:
+      contents: read
+
     steps:
       - name: Publish into NPM
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
@@ -67,6 +70,9 @@ jobs:
 
     environment: 
       name: ci-pkg-nuget
+
+    permissions:
+      contents: read
 
     steps:
       - name: Publish into NuGet
