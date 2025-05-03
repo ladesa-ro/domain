@@ -11,6 +11,25 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  should-check-for-changeset:
+
+    name: Determine whether to run changeset checks 
+    runs-on: ubuntu-latest
+
+    outputs:
+      run_checks: ${{ steps.gate.outputs.run_checks }}
+
+    steps:
+      - name: Determine whether to run changeset checks
+        id: gate
+        run: |
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" && \
+                "${{ github.event.pull_request.title }}" != "Version Packages" ]]; then
+            echo "run_checks=true" >> $GITHUB_OUTPUT
+          else
+            echo "run_checks=false" >> $GITHUB_OUTPUT
+          fi
+
   prebuild-devcontainer:
     name: Prebuild dev container
     runs-on: ubuntu-latest
@@ -43,9 +62,12 @@ jobs:
 
   enforce-changeset:
     name: Enforce Changeset
-    if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'
     runs-on: ubuntu-latest
-    needs: [prebuild-devcontainer]
+    
+    needs:
+      - prebuild-devcontainer
+      - should-check-for-changeset
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -55,8 +77,9 @@ jobs:
       - run: git fetch origin ${{ github.event.pull_request.head.sha }}:pr-${{ github.event.pull_request.number }}
       - run: git checkout pr-${{ github.event.pull_request.number }}
 
-      - name: Build and run dev container task
+      - name: Enforce Changeset with changeset:status
         uses: devcontainers/ci@v0.3
+        if: ${{ needs.should-check-for-changeset.outputs.run_checks == 'true' }}
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
@@ -66,15 +89,18 @@ jobs:
 
   lint:
     name: Lint
+
     timeout-minutes: 10
+
     runs-on: ubuntu-latest
     needs: [prebuild-devcontainer]
-    if: (github.event_name == 'pull_request' || github.event_name == 'merge_group') && github.event.pull_request.title != 'Version Packages'
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
+        if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
@@ -84,6 +110,7 @@ jobs:
             bun run all:generate;
 
       - name: Ensure clean git workspace
+        if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'  
         run: git diff --name-only --exit-code
 
   summary:
