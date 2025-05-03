@@ -1,4 +1,4 @@
-name: Release
+name: CI with Changesets - Version PR and Release
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
-    name: Release
+  changesets-ci:
+    name: Changesets CI
 
     runs-on: ubuntu-latest
 
@@ -31,7 +31,6 @@ jobs:
       - run: bun install --frozen-lockfile
 
       - id: changeset
-        name: Create Release Pull Request
         uses: changesets/action@v1
         with:
           version: bun run changeset:version
@@ -42,7 +41,7 @@ jobs:
     if: needs.release.outputs.has_changesets == 'false'
 
     runs-on: ubuntu-latest
-    needs: [release]
+    needs: [changesets-ci]
 
     steps:
       - name: Publish
