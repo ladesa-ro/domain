@@ -5,10 +5,10 @@ on:
     types: [opened, synchronize, labeled]
 
 jobs:
-  renovate:
+  dependabot:
     name: Update Dependabot PR
     if: contains(github.event.pull_request.labels.*.name, 'dependencies')
-    
+
     runs-on: ubuntu-latest
 
     permissions:
@@ -20,6 +20,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           use-conventional-commits: false
-          commit-message: 'chore(deps): changeset for dependency update [skip dependabot]'
+          commit-message: "chore(deps): changeset for dependency update [skip dependabot]"
           author-name: github-actions[bot]
           author-email: github-actions[bot]@users.noreply.github.com
