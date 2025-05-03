@@ -4,7 +4,7 @@ RUN apt update -y;
 
 FROM base AS devcontainer
 
-RUN apt install -y git unzip curl;
+RUN apt install -y git unzip curl jq;
 
 ENV BUN_INSTALL=/usr/local
 ENV BUN_INSTALL_CACHE_DIR=/usr/lib/bun/cache

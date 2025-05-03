@@ -2,8 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+
+    <PackageId>Ladesa.Domain.v4</PackageId>
+    <IsPackable>true</IsPackable>
+
+    <Authors>Ladesa</Authors>
+    <Authors>Gabriel R. Antunes</Authors>
+    <Company>Ladesa — Laboratório de Desenvolvimento de Softwares Acadêmicos</Company>
+
+    <PackageDescription>Domínio da Informação do Ladesa</PackageDescription>
+    <RepositoryUrl>https://github.com/ladesa-ro/domain</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
