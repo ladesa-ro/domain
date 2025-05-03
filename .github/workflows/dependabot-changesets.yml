@@ -1,0 +1,34 @@
+# this file was based on https://github.com/wobsoriano/vue-clerk/blob/6aba0600b5dbaff23c7ff40d94552b83d4c4b1fc/.github/workflows/dependabot.yml
+
+name: Add changeset to Dependabot updates
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, labeled]
+
+jobs:
+  dependabot:
+    name: Update Dependabot PR
+    
+    runs-on: ubuntu-latest
+    
+    if: contains(github.event.pull_request.labels.*.name, 'dependencies')
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Update PR
+        uses: StafflinePeoplePlus/dependabot-changesets@4844c33bad364143ee39ef4150c60409f306ed21 
+        with:
+          owner: ladesa-ro
+          repo: domain
+          pr-number: ${{ github.event.pull_request.number }}
+          token: ${{ secrets.GITHUB_TOKEN }}
