@@ -24,14 +24,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76
         with:
           version: "latest"
 
       - run: bun install --frozen-lockfile
 
       - id: changeset
-        uses: changesets/action@v1
+        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc
         with:
           version: bun run changeset:version
         env:
