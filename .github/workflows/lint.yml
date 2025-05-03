@@ -11,24 +11,6 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  should-check-for-changeset:
-
-    name: Determine whether to run changeset checks 
-    runs-on: ubuntu-latest
-
-    outputs:
-      run_checks: ${{ steps.gate.outputs.run_checks }}
-
-    steps:
-      - name: Determine whether to run changeset checks
-        id: gate
-        run: |
-          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" && \
-                "${{ github.event.pull_request.title }}" != "Version Packages" ]]; then
-            echo "run_checks=true" >> $GITHUB_OUTPUT
-          else
-            echo "run_checks=false" >> $GITHUB_OUTPUT
-          fi
 
   prebuild-devcontainer:
     name: Prebuild dev container
@@ -66,7 +48,6 @@ jobs:
     
     needs:
       - prebuild-devcontainer
-      - should-check-for-changeset
 
     steps:
       - uses: actions/checkout@v4
@@ -79,7 +60,7 @@ jobs:
 
       - name: Enforce Changeset with changeset:status
         uses: devcontainers/ci@v0.3
-        if: ${{ needs.should-check-for-changeset.outputs.run_checks == 'true' }}
+        if: ${{ github.event.pull_request.user.login != 'changesets[bot]' }}
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
