@@ -10,6 +10,10 @@ jobs:
     name: Prebuild dev container
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: prebuild-devcontainer-${{ github.sha }}
+      cancel-in-progress: false
+
     permissions:
       contents: read
       packages: write
