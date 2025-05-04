@@ -3,6 +3,9 @@
   "name": "@ladesa-ro/domain.v4.integrations.dotnet",
   "namedInputs": {
     "src": [
+      "{projectRoot}/ladesa-domain-v4-sln"
+    ],
+    "spec-src": [
       "{workspaceRoot}/pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json"
     ]
   },
@@ -20,10 +23,39 @@
       "outputs": [
         "{projectRoot}/ladesa-domain-v4-sln/Ladesa.Domain.v4/Ladesa.Domain.v4.cs"
       ],
-      "dependsOn": ["@ladesa-ro/domain.v4.integrations.json-schema:generate"],
+      "dependsOn": [
+        "@ladesa-ro/domain.v4.integrations.json-schema:generate"
+      ],
+      "inputs": [
+        "spec-src",
+        {
+          "dependentTasksOutputFiles": "**/*",
+          "transitive": true
+        }
+      ]
+    },
+    "build": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "dotnet build --configuration Release"
+        ],
+        "parallel": false,
+        "cwd": "{projectRoot}/ladesa-domain-v4-sln"
+      },
+      "outputs": [
+        "{projectRoot}/dist"
+      ],
+      "dependsOn": [
+        "generate"
+      ],
       "inputs": [
         "src",
-        { "dependentTasksOutputFiles": "**/*", "transitive": true }
+        {
+          "dependentTasksOutputFiles": "**/*",
+          "transitive": true
+        }
       ]
     }
   }
