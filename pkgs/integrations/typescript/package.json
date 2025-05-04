@@ -10,7 +10,6 @@
     "format:check": "biome format ./lib",
     "format:fix": "biome format ./lib --write",
     "code:check": "bun run format:check",
-    "code:fix": "bun run format:fix",
-    "pkg:publish": "exit 1;"
+    "code:fix": "bun run format:fix"
   }
 }
