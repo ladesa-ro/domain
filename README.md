@@ -50,12 +50,6 @@ Para começar a trabalhar com a Especificação do Ladesa, siga estes passos:
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [💖 Utilização](#-utilização)
-  - [Integração C# / DotNet](#integração-c--dotnet)
-    - [Instalar o pacote para dotnet](#instalar-o-pacote-para-dotnet)
-    - [Utilizar o pacote para dotnet](#utilizar-o-pacote-para-dotnet)
-  - [Integração TypeScript / JavaScript](#integração-typescript--javascript)
-    - [Instalar o pacote para TypeScript / JavaScript](#instalar-o-pacote-para-typescript--javascript)
-    - [Utilizar o pacote para TypeScript / JavaScript](#utilizar-o-pacote-para-typescript--javascript)
 - [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local)
   - [Pré-requisitos](#pré-requisitos)
   - [Obter o código-fonte](#obter-o-código-fonte)
@@ -83,7 +77,9 @@ A Especificação do Ladesa pode ser utilizada por:
 
 - **Analistas de Sistemas:** Para entender como os dados são modelados e gerenciados dentro do ecossistema Ladesa.
 
-### Integração C# / DotNet
+<details>
+
+<summary>Integração C# / DotNet</summary>
 
 [![NuGet Package][nuget-package-src]][nuget-package-href] [![NuGet Stable Version][nuget-package-stable-version-src]][nuget-package-versions-href]
 
@@ -107,28 +103,38 @@ using Ladesa.Domain.v4;
 Arquivo arquivo = Arquivo.FromJson(jsonString);
 ```
 
-### Integração TypeScript / JavaScript
+</details>
+
+<details>
+
+<summary>Integração TypeScript / JavaScript</summary>
 
 [![NPM Package][npm-package-src]][npm-package-href] [![NPM Stable Version][npm-package-stable-version-src]][npm-package-versions-href]
 
 #### Instalar o pacote para TypeScript / JavaScript
 
 ```sh
-# npm
-npm install @ladesa-ro/domain.v4
-
 # pnpm
-pnpm add @ladesa-ro/domain.v4
+pnpm add -D @ladesa-ro/domain.v4.integrations.typescript
+
+# npm
+npm install -D @ladesa-ro/domain.v4.integrations.typescript
+
+# bun
+bun add -D @ladesa-ro/domain.v4.integrations.typescript
 
 # yarn
-yarn add @ladesa-ro/domain.v4
+yarn add -D @ladesa-ro/domain.v4.integrations.typescript
 ```
 
 #### Utilizar o pacote para TypeScript / JavaScript
 
 ```ts
-import type {} from "@ladesa-ro/domain.v4";
+import type {} from "@ladesa-ro/domain.v4.integrations.typescript";
 ```
+
+</details>
+
 
 ## 🧑‍💻 Desenvolvimento Local
 
@@ -259,13 +265,13 @@ Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conos
 
 <!-- Badges / Integrations / NPM -->
 
-[npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
-[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v4
+[npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain.v4.integrations.typescript-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
+[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v4.integrations.typescript
 
 <!-- Badges / Integrations / NPM / Versions -->
 
-[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v4?activeTab=versions
-[npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
+[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v4.integrations.typescript?activeTab=versions
+[npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain.v4.integrations.typescript&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
 
 <!-- Badges / Integrations / NuGet -->
 
