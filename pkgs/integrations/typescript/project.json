@@ -5,7 +5,7 @@
     "npm-publish"
   ],
   "namedInputs": {
-    "src": [
+    "spec-src": [
       "{workspaceRoot}/pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json"
     ]
   },
@@ -28,11 +28,25 @@
         "@ladesa-ro/domain.v4.integrations.json-schema:generate"
       ],
       "inputs": [
-        "src",
+        "spec-src",
         {
           "dependentTasksOutputFiles": "**/*",
           "transitive": true
         }
+      ]
+    },
+    "build": {
+      "cache": false,
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bun x nx run generate"
+        ],
+        "parallel": false,
+        "cwd": "{projectRoot}"
+      },
+      "dependsOn": [
+        "generate"
       ]
     }
   }
