@@ -1,6 +1,6 @@
 {
   "name": "@ladesa-ro/domain.v4.integrations.dotnet",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "private": true,
   "scripts": {
     "patch-version": "./.scripts/patch-version.sh",

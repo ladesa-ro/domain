@@ -1,5 +1,11 @@
 # @ladesa-ro/domain.v4.integrations.dotnet
 
+## 4.0.3
+
+### Patch Changes
+
+- 68a6197: chore: add license to package properties
+
 ## 4.0.2
 
 ### Patch Changes
