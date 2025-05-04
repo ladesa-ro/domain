@@ -75,7 +75,7 @@ jobs:
           runCmd: |
             bun install --frozen-lockfile
             bun x nx run-many --projects tag:npm-publish --target build
-            bun x nx exec --projects tag:npm-publish -- bun publish
+            bun x nx exec --projects tag:npm-publish -- bash -c '(bun publish --dry-run; exit 0;)' 
 
   ci-publish-nuget:
     if: needs.ci-changesets.outputs.has_changesets == 'false'
