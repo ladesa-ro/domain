@@ -74,6 +74,7 @@ jobs:
             BUN_CONFIG_TOKEN=${{ secrets.REGISTRY_TOKEN }}
           runCmd: |
             bun install --frozen-lockfile
+            bun x nx run-many --projects tag:npm-publish --target build
             bun x nx exec --projects tag:npm-publish -- bun publish
 
   ci-publish-nuget:
