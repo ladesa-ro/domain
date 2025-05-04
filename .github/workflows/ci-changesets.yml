@@ -68,7 +68,7 @@ jobs:
       - name: Publish into NPM
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         env:
-          NPM_CONFIG_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+          BUN_CONFIG_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
@@ -95,7 +95,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Publish into NuGet
+      - name: Build and Publish into NuGet
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         env:
           NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
@@ -106,6 +106,8 @@ jobs:
           
           runCmd: |
             cd pkgs/integrations/dotnet/ladesa-domain-v4-sln;
+
+            dotnet build --configuration Release;
 
             dotnet pack --configuration Release --output ./.nuget;
 
