@@ -1,5 +1,11 @@
 # @ladesa-ro/domain.v4.definitions
 
+## 4.0.1
+
+### Patch Changes
+
+- bf0c246: chore: trigger ci
+
 ## 4.0.0
 
 ### Patch Changes
