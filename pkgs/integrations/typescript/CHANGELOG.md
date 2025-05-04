@@ -1,5 +1,11 @@
 # @ladesa-ro/domain.v4.integrations.typescript
 
+## 4.0.3
+
+### Patch Changes
+
+- a76ea88: chore(pkgs/integrations/typescript): generate before publish
+
 ## 4.0.2
 
 ### Patch Changes
