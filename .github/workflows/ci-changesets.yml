@@ -71,7 +71,7 @@ jobs:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           env: |
-            BUN_CONFIG_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+            BUN_CONFIG_TOKEN=${{ secrets.REGISTRY_TOKEN }}
           runCmd: |
             bun install --frozen-lockfile
             bun x nx exec --projects tag:npm-publish -- bun publish
