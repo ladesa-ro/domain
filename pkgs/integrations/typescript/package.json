@@ -1,6 +1,6 @@
 {
   "name": "@ladesa-ro/domain.v4.integrations.typescript",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "private": false,
   "publishConfig": {
     "access": "public"
