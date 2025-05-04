@@ -18,7 +18,6 @@
     "format:fix": "biome format . --write",
     "format:check": "biome format .",
     "all:patch-version": "nx run-many -t patch-version",
-    "all:pkg:publish": "nx run-many -t pkg:publish",
     "all:lint:check": "nx run-many -t lint:check && biome lint .",
     "all:generate": "nx run-many -t generate",
     "all:lint:fix": "nx run-many -t lint:fix && biome lint --write .",

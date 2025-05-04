@@ -15,12 +15,15 @@ RUN cd /tmp \
     && mkdir -p "${DOTNET_INSTALL_DIR}" \
     && ./dotnet-install.sh --channel 9.0 --install-dir "${DOTNET_INSTALL_DIR}" \
     && rm dotnet-install.sh
+ENV PATH="${PATH}:${DOTNET_INSTALL_DIR}"
+
+RUN dotnet workload update
 
 ENV BUN_INSTALL=/usr/local
 ENV BUN_INSTALL_CACHE_DIR=/usr/lib/bun/cache
 
 RUN curl -fsSL https://bun.sh/install | bash
-ENV PATH="${PATH}:${BUN_INSTALL}/bin:${DOTNET_INSTALL_DIR}"
+ENV PATH="${PATH}:${BUN_INSTALL}/bin"
 
 ARG USERNAME=debian
 ARG USER_UID=1000

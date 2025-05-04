@@ -19,9 +19,13 @@
     <Version>4.0.1</Version>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <None Include="../../../../../LICENSE" Pack="true" Visible="false" PackagePath=""></None>
-    <None Include="../../../../../README.md" Pack="true" Visible="false" PackagePath=""></None>
+    <None Include="../../../../../LICENSE" Pack="true" Visible="true" PackagePath=""></None>
+    <None Include="../../../../../README.md" Pack="true" Visible="true" PackagePath=""></None>
   </ItemGroup>
 
   <ItemGroup>

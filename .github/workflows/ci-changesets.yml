@@ -67,12 +67,11 @@ jobs:
 
       - name: Publish into NPM
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
-        env:
-          BUN_CONFIG_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
-          
+          env: |
+            BUN_CONFIG_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
           runCmd: |
             bun install --frozen-lockfile
             bun x nx exec --projects tag:npm-publish -- bun publish
@@ -97,13 +96,13 @@ jobs:
 
       - name: Build and Publish into NuGet
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
-        env:
-          NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
-          NUGET_SERVER: ${{ secrets.NUGET_SERVER }}
+
         with:
           configFile: .devcontainer/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
-          
+          env: |
+            NUGET_TOKEN=${{ secrets.NUGET_TOKEN }}
+            NUGET_SERVER=${{ secrets.NUGET_SERVER }}
           runCmd: |
             cd pkgs/integrations/dotnet/ladesa-domain-v4-sln;
 
@@ -115,5 +114,5 @@ jobs:
 
             for pkg in ${pkgs[*]} ;
             do
-              dotnet nuget push ${pkg} --api-key "${NUGET_TOKEN}" -s ${NUGET_SERVER} --skip-duplicate
+              dotnet nuget push "${pkg}" --skip-duplicate --api-key "${NUGET_TOKEN}" -s "${NUGET_SERVER}"
             done

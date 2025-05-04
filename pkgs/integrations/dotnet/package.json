@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "patch-version": "./.scripts/patch-version.sh",
-    "pkg:publish": "exit 1;"
+    "build": "nx run build"
   }
 }
