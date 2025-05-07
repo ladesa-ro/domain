@@ -1,15 +1,9 @@
-<h1 align="center">Domínio da Informação</h1>
+# @ladesa-ro/domain
 
-<p align="center">Definição de dados e entidades do Ladesa</p>
+Definição de dados e entidades do Ladesa.
 
-<div align="center">
-  <a href="https://github.com/ladesa-ro/domain">
-    <img alt="Repositório de Código no GitHub" src="https://img.shields.io/badge/GitHub-Domain-118d3b?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=18181b&color=118d3b" />
-  </a>
-  <a href="https://docs.ladesa.com.br/developers/">
-    <img alt="Documentação" src="https://img.shields.io/badge/DOCS.LADESA-118d3b?style=for-the-badge&logo=readme&logoColor=white&label=Documenta%C3%A7%C3%A3o&labelColor=18181b" />
-  </a>
-</div>
+[![Repositório de Código no GitHub](https://img.shields.io/badge/GitHub-Domain-118d3b?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=18181b&color=118d3b)](https://github.com/ladesa-ro/domain)
+[![Documentação](https://img.shields.io/badge/DOCS.LADESA-118d3b?style=for-the-badge&logo=readme&logoColor=white&label=Documenta%C3%A7%C3%A3o&labelColor=18181b)](https://docs.ladesa.com.br/developers/)
 
 ## 🚀 O que você encontra aqui
 
@@ -23,27 +17,7 @@ Formatos e estruturas dos dados para comunicação entre sistemas.
 
 ### Artefatos de Integração
 
-[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json), pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos [gerados automaticamente][ladesa-domain-repo-automation].
-
-## 👽 O quê este projeto não é
-
-Você não encontra neste repositório as informações de como consumir e integrar aos nossos serviços em si. Para isso, indicamos que você consulte a documentação [Conectar — Ladesa Dev Docs](https://docs.ladesa.com.br/developers/connect/).
-
-Dessa forma, esta especificação foca em definir quais são os dados e informações pertinentes aos nossos sistemas de maneira detalhada.
-
-## 🧭 Por onde começar?
-
-Para começar a trabalhar com a Especificação do Ladesa, siga estes passos:
-
-- **Entender os sistemas do Ladesa:** Consulte a [documentação essencial para desenvolvedores][ladesa-docs-dev] para entender os conceitos fundamentais de nossos projetos.
-
-- **Consumir a especificação:** Veja como você pode integrar as modelagens das entidades em seus sistemas, consultando a seção [💖 Utilização](#-utilização).
-
-- **Obter o Código-fonte:** [Clone o repositório](#obter-o-código-fonte) e familiarize-se com a estrutura do projeto.
-
-- **Configurar o Ambiente de Desenvolvimento:** Siga as instruções na seção de [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local) para configurar seu ambiente de trabalho.
-
-- **Contribuir:** Veja como você pode ajudar a melhorar a especificação, consultando a seção [😊 Como Contribuir](#-como-contribuir).
+[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json) e pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos gerados automaticamente.
 
 ## Conteúdo
 
@@ -51,12 +25,6 @@ Para começar a trabalhar com a Especificação do Ladesa, siga estes passos:
 
 - [💖 Utilização](#-utilização)
 - [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local)
-  - [Pré-requisitos](#pré-requisitos)
-  - [Obter o código-fonte](#obter-o-código-fonte)
-  - [Instalar as dependências](#instalar-as-dependências)
-  - [Estrutura do projeto](#estrutura-do-projeto)
-  - [Gerar os artefatos da especificação](#gerar-os-artefatos-da-especificação)
-  - [Comandos](#comandos)
 - [😊 Como Contribuir](#-como-contribuir)
   - [1. Reportar Problemas](#1-reportar-problemas)
   - [2. Sugerir Melhorias](#2-sugerir-melhorias)
@@ -68,14 +36,6 @@ Para começar a trabalhar com a Especificação do Ladesa, siga estes passos:
 <!-- TOC end -->
 
 ## 💖 Utilização
-
-A Especificação do Ladesa pode ser utilizada por:
-
-- **Desenvolvedores:** Para criar e manter aplicações que fazem parte do ecossistema Ladesa, garantindo que os aplicativos sigam as mesmas regras de dados e integração.
-
-- **Integradores:** Para desenvolver integrações entre sistemas existentes e o Ladesa, assegurando interoperabilidade e conformidade com padrões estabelecidos.
-
-- **Analistas de Sistemas:** Para entender como os dados são modelados e gerenciados dentro do ecossistema Ladesa.
 
 <details>
 
@@ -140,6 +100,10 @@ import type {} from "@ladesa-ro/domain.v4.integrations.typescript";
 
 Para você realizar o desenvolvimento local, preparamos o guia a seguir.
 
+<details>
+
+<summary>Guia para Desenvolvimento Local</summary>
+
 ### Pré-requisitos
 
 Para o desenvolvimento local, é necessário preparar o seu ambiente de trabalho para mexer com este projeto.
@@ -201,6 +165,9 @@ Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 | `bun run all:format:check` | Checa as formatações dos arquivos.                  |
 | `bun run all:format:fix`   | Corrige as formatações inconsistêntes dos arquivos. |
 | `bun run all:code:check`   | Checagem de lint e formatação.                      |
+
+</details>
+
 
 </details>
 
