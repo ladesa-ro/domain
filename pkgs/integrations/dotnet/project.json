@@ -1,6 +1,9 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "@ladesa-ro/domain.v4.integrations.dotnet",
+  "tags": [
+    "integration-dotnet"
+  ],
   "namedInputs": {
     "src": [
       "{projectRoot}/ladesa-domain-v4-sln"

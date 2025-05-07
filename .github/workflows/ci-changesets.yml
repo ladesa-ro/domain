@@ -17,8 +17,10 @@ jobs:
       has_changesets: ${{ steps.changeset.outputs.hasChangesets }}
 
     permissions:
+      id-token: write
       contents: write
       pull-requests: write
+      issues: read
 
     steps:
       - name: Checkout Repo
@@ -34,6 +36,8 @@ jobs:
         uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc
         with:
           version: bun run changeset:version
+          setupGitUser: true
+          createGithubReleases: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -105,7 +109,11 @@ jobs:
             NUGET_TOKEN=${{ secrets.NUGET_TOKEN }}
             NUGET_SERVER=${{ secrets.NUGET_SERVER }}
           runCmd: |
+            bun install --frozen-lockfile;
+            
             cd pkgs/integrations/dotnet/ladesa-domain-v4-sln;
+
+            bun run build;
 
             dotnet build --configuration Release;
 
