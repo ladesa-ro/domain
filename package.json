@@ -25,12 +25,12 @@
     "all:format:fix": "nx run-many -t format:fix && biome format --write .",
     "all:code:check": "bun run all:lint:check && bun run all:format:check",
     "all:code:fix": "bun run all:lint:fix && bun run all:format:fix",
-    "all:chore:upgrade": "bun upgrade && bun update --latest && nx exec -- bun update --latest"
+    "all:chore:upgrade": "bun upgrade && bun update --latest && bun x nx exec --parallel 1 -- bun update --latest"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "^2.29.2",
-    "nx": "^20.8.1",
-    "quicktype": "23"
+    "@changesets/cli": "^2.29.3",
+    "nx": "21.0.0",
+    "quicktype": "^23.1.3"
   }
 }

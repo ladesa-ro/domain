@@ -1,16 +1,27 @@
 {
-  "$schema": "https://github.com/devcontainers/spec/raw/refs/heads/main/schemas/devContainer.schema.json",
-  "name": "@ladesa-ro/domain",
+  "name": "@ladesa-ro/domain.devcontainer",
+  
   "build": {
     "dockerfile": "../Containerfile",
     "target": "devcontainer",
     "context": "../"
   },
+
+  "runArgs": [
+    "--userns=keep-id"
+  ],
+
+  "containerUser": "vscode",
+  "updateRemoteUserUID": true,
+  "containerEnv": {
+    "HOME": "/home/vscode"
+  },
+
   "shutdownAction": "stopContainer",
+  
   "workspaceFolder": "/var/lib/ladesa-ro/sources/domain",
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/var/lib/ladesa-ro/sources/domain,type=bind,consistency=cached",
-  "postCreateCommand": "echo Ambiente pronto",
-  "postAttachCommand": "sudo chown -R debian:debian /var/lib/ladesa-ro/sources/domain",
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -27,7 +38,5 @@
         "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
-  },
-  "containerUser": "debian",
-  "remoteUser": "debian"
+  }
 }
