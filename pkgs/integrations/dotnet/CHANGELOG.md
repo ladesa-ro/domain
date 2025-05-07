@@ -1,5 +1,11 @@
 # @ladesa-ro/domain.v4.integrations.dotnet
 
+## 4.0.4
+
+### Patch Changes
+
+- 358a8a0: chore(ci-changesets/publish-nuget): generate code before build
+
 ## 4.0.3
 
 ### Patch Changes
