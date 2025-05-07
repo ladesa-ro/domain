@@ -60,7 +60,7 @@ using Ladesa.Domain.v4;
 - Conversão de uma `string` `JSON` para uma instância de alguma das classes
 
 ```cs
-Arquivo arquivo = Arquivo.FromJson(jsonString);
+Ambiente ambiente = Ambiente.FromJson(jsonString);
 ```
 
 </details>
@@ -135,8 +135,8 @@ bun install
 
 O projeto está organizado da seguinte forma:
 
-- pkgs/definitions: especificação feita com typespec
-- pkgs/integrations: pacotes gerados automaticamente para outras plataformas relevantes
+- [pkgs/definitions](./pkgs/definitions/): especificação feita com typespec
+- [pkgs/integrations](./pkgs/integrations/): pacotes gerados automaticamente para outras plataformas relevantes
 
 ### Gerar os artefatos da especificação
 
@@ -167,7 +167,6 @@ Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 | `bun run all:code:check`   | Checagem de lint e formatação.                      |
 
 </details>
-
 
 </details>
 
@@ -203,8 +202,7 @@ Se você tiver experiência com o projeto, pode ajudar revisando e sugerindo mel
 
 Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conosco:
 
-- **Email:** `em breve`.
-- **Comunidade:** Participe de discussões e interações na comunidade do Ladesa através do [Ladesa Community][ladesa-docs-community].
+- **Email:** `ladesa.sisgea@gmail.com`.
 - **GitHub Issues:** Para relatar bugs ou sugerir melhorias, utilize a seção de [Issues do GitHub][ladesa-domain-issues].
 
 ## 🤝 Licença
