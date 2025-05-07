@@ -18,6 +18,21 @@ updates:
           - "minor"
           - "patch"
 
+  - package-ecosystem: nuget
+    rebase-strategy: "auto"
+    directory: "/pkgs/integrations/dotnet/ladesa-domain-v4-sln"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    groups:
+      minor-patch:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
   - package-ecosystem: github-actions
     rebase-strategy: "auto"
     directories:
