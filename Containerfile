@@ -1,4 +1,4 @@
-FROM debian:12 AS base
+FROM mcr.microsoft.com/vscode/devcontainers/base:debian AS base
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update -y;
 
@@ -25,20 +25,20 @@ ENV BUN_INSTALL_CACHE_DIR=/usr/lib/bun/cache
 RUN curl -fsSL https://bun.sh/install | bash
 ENV PATH="${PATH}:${BUN_INSTALL}/bin"
 
-ARG USERNAME=debian
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+# ARG USERNAME=debian
+# ARG USER_UID=1000
+# ARG USER_GID=$USER_UID
 
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+# RUN groupadd --gid $USER_GID $USERNAME \
+#     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
-RUN apt install -y sudo \
-    && echo "${USERNAME} ALL=(root) NOPASSWD: ALL" > /etc/sudoers.d/debian
+# RUN apt install -y sudo \
+#     && echo "${USERNAME} ALL=(root) NOPASSWD: ALL" > /etc/sudoers.d/debian
 
-RUN mkdir -p /var/lib/ladesa-ro/sources/domain \
-    && chown -R debian:debian /var/lib/ladesa-ro/sources/domain
+# RUN mkdir -p /var/lib/ladesa-ro/sources/domain \
+#     && chown -R debian:debian /var/lib/ladesa-ro/sources/domain
 
-RUN mkdir -p /usr/lib/bun \
-    && chown -R debian:debian /usr/lib/bun
+# RUN mkdir -p /usr/lib/bun \
+#     && chown -R debian:debian /usr/lib/bun
 
-USER debian
+# USER debian

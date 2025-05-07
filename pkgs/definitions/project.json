@@ -1,0 +1,48 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "@ladesa-ro/domain.v4.definitions",
+  "tags": [
+    "definitions"
+  ],
+  "namedInputs": {
+    "src": [
+      "{projectRoot}/src/**/*",
+      "{projectRoot}/tspconfig*.yaml",
+      "{projectRoot}/package.json"
+    ]
+  },
+  "targets": {
+    "generate-json-schema": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "src"
+      ],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": [
+          "tsp compile --config tspconfig.yaml --output-dir '.generated' src/main.tsp"
+        ],
+        "parallel": false
+      },
+      "outputs": [
+        "{projectRoot}/.generated/json-schema/**/*"
+      ],
+      "dependsOn": [
+        "cleanup"
+      ]
+    },
+    "cleanup": {
+      "cache": false,
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": [
+          "rm -rf .generated"
+        ],
+        "parallel": false
+      },
+      "dependsOn": []
+    }
+  }
+}
