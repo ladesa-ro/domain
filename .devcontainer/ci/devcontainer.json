@@ -1,6 +1,6 @@
 {
   "name": "@ladesa-ro/domain.devcontainer.ci",
-  
+
   "build": {
     "dockerfile": "../../Containerfile",
     "target": "devcontainer",
@@ -8,7 +8,7 @@
   },
 
   "shutdownAction": "stopContainer",
-  
+
   "workspaceFolder": "/var/lib/ladesa-ro/ci/domain",
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/var/lib/ladesa-ro/ci/domain,type=bind,consistency=cached"
 }

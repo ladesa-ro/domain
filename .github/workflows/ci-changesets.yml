@@ -109,7 +109,11 @@ jobs:
             NUGET_TOKEN=${{ secrets.NUGET_TOKEN }}
             NUGET_SERVER=${{ secrets.NUGET_SERVER }}
           runCmd: |
+            bun install --frozen-lockfile;
+            
             cd pkgs/integrations/dotnet/ladesa-domain-v4-sln;
+
+            bun run build;
 
             dotnet build --configuration Release;
 
