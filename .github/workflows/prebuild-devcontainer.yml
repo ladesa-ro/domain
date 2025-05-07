@@ -37,7 +37,7 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         with:
-          configFile: .devcontainer/devcontainer.json
+          configFile: .devcontainer/ci/devcontainer.json
           cacheFrom: ${{ inputs.cache-from }}
           imageName: ${{ inputs.image-name }}
           refFilterForPush: refs/heads/main

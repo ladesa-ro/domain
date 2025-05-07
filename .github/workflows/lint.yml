@@ -29,7 +29,7 @@ jobs:
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         if: ${{ github.event.pull_request.user.login != 'changesets[bot]' }}
         with:
-          configFile: .devcontainer/devcontainer.json
+          configFile: .devcontainer/ci/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
             bun install --frozen-lockfile;
@@ -52,7 +52,7 @@ jobs:
         uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
         if: github.event_name == 'pull_request' && github.event.pull_request.title != 'Version Packages'
         with:
-          configFile: .devcontainer/devcontainer.json
+          configFile: .devcontainer/ci/devcontainer.json
           cacheFrom: ghcr.io/ladesa-ro/domain/devcontainer
           runCmd: |
             bun install --frozen-lockfile;

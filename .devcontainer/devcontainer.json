@@ -1,5 +1,5 @@
 {
-  "name": "@ladesa-ro/domain",
+  "name": "@ladesa-ro/domain.devcontainer",
   
   "build": {
     "dockerfile": "../Containerfile",
