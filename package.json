@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "^2.29.3",
+    "@changesets/cli": "^2.29.4",
     "nx": "21.0.3",
     "quicktype": "23"
   }
