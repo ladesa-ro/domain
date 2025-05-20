@@ -1,0 +1,46 @@
+name: "Reusable - Prebuild DevContainer"
+
+on:
+  workflow_call:
+    inputs:
+      cache-from:
+        required: false
+        type: string
+      image-name:
+        required: false
+        type: string
+        default: ghcr.io/ladesa-ro/domain/devcontainer
+
+jobs:
+  prebuild-devcontainer:
+    name: Prebuild dev container
+    runs-on: ubuntu-latest
+
+    concurrency:
+      group: prebuild-devcontainer-${{ github.sha }}
+      cancel-in-progress: false
+
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pre-build dev container image
+        uses: devcontainers/ci@8bf61b26e9c3a98f69cb6ce2f88d24ff59b785c6
+        with:
+          configFile: .devcontainer/ci/devcontainer.json
+          cacheFrom: ${{ inputs.cache-from }}
+          imageName: ${{ inputs.image-name }}
+          refFilterForPush: refs/heads/main
+          push: ${{ github.ref == 'refs/heads/main' && 'filter' || 'never' }}

@@ -1,15 +1,9 @@
-<h1 align="center">Domínio da Informação</h1>
+# @ladesa-ro/domain
 
-<p align="center">Definição de dados e entidades do Ladesa</p>
+Definição de dados e entidades do Ladesa.
 
-<div align="center">
-  <a href="https://github.com/ladesa-ro/domain">
-    <img alt="Repositório de Código no GitHub" src="https://img.shields.io/badge/GitHub-Domain-118d3b?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=18181b&color=118d3b" />
-  </a>
-  <a href="https://docs.ladesa.com.br/developers/">
-    <img alt="Documentação" src="https://img.shields.io/badge/DOCS.LADESA-118d3b?style=for-the-badge&logo=readme&logoColor=white&label=Documenta%C3%A7%C3%A3o&labelColor=18181b" />
-  </a>
-</div>
+[![Repositório de Código no GitHub](https://img.shields.io/badge/GitHub-Domain-118d3b?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=18181b&color=118d3b)](https://github.com/ladesa-ro/domain)
+[![Documentação](https://img.shields.io/badge/DOCS.LADESA-118d3b?style=for-the-badge&logo=readme&logoColor=white&label=Documenta%C3%A7%C3%A3o&labelColor=18181b)](https://docs.ladesa.com.br/developers/)
 
 ## 🚀 O que você encontra aqui
 
@@ -23,46 +17,14 @@ Formatos e estruturas dos dados para comunicação entre sistemas.
 
 ### Artefatos de Integração
 
-[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json), pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos [gerados automaticamente][ladesa-domain-repo-automation].
-
-## 👽 O quê este projeto não é
-
-Você não encontra neste repositório as informações de como consumir e integrar aos nossos serviços em si. Para isso, indicamos que você consulte a documentação [Conectar — Ladesa Dev Docs](https://docs.ladesa.com.br/developers/connect/).
-
-Dessa forma, esta especificação foca em definir quais são os dados e informações pertinentes aos nossos sistemas de maneira detalhada.
-
-## 🧭 Por onde começar?
-
-Para começar a trabalhar com a Especificação do Ladesa, siga estes passos:
-
-- **Entender os sistemas do Ladesa:** Consulte a [documentação essencial para desenvolvedores][ladesa-docs-dev] para entender os conceitos fundamentais de nossos projetos.
-
-- **Consumir a especificação:** Veja como você pode integrar as modelagens das entidades em seus sistemas, consultando a seção [💖 Utilização](#-utilização).
-
-- **Obter o Código-fonte:** [Clone o repositório](#obter-o-código-fonte) e familiarize-se com a estrutura do projeto.
-
-- **Configurar o Ambiente de Desenvolvimento:** Siga as instruções na seção de [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local) para configurar seu ambiente de trabalho.
-
-- **Contribuir:** Veja como você pode ajudar a melhorar a especificação, consultando a seção [😊 Como Contribuir](#-como-contribuir).
+[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json) e pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos gerados automaticamente.
 
 ## Conteúdo
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [💖 Utilização](#-utilização)
-  - [Integração C# / DotNet](#integração-c--dotnet)
-    - [Instalar o pacote para dotnet](#instalar-o-pacote-para-dotnet)
-    - [Utilizar o pacote para dotnet](#utilizar-o-pacote-para-dotnet)
-  - [Integração TypeScript / JavaScript](#integração-typescript--javascript)
-    - [Instalar o pacote para TypeScript / JavaScript](#instalar-o-pacote-para-typescript--javascript)
-    - [Utilizar o pacote para TypeScript / JavaScript](#utilizar-o-pacote-para-typescript--javascript)
 - [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local)
-  - [Pré-requisitos](#pré-requisitos)
-  - [Obter o código-fonte](#obter-o-código-fonte)
-  - [Instalar as dependências](#instalar-as-dependências)
-  - [Estrutura do projeto](#estrutura-do-projeto)
-  - [Gerar os artefatos da especificação](#gerar-os-artefatos-da-especificação)
-  - [Comandos](#comandos)
 - [😊 Como Contribuir](#-como-contribuir)
   - [1. Reportar Problemas](#1-reportar-problemas)
   - [2. Sugerir Melhorias](#2-sugerir-melhorias)
@@ -75,15 +37,9 @@ Para começar a trabalhar com a Especificação do Ladesa, siga estes passos:
 
 ## 💖 Utilização
 
-A Especificação do Ladesa pode ser utilizada por:
+<details>
 
-- **Desenvolvedores:** Para criar e manter aplicações que fazem parte do ecossistema Ladesa, garantindo que os aplicativos sigam as mesmas regras de dados e integração.
-
-- **Integradores:** Para desenvolver integrações entre sistemas existentes e o Ladesa, assegurando interoperabilidade e conformidade com padrões estabelecidos.
-
-- **Analistas de Sistemas:** Para entender como os dados são modelados e gerenciados dentro do ecossistema Ladesa.
-
-### Integração C# / DotNet
+<summary>Integração C# / DotNet</summary>
 
 [![NuGet Package][nuget-package-src]][nuget-package-href] [![NuGet Stable Version][nuget-package-stable-version-src]][nuget-package-versions-href]
 
@@ -104,35 +60,49 @@ using Ladesa.Domain.v4;
 - Conversão de uma `string` `JSON` para uma instância de alguma das classes
 
 ```cs
-Arquivo arquivo = Arquivo.FromJson(jsonString);
+Ambiente ambiente = Ambiente.FromJson(jsonString);
 ```
 
-### Integração TypeScript / JavaScript
+</details>
+
+<details>
+
+<summary>Integração TypeScript / JavaScript</summary>
 
 [![NPM Package][npm-package-src]][npm-package-href] [![NPM Stable Version][npm-package-stable-version-src]][npm-package-versions-href]
 
 #### Instalar o pacote para TypeScript / JavaScript
 
 ```sh
-# npm
-npm install @ladesa-ro/domain.v4
-
 # pnpm
-pnpm add @ladesa-ro/domain.v4
+pnpm add -D @ladesa-ro/domain.v4.integrations.typescript
+
+# npm
+npm install -D @ladesa-ro/domain.v4.integrations.typescript
+
+# bun
+bun add -D @ladesa-ro/domain.v4.integrations.typescript
 
 # yarn
-yarn add @ladesa-ro/domain.v4
+yarn add -D @ladesa-ro/domain.v4.integrations.typescript
 ```
 
 #### Utilizar o pacote para TypeScript / JavaScript
 
 ```ts
-import type {} from "@ladesa-ro/domain.v4";
+import type {} from "@ladesa-ro/domain.v4.integrations.typescript";
 ```
+
+</details>
+
 
 ## 🧑‍💻 Desenvolvimento Local
 
 Para você realizar o desenvolvimento local, preparamos o guia a seguir.
+
+<details>
+
+<summary>Guia para Desenvolvimento Local</summary>
 
 ### Pré-requisitos
 
@@ -165,8 +135,8 @@ bun install
 
 O projeto está organizado da seguinte forma:
 
-- pkgs/definitions: especificação feita com typespec
-- pkgs/integrations: pacotes gerados automaticamente para outras plataformas relevantes
+- [pkgs/definitions](./pkgs/definitions/): especificação feita com typespec
+- [pkgs/integrations](./pkgs/integrations/): pacotes gerados automaticamente para outras plataformas relevantes
 
 ### Gerar os artefatos da especificação
 
@@ -195,6 +165,8 @@ Todos os comandos são executados a partir da raiz do projeto, em um terminal:
 | `bun run all:format:check` | Checa as formatações dos arquivos.                  |
 | `bun run all:format:fix`   | Corrige as formatações inconsistêntes dos arquivos. |
 | `bun run all:code:check`   | Checagem de lint e formatação.                      |
+
+</details>
 
 </details>
 
@@ -230,8 +202,7 @@ Se você tiver experiência com o projeto, pode ajudar revisando e sugerindo mel
 
 Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conosco:
 
-- **Email:** `em breve`.
-- **Comunidade:** Participe de discussões e interações na comunidade do Ladesa através do [Ladesa Community][ladesa-docs-community].
+- **Email:** `ladesa.sisgea@gmail.com`.
 - **GitHub Issues:** Para relatar bugs ou sugerir melhorias, utilize a seção de [Issues do GitHub][ladesa-domain-issues].
 
 ## 🤝 Licença
@@ -259,13 +230,13 @@ Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conos
 
 <!-- Badges / Integrations / NPM -->
 
-[npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
-[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v4
+[npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain.v4.integrations.typescript-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
+[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v4.integrations.typescript
 
 <!-- Badges / Integrations / NPM / Versions -->
 
-[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v4?activeTab=versions
-[npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
+[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v4.integrations.typescript?activeTab=versions
+[npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain.v4.integrations.typescript&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
 
 <!-- Badges / Integrations / NuGet -->
 

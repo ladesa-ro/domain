@@ -4,34 +4,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 namespace Ladesa.Domain.v4.Schemas;
 
 /**
- * ImagemArquivo.
- */
-@Metadata.EntityId(Tokens.ImagemArquivo)
-model ImagemArquivo {
-  ...EntityIdUuid;
-
-  /** Largura da imagem. */
-  largura: integer;
-
-  /** Altura da imagem. */
-  altura: integer;
-
-  /** Formato da imagem. */
-  formato: string;
-
-  /** Mime-type da imagem. */
-  mimeType: string;
-
-  /** Imagem. */
-  imagem: Imagem;
-
-  /** Arquivo. */
-  arquivo: Arquivo;
-
-  ...EntityDated;
-}
-
-/**
  * Visão completa de uma versão de uma imagem.
  */
 model ImagemArquivoView {

@@ -1,5 +1,9 @@
 {
-  "version": "4.0.0-alpha",
   "name": "@ladesa-ro/domain.v4.integrations.dotnet",
-  "private": true
+  "version": "4.0.4",
+  "private": true,
+  "scripts": {
+    "patch-version": "./.scripts/patch-version.sh",
+    "build": "nx run build"
+  }
 }

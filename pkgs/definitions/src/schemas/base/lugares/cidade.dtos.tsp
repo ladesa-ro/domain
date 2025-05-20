@@ -3,18 +3,6 @@ using Ladesa.Domain.v4.Generics.Entities;
 
 namespace Ladesa.Domain.v4.Schemas;
 
-/** Cidade. */
-@Metadata.EntityId(Tokens.Cidade)
-model Cidade {
-  ...EntityIdInteger;
-
-  /** Nome oficial da cidade. */
-  nome: string;
-
-  /** Estado da cidade */
-  estado: Estado;
-}
-
 /** Visão completa de uma cidade. */
 @Metadata.EntityId(Tokens.Cidade_View)
 model CidadeView {

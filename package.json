@@ -2,6 +2,7 @@
   "name": "@ladesa-ro/domain.v4.root",
   "private": true,
   "workspaces": [
+    "./",
     "./pkgs/definitions",
     "./pkgs/integrations/json-schema",
     "./pkgs/integrations/typescript",
@@ -10,7 +11,13 @@
   "scripts": {
     "changeset:add": "changeset add",
     "changeset:tag": "changeset tag",
-    "changeset:version": "changeset version && nx run-many -t patch-version",
+    "changeset:version": "changeset version && bun run all:patch-version",
+    "changeset:status": "changeset status --since=origin/main",
+    "changeset:pre:enter": "changeset pre enter alpha",
+    "changeset:pre:exit": "changeset pre exit",
+    "format:fix": "biome format . --write",
+    "format:check": "biome format .",
+    "all:patch-version": "nx run-many -t patch-version",
     "all:lint:check": "nx run-many -t lint:check && biome lint .",
     "all:generate": "nx run-many -t generate",
     "all:lint:fix": "nx run-many -t lint:fix && biome lint --write .",
@@ -18,11 +25,12 @@
     "all:format:fix": "nx run-many -t format:fix && biome format --write .",
     "all:code:check": "bun run all:lint:check && bun run all:format:check",
     "all:code:fix": "bun run all:lint:fix && bun run all:format:fix",
-    "all:chore:upgrade": "bun upgrade && bun update --latest && nx exec -- bun update --latest"
+    "all:chore:upgrade": "bun upgrade && bun update --latest && bun x nx exec --parallel 1 -- bun update --latest"
   },
   "dependencies": {
     "@biomejs/biome": "1.9.4",
-    "@changesets/cli": "^2.29.2",
-    "nx": "^20.8.0"
+    "@changesets/cli": "^2.29.4",
+    "nx": "21.0.3",
+    "quicktype": "23"
   }
 }

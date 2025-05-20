@@ -1,5 +1,7 @@
 .nx
 .nx/cache
+.sln
+.nuget
 
 pkgs/definitions/tsp-output
 
