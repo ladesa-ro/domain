@@ -20,6 +20,8 @@
   "workspaceFolder": "/var/lib/ladesa-ro/sources/domain",
   "workspaceMount": "source=${localWorkspaceFolder}/,target=/var/lib/ladesa-ro/sources/domain,type=bind,consistency=cached",
 
+  "postAttachCommand": "(bun install; exit 0;)",
+
   "customizations": {
     "vscode": {
       "extensions": [
