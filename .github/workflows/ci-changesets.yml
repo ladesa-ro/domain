@@ -33,7 +33,7 @@ jobs:
       - run: bun install --frozen-lockfile
 
       - id: changeset
-        uses: changesets/action@746c25e23caa47dceb6a48ee85b4cbc5a9f5f293
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba
         with:
           version: bun run changeset:version
           setupGitUser: true
