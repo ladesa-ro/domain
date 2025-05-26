@@ -32,7 +32,7 @@ jobs:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
       - name: Update PR
-        uses: mscharley/dependency-changesets-action@dc7760c86c6313b5341643c718c7ac664ae8f985
+        uses: mscharley/dependency-changesets-action@f8a1d989558c1409bc6769a763fa43230f71f13d
         with:
           token: ${{ steps.app-token.outputs.token }}
           use-conventional-commits: false
