@@ -10,5 +10,6 @@
   "privatePackages": {
     "tag": true,
     "version": true
+    
   }
 }
