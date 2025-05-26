@@ -16,7 +16,7 @@
   <PropertyGroup>
     <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.0.4</Version>
+    <Version>4.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -1,5 +1,11 @@
 # @ladesa-ro/domain.v4.integrations.dotnet
 
+## 4.1.0
+
+### Minor Changes
+
+- d52de0c: refactor(calendario-dias.model): improve day model, clarify types and fields
+
 ## 4.0.4
 
 ### Patch Changes
