@@ -1,9 +1,9 @@
-# @ladesa-ro/domain
+# @ladesa-ro/schemas
 
 Definição de dados e entidades do Ladesa.
 
-[![Repositório de Código no GitHub](https://img.shields.io/badge/GitHub-Domain-118d3b?style=for-the-badge&logo=GitHub&logoColor=white&labelColor=18181b&color=118d3b)](https://github.com/ladesa-ro/domain)
-[![Documentação](https://img.shields.io/badge/DOCS.LADESA-118d3b?style=for-the-badge&logo=readme&logoColor=white&label=Documenta%C3%A7%C3%A3o&labelColor=18181b)](https://docs.ladesa.com.br/developers/)
+[![Repositório de Código no GitHub](https://img.shields.io/badge/GitHub-Schemas-118d3b?style=for-the-badge\&logo=GitHub\&logoColor=white\&labelColor=18181b\&color=118d3b)](https://github.com/ladesa-ro/schemas)
+[![Documentação](https://img.shields.io/badge/DOCS.LADESA-118d3b?style=for-the-badge\&logo=readme\&logoColor=white\&label=Documenta%C3%A7%C3%A3o\&labelColor=18181b)](https://docs.ladesa.com.br/developers/)
 
 ## 🚀 O que você encontra aqui
 
@@ -17,21 +17,22 @@ Formatos e estruturas dos dados para comunicação entre sistemas.
 
 ### Artefatos de Integração
 
-[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Domain.v4.json) e pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos gerados automaticamente.
+[Esquemas JSON](./pkgs/integrations/json-schema/lib/Ladesa.Schemas.v4.json) e pacotes para [C# (NuGet)](#integração-c--dotnet) e [JavaScript/TypeScript (NPM)](#integração-typescript--javascript), todos gerados automaticamente.
 
 ## Conteúdo
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [💖 Utilização](#-utilização)
-- [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local)
-- [😊 Como Contribuir](#-como-contribuir)
-  - [1. Reportar Problemas](#1-reportar-problemas)
-  - [2. Sugerir Melhorias](#2-sugerir-melhorias)
-  - [3. Fazer um Pull Request](#3-fazer-um-pull-request)
-  - [4. Revisar Pull Requests](#4-revisar-pull-requests)
-- [👋 Contato](#-contato)
-- [🤝 Licença](#-licença)
+* [💖 Utilização](#-utilização)
+* [🧑‍💻 Desenvolvimento Local](#-desenvolvimento-local)
+* [😊 Como Contribuir](#-como-contribuir)
+
+  * [1. Reportar Problemas](#1-reportar-problemas)
+  * [2. Sugerir Melhorias](#2-sugerir-melhorias)
+  * [3. Fazer um Pull Request](#3-fazer-um-pull-request)
+  * [4. Revisar Pull Requests](#4-revisar-pull-requests)
+* [👋 Contato](#-contato)
+* [🤝 Licença](#-licença)
 
 <!-- TOC end -->
 
@@ -46,18 +47,18 @@ Formatos e estruturas dos dados para comunicação entre sistemas.
 #### Instalar o pacote para dotnet
 
 ```sh
-dotnet add package Ladesa.Domain.v4
+dotnet add package Ladesa.Schemas.v4
 ```
 
 #### Utilizar o pacote para dotnet
 
-- Utilização do namespace `Ladesa.Domain.v4`
+* Utilização do namespace `Ladesa.Schemas.v4`
 
 ```cs
-using Ladesa.Domain.v4;
+using Ladesa.Schemas.v4;
 ```
 
-- Conversão de uma `string` `JSON` para uma instância de alguma das classes
+* Conversão de uma `string` `JSON` para uma instância de alguma das classes
 
 ```cs
 Ambiente ambiente = Ambiente.FromJson(jsonString);
@@ -75,26 +76,25 @@ Ambiente ambiente = Ambiente.FromJson(jsonString);
 
 ```sh
 # pnpm
-pnpm add -D @ladesa-ro/domain.v4.integrations.typescript
+pnpm add -D @ladesa-ro/schemas.v4.integrations.typescript
 
 # npm
-npm install -D @ladesa-ro/domain.v4.integrations.typescript
+npm install -D @ladesa-ro/schemas.v4.integrations.typescript
 
 # bun
-bun add -D @ladesa-ro/domain.v4.integrations.typescript
+bun add -D @ladesa-ro/schemas.v4.integrations.typescript
 
 # yarn
-yarn add -D @ladesa-ro/domain.v4.integrations.typescript
+yarn add -D @ladesa-ro/schemas.v4.integrations.typescript
 ```
 
 #### Utilizar o pacote para TypeScript / JavaScript
 
 ```ts
-import type {} from "@ladesa-ro/domain.v4.integrations.typescript";
+import type {} from "@ladesa-ro/schemas.v4.integrations.typescript";
 ```
 
 </details>
-
 
 ## 🧑‍💻 Desenvolvimento Local
 
@@ -110,9 +110,9 @@ Para o desenvolvimento local, é necessário preparar o seu ambiente de trabalho
 
 Preparamos dicas e tutoriais para você acerca de cada pré-requisito, basta clicar nos links para saber mais.
 
-- linux ou wsl, com [acesso à linha de comando bash](https://docs.ladesa.com.br/developers/tutorials/os/command-line/);
-- [git](https://docs.ladesa.com.br/developers/tutorials/source-code/git/);
-- [bun](https://bun.sh/)
+* linux ou wsl, com [acesso à linha de comando bash](https://docs.ladesa.com.br/developers/tutorials/os/command-line/);
+* [git](https://docs.ladesa.com.br/developers/tutorials/source-code/git/);
+* [bun](https://bun.sh/)
 
 <!-- - [podman] -->
 
@@ -121,8 +121,8 @@ Preparamos dicas e tutoriais para você acerca de cada pré-requisito, basta cli
 O primeiro passo para o desenvolvimento local é de obter uma cópia dos arquivos deste repositório. Para isso, digite:
 
 ```sh
-git clone https://github.com/ladesa-ro/domain.git
-cd domain
+git clone https://github.com/ladesa-ro/schemas.git
+cd schemas
 ```
 
 ### Instalar as dependências
@@ -135,8 +135,8 @@ bun install
 
 O projeto está organizado da seguinte forma:
 
-- [pkgs/definitions](./pkgs/definitions/): especificação feita com typespec
-- [pkgs/integrations](./pkgs/integrations/): pacotes gerados automaticamente para outras plataformas relevantes
+* [pkgs/definitions](./pkgs/definitions/): especificação feita com typespec
+* [pkgs/integrations](./pkgs/integrations/): pacotes gerados automaticamente para outras plataformas relevantes
 
 ### Gerar os artefatos da especificação
 
@@ -176,11 +176,11 @@ Este projeto é open source, e contribuições são sempre bem-vindas! Existem d
 
 ### 1. Reportar Problemas
 
-Se você encontrou algum problema ou erro na especificação, por favor, abra uma [issue no GitHub][ladesa-domain-issues]. Detalhe o máximo possível para que possamos investigar e resolver rapidamente.
+Se você encontrou algum problema ou erro na especificação, por favor, abra uma [issue no GitHub][ladesa-schemas-issues]. Detalhe o máximo possível para que possamos investigar e resolver rapidamente.
 
 ### 2. Sugerir Melhorias
 
-Tem uma ideia para melhorar a especificação? Sinta-se à vontade para sugerir novas funcionalidades, ajustes ou correções abrindo uma [issue][ladesa-domain-issues] ou discutindo na [Ladesa Community][ladesa-docs-community].
+Tem uma ideia para melhorar a especificação? Sinta-se à vontade para sugerir novas funcionalidades, ajustes ou correções abrindo uma [issue][ladesa-schemas-issues] ou discutindo na [Ladesa Community][ladesa-docs-community].
 
 ### 3. Fazer um Pull Request
 
@@ -196,14 +196,14 @@ Se você já tem uma solução para um problema ou deseja propor uma melhoria no
 
 Se você tiver experiência com o projeto, pode ajudar revisando e sugerindo melhorias nos pull requests abertos por outros colaboradores. A revisão cuidadosa ajuda a garantir que o código mantido esteja sempre em alta qualidade.
 
-> Lembre-se de seguir o [código de conduta][ladesa-domain-repo-code-of-conduct] da comunidade em todas as interações.
+> Lembre-se de seguir o [código de conduta][ladesa-schemas-repo-code-of-conduct] da comunidade em todas as interações.
 
 ## 👋 Contato
 
 Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conosco:
 
-- **Email:** `ladesa.sisgea@gmail.com`.
-- **GitHub Issues:** Para relatar bugs ou sugerir melhorias, utilize a seção de [Issues do GitHub][ladesa-domain-issues].
+* **Email:** `ladesa.sisgea@gmail.com`.
+* **GitHub Issues:** Para relatar bugs ou sugerir melhorias, utilize a seção de [Issues do GitHub][ladesa-schemas-issues].
 
 ## 🤝 Licença
 
@@ -222,28 +222,28 @@ Se você tiver dúvidas, sugestões ou precisar de ajuda, entre em contato conos
 
 <!-- Links / Especificação -->
 
-[ladesa-domain-issues]: https://github.com/ladesa-ro/domain/issues
-[ladesa-domain-repo-automation]: https://github.com/ladesa-ro/domain/tree/main/.github/workflows
-[ladesa-domain-repo-code-of-conduct]: https://github.com/ladesa-ro/domain/blob/main/CODE_OF_CONDUCT.md
+[ladesa-schemas-issues]: https://github.com/ladesa-ro/schemas/issues
+[ladesa-domain-repo-automation]: https://github.com/ladesa-ro/schemas/tree/main/.github/workflows
+[ladesa-schemas-repo-code-of-conduct]: https://github.com/ladesa-ro/schemas/blob/main/CODE_OF_CONDUCT.md
 
 <!-- Badges -->
 
 <!-- Badges / Integrations / NPM -->
 
-[npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fdomain.v4.integrations.typescript-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
-[npm-package-href]: https://npmjs.com/package/@ladesa-ro/domain.v4.integrations.typescript
+[npm-package-src]: https://img.shields.io/badge/npm-%40ladesa--ro%2Fschemas.v4.integrations.typescript-18181B?style=flat&logo=npm&logoColor=white&labelColor=%23CB3837
+[npm-package-href]: https://npmjs.com/package/@ladesa-ro/schemas.v4.integrations.typescript
 
 <!-- Badges / Integrations / NPM / Versions -->
 
-[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/domain.v4.integrations.typescript?activeTab=versions
-[npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fdomain.v4.integrations.typescript&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
+[npm-package-versions-href]: https://www.npmjs.com/package/@ladesa-ro/schemas.v4.integrations.typescript?activeTab=versions
+[npm-package-stable-version-src]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fregistry.npmjs.com%2F%40ladesa-ro%2Fschemas.v4.integrations.typescript&query=%24%5B%22dist-tags%22%5D.latest&prefix=v&style=flat&logo=npm&logoColor=white&label=vers%C3%A3o&style=flat&colorA=18181B&colorB=white
 
 <!-- Badges / Integrations / NuGet -->
 
-[nuget-package-src]: https://img.shields.io/badge/nuget-Ladesa.Domain.v4-18181B?style=flat&logo=nuget&logoColor=white&labelColor=%23004880
-[nuget-package-href]: https://www.nuget.org/packages/Ladesa.Domain.v4/
+[nuget-package-src]: https://img.shields.io/badge/nuget-Ladesa.Schemas.v4-18181B?style=flat&logo=nuget&logoColor=white&labelColor=%23004880
+[nuget-package-href]: https://www.nuget.org/packages/Ladesa.Schemas.v4/
 
 <!-- Badges / Integrations / NuGet / Versions -->
 
-[nuget-package-versions-href]: https://www.nuget.org/packages/Ladesa.Domain.v4#versions-body-tab
-[nuget-package-stable-version-src]: https://img.shields.io/nuget/v/Ladesa.Domain.v4?style=flat&style=flat&logo=nuget&logoColor=white&label=versão&style=flat&colorA=18181B&colorB=white
+[nuget-package-versions-href]: https://www.nuget.org/packages/Ladesa.Schemas.v4#versions-body-tab
+[nuget-package-stable-version-src]: https://img.shields.io/nuget/v/Ladesa.Schemas.v4?style=flat&logo=nuget&logoColor=white&label=vers%C3%A3o&style=flat&colorA=18181B&colorB=white
