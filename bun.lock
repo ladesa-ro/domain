@@ -6,13 +6,13 @@
       "dependencies": {
         "@biomejs/biome": "1.9.4",
         "@changesets/cli": "^2.29.4",
-        "nx": "21.1.2",
+        "nx": "21.1.3",
         "quicktype": "23.2.6",
       },
     },
     "pkgs/definitions": {
       "name": "@ladesa-ro/domain.v4.definitions",
-      "version": "4.0.2",
+      "version": "4.1.0",
       "devDependencies": {
         "@typespec/compiler": "^1.0.0",
         "@typespec/json-schema": "^1.0.0",
@@ -20,15 +20,15 @@
     },
     "pkgs/integrations/dotnet": {
       "name": "@ladesa-ro/domain.v4.integrations.dotnet",
-      "version": "4.0.4",
+      "version": "4.1.0",
     },
     "pkgs/integrations/json-schema": {
       "name": "@ladesa-ro/domain.v4.integrations.json-schema",
-      "version": "4.0.1",
+      "version": "4.1.0",
     },
     "pkgs/integrations/typescript": {
       "name": "@ladesa-ro/domain.v4.integrations.typescript",
-      "version": "4.0.3",
+      "version": "4.1.0",
     },
   },
   "packages": {
@@ -160,25 +160,25 @@
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
 
-    "@nx/nx-darwin-arm64": ["@nx/nx-darwin-arm64@21.1.2", "", { "os": "darwin", "cpu": "arm64" }, "sha512-9dO32jd+h7SrvQafJph6b7Bsmp2IotTE0w7dAGb4MGBQni3JWCXaxlMMpWUZXWW1pM5uIkFJO5AASW4UOI7w2w=="],
+    "@nx/nx-darwin-arm64": ["@nx/nx-darwin-arm64@21.1.3", "", { "os": "darwin", "cpu": "arm64" }, "sha512-gbBKQrw9ecjXHVs7Kwaht5Dip//NBCgmnkf3GGoA40ad3zyvHDe+MBWMxueRToUVW/mDPh8b5lvLbmFApiY6sQ=="],
 
-    "@nx/nx-darwin-x64": ["@nx/nx-darwin-x64@21.1.2", "", { "os": "darwin", "cpu": "x64" }, "sha512-5sf+4PRVg9pDVgD53NE1hoPz4lC8Ni34UovQsOrZgDvwU5mqPbIhTzVYRDH86i/086AcCvjT5tEt7rEcuRwlKw=="],
+    "@nx/nx-darwin-x64": ["@nx/nx-darwin-x64@21.1.3", "", { "os": "darwin", "cpu": "x64" }, "sha512-yGDWqxwNty1BJcuvZlwGGravAhg8eIRMEIp2omfIxeyfZEVA4b7egwMCqczwU2Li/StNjTtzrUe1HPWgcCVAuQ=="],
 
-    "@nx/nx-freebsd-x64": ["@nx/nx-freebsd-x64@21.1.2", "", { "os": "freebsd", "cpu": "x64" }, "sha512-E5HR44fimXlQuAgn/tP9esmvxbzt/92AIl0PBT6L3Juh/xYiXKWhda63H4+UNT8AcLRxVXwfZrGPuGCDs+7y/Q=="],
+    "@nx/nx-freebsd-x64": ["@nx/nx-freebsd-x64@21.1.3", "", { "os": "freebsd", "cpu": "x64" }, "sha512-vpZPfSQgNIQ0vmnQA26DlJKZog20ISdS14ir234mvCaJJFdlgWGcpyEOSCU3Vg+32Z/VsSx7kIkBwRhfEZ73Ag=="],
 
-    "@nx/nx-linux-arm-gnueabihf": ["@nx/nx-linux-arm-gnueabihf@21.1.2", "", { "os": "linux", "cpu": "arm" }, "sha512-V4n6DE+r12gwJHFjZs+e2GmWYZdhpgA2DYWbsYWRYb1XQCNUg4vPzt+YFzWZ+K2o91k93EBnlLfrag7CqxUslw=="],
+    "@nx/nx-linux-arm-gnueabihf": ["@nx/nx-linux-arm-gnueabihf@21.1.3", "", { "os": "linux", "cpu": "arm" }, "sha512-R2GzEyHvyree2m7w+e/MOZjUY/l99HbW4E/jJl5BBXRGEAnGTIx9fOxSDiOW5QK6U0oZb2YO2b565t+IC+7rBQ=="],
 
-    "@nx/nx-linux-arm64-gnu": ["@nx/nx-linux-arm64-gnu@21.1.2", "", { "os": "linux", "cpu": "arm64" }, "sha512-NFhsp27O+mS3r7PWLmJgyZy42WQ72c2pTQSpYfhaBbZPTI5DqBHdANa0sEPmV+ON24qkl5CZKvsmhzjsNmyW6A=="],
+    "@nx/nx-linux-arm64-gnu": ["@nx/nx-linux-arm64-gnu@21.1.3", "", { "os": "linux", "cpu": "arm64" }, "sha512-TlFT0G5gO6ujdkT7KUmvS2bwurvpV3olQwchqW1rQwuZ1eEQ1GVDuyzg49UG7lgESYruFn2HRhBf4V+iaD8WIw=="],
 
-    "@nx/nx-linux-arm64-musl": ["@nx/nx-linux-arm64-musl@21.1.2", "", { "os": "linux", "cpu": "arm64" }, "sha512-BgS9npARwcnw+hoaRsbas6vdBAJRBAj5qSeL57LO8Dva+e/6PYqoNyVJ0BgJ98xPXDpzM/NnpeRsndQGpLyhDw=="],
+    "@nx/nx-linux-arm64-musl": ["@nx/nx-linux-arm64-musl@21.1.3", "", { "os": "linux", "cpu": "arm64" }, "sha512-YkdzrZ7p2Y0YpteRyT9lPKhfuz2t5rNFQ87x9WHK2/cFD6H6M42Fg2JldCPIVj2chN9liH+s5ougW5oPQpZyKw=="],
 
-    "@nx/nx-linux-x64-gnu": ["@nx/nx-linux-x64-gnu@21.1.2", "", { "os": "linux", "cpu": "x64" }, "sha512-tjBINbymQgxnIlNK/m6B0P5eiGRSHSYPNkFdh3+sra80AP/ymHGLRxxZy702Ga2xg8RVr9zEvuXYHI+QBa1YmA=="],
+    "@nx/nx-linux-x64-gnu": ["@nx/nx-linux-x64-gnu@21.1.3", "", { "os": "linux", "cpu": "x64" }, "sha512-nnHxhakNCr4jR1y13g0yS/UOmn5aXkJ+ZA1R6jFQxIwLv3Ocy05i0ZvU7rPOtflluDberxEop8xzoiuEZXDa/w=="],
 
-    "@nx/nx-linux-x64-musl": ["@nx/nx-linux-x64-musl@21.1.2", "", { "os": "linux", "cpu": "x64" }, "sha512-+0V0YAOWMh1wvpQZuayQ7y+sj2MhE3l7z0JMD9SX/4xv9zLOWGv+EiUmN/fGoU/mwsSkH2wTCo6G6quKF1E8jQ=="],
+    "@nx/nx-linux-x64-musl": ["@nx/nx-linux-x64-musl@21.1.3", "", { "os": "linux", "cpu": "x64" }, "sha512-poPt/LnFbq54CA3PZ1af8wcdQ4VsWRuA9w1Q1/G1BhCfDUAVIOZ0mhH1NzFpPwCxgVZ1TbNCZWhV2qjVRwQtlw=="],
 
-    "@nx/nx-win32-arm64-msvc": ["@nx/nx-win32-arm64-msvc@21.1.2", "", { "os": "win32", "cpu": "arm64" }, "sha512-E+ECMQIMJ6R47BMW5YpDyOhTqczvFaL8k24umRkcvlRh3SraczyxBVPkYHDukDp7tCeIszc5EvdWc83C3W8U4w=="],
+    "@nx/nx-win32-arm64-msvc": ["@nx/nx-win32-arm64-msvc@21.1.3", "", { "os": "win32", "cpu": "arm64" }, "sha512-gBSVMRkXRqxTKgj/dabAD1EaptROy64fEtlU1llPz/RtcJcVhIlDczBF/y2WSD6A72cSv6zF/F1n3NrekNSfBA=="],
 
-    "@nx/nx-win32-x64-msvc": ["@nx/nx-win32-x64-msvc@21.1.2", "", { "os": "win32", "cpu": "x64" }, "sha512-J9rNTBOS7Ld6CybU/cou1Fg52AHSYsiwpZISM2RNM0XIoVSDk3Jsvh4OJgS2rvV0Sp/cgDg3ieOMAreekH+TKw=="],
+    "@nx/nx-win32-x64-msvc": ["@nx/nx-win32-x64-msvc@21.1.3", "", { "os": "win32", "cpu": "x64" }, "sha512-k3/1b2dLQjnWzrg2UqHDLCoaqEBx2SRgujjYCACRJ12vmYH2gTyFX2UPXikVbbpaTJNeXv8eaCzyCKhuvPK1sQ=="],
 
     "@sinclair/typebox": ["@sinclair/typebox@0.27.8", "", {}, "sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA=="],
 
@@ -512,7 +512,7 @@
 
     "npm-run-path": ["npm-run-path@4.0.1", "", { "dependencies": { "path-key": "^3.0.0" } }, "sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw=="],
 
-    "nx": ["nx@21.1.2", "", { "dependencies": { "@napi-rs/wasm-runtime": "0.2.4", "@yarnpkg/lockfile": "^1.1.0", "@yarnpkg/parsers": "3.0.2", "@zkochan/js-yaml": "0.0.7", "axios": "^1.8.3", "chalk": "^4.1.0", "cli-cursor": "3.1.0", "cli-spinners": "2.6.1", "cliui": "^8.0.1", "dotenv": "~16.4.5", "dotenv-expand": "~11.0.6", "enquirer": "~2.3.6", "figures": "3.2.0", "flat": "^5.0.2", "front-matter": "^4.0.2", "ignore": "^5.0.4", "jest-diff": "^29.4.1", "jsonc-parser": "3.2.0", "lines-and-columns": "2.0.3", "minimatch": "9.0.3", "node-machine-id": "1.1.12", "npm-run-path": "^4.0.1", "open": "^8.4.0", "ora": "5.3.0", "resolve.exports": "2.0.3", "semver": "^7.5.3", "string-width": "^4.2.3", "tar-stream": "~2.2.0", "tmp": "~0.2.1", "tree-kill": "^1.2.2", "tsconfig-paths": "^4.1.2", "tslib": "^2.3.0", "yaml": "^2.6.0", "yargs": "^17.6.2", "yargs-parser": "21.1.1" }, "optionalDependencies": { "@nx/nx-darwin-arm64": "21.1.2", "@nx/nx-darwin-x64": "21.1.2", "@nx/nx-freebsd-x64": "21.1.2", "@nx/nx-linux-arm-gnueabihf": "21.1.2", "@nx/nx-linux-arm64-gnu": "21.1.2", "@nx/nx-linux-arm64-musl": "21.1.2", "@nx/nx-linux-x64-gnu": "21.1.2", "@nx/nx-linux-x64-musl": "21.1.2", "@nx/nx-win32-arm64-msvc": "21.1.2", "@nx/nx-win32-x64-msvc": "21.1.2" }, "peerDependencies": { "@swc-node/register": "^1.8.0", "@swc/core": "^1.3.85" }, "optionalPeers": ["@swc-node/register", "@swc/core"], "bin": { "nx": "bin/nx.js", "nx-cloud": "bin/nx-cloud.js" } }, "sha512-oczAEOOkQHElxCXs2g2jXDRabDRsmub/h5SAgqAUDSJ2CRnYGVVlgZX7l+o+A9kSqfONyLy5FlJ1pSWlvPuG4w=="],
+    "nx": ["nx@21.1.3", "", { "dependencies": { "@napi-rs/wasm-runtime": "0.2.4", "@yarnpkg/lockfile": "^1.1.0", "@yarnpkg/parsers": "3.0.2", "@zkochan/js-yaml": "0.0.7", "axios": "^1.8.3", "chalk": "^4.1.0", "cli-cursor": "3.1.0", "cli-spinners": "2.6.1", "cliui": "^8.0.1", "dotenv": "~16.4.5", "dotenv-expand": "~11.0.6", "enquirer": "~2.3.6", "figures": "3.2.0", "flat": "^5.0.2", "front-matter": "^4.0.2", "ignore": "^5.0.4", "jest-diff": "^29.4.1", "jsonc-parser": "3.2.0", "lines-and-columns": "2.0.3", "minimatch": "9.0.3", "node-machine-id": "1.1.12", "npm-run-path": "^4.0.1", "open": "^8.4.0", "ora": "5.3.0", "resolve.exports": "2.0.3", "semver": "^7.5.3", "string-width": "^4.2.3", "tar-stream": "~2.2.0", "tmp": "~0.2.1", "tree-kill": "^1.2.2", "tsconfig-paths": "^4.1.2", "tslib": "^2.3.0", "yaml": "^2.6.0", "yargs": "^17.6.2", "yargs-parser": "21.1.1" }, "optionalDependencies": { "@nx/nx-darwin-arm64": "21.1.3", "@nx/nx-darwin-x64": "21.1.3", "@nx/nx-freebsd-x64": "21.1.3", "@nx/nx-linux-arm-gnueabihf": "21.1.3", "@nx/nx-linux-arm64-gnu": "21.1.3", "@nx/nx-linux-arm64-musl": "21.1.3", "@nx/nx-linux-x64-gnu": "21.1.3", "@nx/nx-linux-x64-musl": "21.1.3", "@nx/nx-win32-arm64-msvc": "21.1.3", "@nx/nx-win32-x64-msvc": "21.1.3" }, "peerDependencies": { "@swc-node/register": "^1.8.0", "@swc/core": "^1.3.85" }, "optionalPeers": ["@swc-node/register", "@swc/core"], "bin": { "nx": "bin/nx.js", "nx-cloud": "bin/nx-cloud.js" } }, "sha512-GZ7+Bve4xOVIk/hb9nN16fVqVq5PNNyFom1SCQbEGhGkyABJF8kA4JImCKhZpZyg1CtZeUrkPHK4xNO+rw9G5w=="],
 
     "once": ["once@1.4.0", "", { "dependencies": { "wrappy": "1" } }, "sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w=="],
 
